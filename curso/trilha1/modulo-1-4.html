@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4 Studio: Todas as Ferramentas | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📓</span>
+            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Aplicação</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Módulo 1.4</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.4</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🎛️ Studio: Todas as Ferramentas</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Domine o Studio completo — de Notebook Guides e Audio Overview até Mind Maps, Slide Decks e Data Tables. Transforme documentos em experiências de aprendizado únicas.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">35</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Intermediário</div>
+          <div class="text-xs text-neutral-400">Nível</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Prático</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TÓPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📖 Notebook Guide (Study Guide, Briefing, FAQ, Glossário)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O Notebook Guide é a funcionalidade mais rápida do Studio. Com um clique, o NotebookLM analisa todas as fontes e gera documentos estruturados prontos para usar em estudos, reuniões ou revisões.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">💡</span> Os 4 Tipos de Guia Gerados</h3>
+        <div class="space-y-5 text-neutral-300">
+          <div>
+            <h4 class="font-semibold text-white mb-2">Study Guide (Guia de Estudo)</h4>
+            <ul class="space-y-1">
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Cria resumo estruturado por temas com perguntas de revisão</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal para estudantes e profissionais se preparando para provas/reuniões</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Gerado em aproximadamente 30 segundos</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2">Briefing Document</h4>
+            <ul class="space-y-1">
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Resumo executivo: contexto + pontos principais + recomendações de ação</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal para reuniões, apresentações e relatórios rápidos</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Estrutura direta para tomadores de decisão</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2">FAQ (Perguntas Frequentes)</h4>
+            <ul class="space-y-1">
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Identifica as perguntas mais relevantes sobre o conteúdo e responde cada uma</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal para materiais de suporte, onboarding e treinamentos</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2">Glossário</h4>
+            <ul class="space-y-1">
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Extrai e define todos os termos técnicos das fontes</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal para documentação e materiais educativos especializados</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Usos Profissionais dos Guias</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Reunião em 10 minutos:</strong> gere um Briefing de todas as atas das últimas 4 semanas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Estudo acelerado:</strong> gere Study Guide de 5 artigos científicos antes de uma banca</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">FAQ para clientes:</strong> carregue especificações técnicas e gere FAQ automaticamente</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Glossário de área:</strong> carregue 10 artigos especializados e tenha terminologia padronizada</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+        <p class="text-neutral-300">Os guias são pontos de partida, não documentos finais. Após gerar, continue conversando no chat para refinar, expandir ou questionar seções específicas. <strong class="text-white">"Expanda o item 3 do Study Guide com exemplos práticos"</strong> é um prompt excelente para aprofundar qualquer seção.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🎙️ Audio Overview: Geração e Personalização</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O Audio Overview foi o recurso que virou febre global em 2024 — considerado pela TIME como uma das 10 invenções mais importantes do ano. Em minutos, seus documentos se tornam um podcast natural com dois apresentadores debatendo o conteúdo.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🔧</span> Como Funciona</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Dois apresentadores com vozes sintéticas naturais debatem o tema</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Duração: 8-20 minutos automaticamente baseados no volume de conteúdo</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Português e inglês suportados (detecta automaticamente o idioma)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Gratuito: 3 gerações/dia | Plus: 20/dia</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Salvo automaticamente — você pode ouvir depois</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">⚙️</span> Personalizando Antes de Gerar</h3>
+        <div class="space-y-3 text-neutral-300">
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span>Clique nos 3 pontinhos ao lado do botão "Generate"</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <div>
+              <span>Na caixa de customização, adicione instruções:</span>
+              <ul class="mt-2 space-y-1 ml-2">
+                <li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span>"Foque nos aspectos práticos e cases reais"</span></li>
+                <li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span>"Explique para um público sem background técnico"</span></li>
+                <li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span>"Destaque as implicações para pequenas empresas"</span></li>
+                <li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span>"Mantenha em menos de 10 minutos"</span></li>
+                <li class="flex items-start space-x-2"><span class="text-emerald-400">•</span><span>"Tom: mais técnico e rigoroso, menos casual"</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span>Gere com as instruções — resultado será muito mais relevante</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+        <p class="text-neutral-300">Instruções específicas transformam o Audio Overview de genérico para preciso. Sempre defina: (1) para quem é o público, (2) qual o foco temático, (3) qual o tom desejado, (4) duração aproximada. Com 4 parâmetros simples, o resultado sobe de nível dramaticamente.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🎤 Audio Overview Interativo: Entre na Conversa</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Em setembro de 2025, o NotebookLM lançou o recurso mais único do mercado de IA: você pode entrar ao vivo na conversa do podcast. No meio da discussão entre os dois apresentadores, basta falar — e eles respondem em tempo real.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎙️</span> Como Usar o Modo Interativo</h3>
+        <div class="space-y-3 text-neutral-300">
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span>Gere um Audio Overview normalmente</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span>Enquanto está sendo reproduzido, clique no botão "Join" (microfone)</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span>Seu microfone ativa — você pode fazer perguntas faladas</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span>Os apresentadores pausam a discussão e respondem à sua pergunta</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span>Depois continuam a conversa de onde pararam</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Por que Isso é Revolucionário</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Único no mercado de IA:</strong> nenhum concorrente tem isso</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Aprendizado ativo:</strong> você participa em vez de apenas ouvir passivamente</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Personalização em tempo real:</strong> direcione a discussão para o que importa</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Contexto:</strong> os apresentadores têm acesso às suas fontes para responder</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Retenção:</strong> participar ativamente aumenta absorção do conteúdo em 40%+</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+        <p class="text-neutral-300">Use o modo interativo para aprendizado ativo efetivo. Durante o podcast, peça: <strong class="text-white">"Pode dar um exemplo prático deste conceito?"</strong>, <strong class="text-white">"Qual a implicação disso para o setor X?"</strong>, <strong class="text-white">"Me desafie com uma pergunta sobre este tópico."</strong> Isso transforma o áudio em uma sessão de estudo interativa.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🗺️ Mind Maps e Visualizações Interativas</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O Mind Map do NotebookLM cria automaticamente um mapa visual de conceitos e relacionamentos extraídos dos seus documentos. Clicável, expansível e interativo — ideal para ter visão geral antes de mergulhar nos detalhes.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🗺️</span> O que o Mind Map Faz</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Analisa todos os documentos e identifica conceitos centrais e periféricos</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Cria hierarquia visual: conceito raiz → subtemas → detalhes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Cada nó é clicável e mostra o contexto da fonte original</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Você pode expandir ou recolher ramos conforme interesse</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Exportável como imagem para usar em apresentações</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Como Usar Estrategicamente</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Geração:</strong> Studio → Mind Map → aguarde 10-30 segundos</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Exploração:</strong> clique em qualquer nó para ver o contexto detalhado</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Identificação de clusters:</strong> áreas com muitos nós = temas centrais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Lacunas:</strong> áreas com poucos nós = onde você precisa de mais fontes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span><strong class="text-white">Antes de começar:</strong> gere o Mind Map antes de qualquer outra análise para orientação</span></li>
+        </ul>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Ideal para</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Visão geral de um tema novo ou complexo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Identificar conexões entre conceitos das fontes</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Preparar estrutura de apresentações</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Onboarding em projetos complexos com muitas fontes</span></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Não ideal para</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Documentos com conteúdo predominantemente numérico</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Conteúdo muito linear como tutoriais passo-a-passo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Análises que precisam de dados quantitativos precisos</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Fontes com texto muito fragmentado ou sem estrutura</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">📊 Slide Decks e Infographics</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Lançados em novembro de 2025, o Slide Deck e o Infographic são as ferramentas mais recentes do Studio. Eles transformam automaticamente seus documentos em apresentações visuais prontas — um dos recursos mais aguardados pela comunidade.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📊</span> Slide Deck Automático</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Gera uma apresentação completa com slides temáticos</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Cada slide tem: título, pontos-chave, citações das fontes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Layout profissional aplicado automaticamente</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Editável: você pode customizar após a geração</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Exportável para Google Slides ou PowerPoint</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal: relatórios, aulas, apresentações executivas</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🖼️</span> Infographic Automático</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Uma imagem visual densa com os dados e conceitos principais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Inclui: estatísticas em destaque, timeline visual, comparações</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Baseado 100% no conteúdo das suas fontes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal para: posts de redes sociais, resumos visuais, dashboards de overview</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Exportável em alta resolução como PNG/SVG</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+        <p class="text-neutral-300">Para Slide Decks de alta qualidade: antes de gerar, diga ao NotebookLM no chat qual é o propósito (<strong class="text-white">"apresentação executiva de 10 minutos para diretores"</strong>) e a audiência (<strong class="text-white">"sem background técnico"</strong>). Isso orienta a ferramenta a criar slides mais adequados ao contexto real.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📈 Data Tables e Deep Research</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Data Tables e Deep Research são os recursos mais avançados do Studio, lançados no final de 2025. Eles expandem o NotebookLM de ferramenta de análise para plataforma de pesquisa estruturada e síntese de dados.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📋</span> Data Tables — Dados Estruturados</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Extrai informações das fontes e organiza em tabelas editáveis</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Detecta automaticamente: datas, preços, métricas, comparações, listas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Cada dado vem com link para a fonte original</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Exportável para Google Sheets ou CSV</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal para: comparações de produtos, análise de contratos, síntese de dados de pesquisa</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🔬</span> Deep Research — Pesquisa Estruturada</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Executa uma análise em múltiplas etapas das suas fontes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Gera um relatório de pesquisa estruturado com metodologia explícita</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Inclui: sumário executivo, evidências, contradições, lacunas, recomendações</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Semelhante a um relatório de consultoria profissional</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Ideal para: due diligence, revisão de literatura, análise competitiva profunda</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+        <p class="text-neutral-300">Use Data Tables para análise comparativa rápida. Carregue 5-10 propostas comerciais, relatórios financeiros ou fichas técnicas de produtos → gere uma Data Table → exporte para planilha. Em 5 minutos você tem uma comparação estruturada que levaria horas manualmente.</p>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 1.4</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Notebook Guide gera Study Guide, Briefing, FAQ e Glossário</strong><span class="text-neutral-400"> com 1 clique</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Audio Overview transforma documentos em podcast natural</strong><span class="text-neutral-400"> de 8-20 minutos</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Personalização com instruções antes de gerar</strong><span class="text-neutral-400"> melhora drasticamente o resultado</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Modo Interativo permite entrar ao vivo na conversa</strong><span class="text-neutral-400"> — único no mercado</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Mind Map cria visualização automática</strong><span class="text-neutral-400"> de conceitos e relacionamentos</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Slide Decks e Infographics</strong><span class="text-neutral-400"> geram apresentações visuais prontas das fontes</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Data Tables e Deep Research</strong><span class="text-neutral-400"> elevam o NotebookLM ao nível de plataforma de pesquisa</span></div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Parabéns! Trilha 1 Concluída:</h3>
+          <p class="text-neutral-300">Você dominou os Fundamentos do NotebookLM. Continue para a Trilha 2 — Aplicação e Domínio — para aprender a usar a ferramenta em casos de uso reais e no nível profissional.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-start">
+          <a href="modulo-1-3.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors text-center">← Módulo 1.3: Chat</a>
+          <a href="../trilha2/index.html" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors text-center">Trilha 2: Aplicação →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3 Chat com Documentos | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span>
+          <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+  <!-- Breadcrumb -->
+  <nav class="flex items-center space-x-2 text-sm text-neutral-400 mb-6">
+    <a href="../../index.html" class="hover:text-neutral-300 transition-colors">Início</a>
+    <span>/</span>
+    <a href="index.html" class="hover:text-neutral-300 transition-colors">Trilha 1</a>
+    <span>/</span>
+    <span class="text-neutral-300">Módulo 1.3</span>
+  </nav>
+
+  <!-- Header -->
+  <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-2xl border border-emerald-500/30 p-8 mb-10">
+    <div class="flex items-start justify-between flex-wrap gap-4">
+      <div>
+        <div class="flex items-center space-x-3 mb-3">
+          <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full border border-emerald-500/30">MÓDULO 1.3</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-3">💬 Chat com Documentos</h1>
+        <p class="text-neutral-300 text-lg leading-relaxed max-w-2xl">Domine a arte de conversar com seus documentos. Das citações clicáveis aos Super Prompts usados por pesquisadores profissionais — transforme dados em insights acionáveis.</p>
+        <div class="flex flex-wrap gap-4 mt-5 text-sm text-neutral-400">
+          <span class="flex items-center space-x-1"><span>📚</span><span>6 tópicos</span></span>
+          <span class="flex items-center space-x-1"><span>⏱</span><span>30 min</span></span>
+          <span class="flex items-center space-x-1"><span>📊</span><span>Intermediário</span></span>
+          <span class="flex items-center space-x-1"><span>🛠</span><span>Prático</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">💬 Interface de Chat e Citações Clicáveis</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O chat do NotebookLM tem um superpoder que nenhum outro chatbot oferece: cada resposta vem com citações clicáveis que apontam para o trecho exato da fonte original. Isso muda completamente como você valida e usa as informações.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🖥️</span> A Anatomia da Interface</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span><strong class="text-white">Painel central:</strong> onde acontecem as conversas com o AI</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span><strong class="text-white">Painel esquerdo:</strong> gerenciamento e seleção de fontes</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span><strong class="text-white">Painel direito:</strong> Studio — ferramentas de criação e visualização</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span><strong class="text-white">Cada resposta:</strong> numerada com [1][2][3] linkando às fontes</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span><strong class="text-white">Citações clicáveis:</strong> abre o trecho exato na fonte original</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> O Poder das Citações</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Citação [1]</strong> = informação verificada na fonte 1</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Múltiplas citações</strong> = corroboração por mais de uma fonte</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Clique na citação:</strong> o painel abre exatamente no trecho relevante</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Sem citação:</strong> informação provavelmente do conhecimento geral do modelo (raro)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Citação com parágrafo destacado:</strong> máxima confiabilidade da resposta</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Sempre clique nas citações quando a resposta for importante para uma decisão. Se o NotebookLM não consegue citar a resposta, ele geralmente avisa que a informação não está nas fontes. Isso é a feature mais valiosa da ferramenta — não é limitação, é controle de qualidade.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">❓ Tipos de Pergunta que Funcionam Melhor</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Nem todas as perguntas funcionam igualmente no NotebookLM. Entender quais tipos de consulta maximizam a ferramenta é a diferença entre respostas genéricas e insights precisos e acionáveis.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Tipos de Pergunta por Efetividade</h3>
+      <div class="mb-4">
+        <p class="text-sm font-semibold text-emerald-400 mb-2 uppercase tracking-wide">Muito efetivas</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Perguntas específicas com contexto ("Qual a metodologia do estudo X?")</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Pedidos de extração ("Liste todas as datas mencionadas")</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Comparações entre documentos ("Compare as conclusões do doc A e B")</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Pedidos de síntese ("Quais pontos aparecem em múltiplas fontes?")</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-neutral-400 mb-2 uppercase tracking-wide">Moderadamente efetivas</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-neutral-400 mt-0.5">•</span><span>Resumos gerais ("Resuma o documento")</span></li>
+          <li class="flex items-start space-x-2"><span class="text-neutral-400 mt-0.5">•</span><span>Perguntas abertas sobre o tema</span></li>
+          <li class="flex items-start space-x-2"><span class="text-neutral-400 mt-0.5">•</span><span>Pedidos de recomendação baseados no conteúdo</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ Funcionam Bem</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Perguntas sobre conteúdo específico das fontes carregadas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Comparações entre documentos disponíveis</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Extração de dados, datas, nomes, estatísticas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Análise crítica dos argumentos apresentados</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ Não Funcionam</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Perguntas sobre eventos após a data das fontes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Criação de conteúdo criativo ou ficcional</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Cálculos matemáticos complexos</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Informações que simplesmente não estão nas fontes</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Adicione contexto nas suas perguntas. Em vez de "Qual o prazo?", pergunte "Qual o prazo de entrega mencionado no contrato da seção 3.2?" Perguntas com contexto geram respostas 3x mais precisas e com citações mais diretas.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">📝 Prompts Básicos Essenciais</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Os prompts básicos são o pão e manteiga do NotebookLM. Dominar esses 5 padrões resolve 80% das necessidades do dia a dia — de estudantes a profissionais corporativos.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📝</span> Os 5 Prompts Mais Poderosos</h3>
+      <div class="space-y-4">
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Resumo focado</p>
+          <p class="text-neutral-300 text-sm font-mono">"Faça um resumo executivo em até 5 pontos das principais ideias destes documentos"</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Explicação</p>
+          <p class="text-neutral-300 text-sm font-mono">"Explique [conceito X] como se eu não tivesse background na área"</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Lista de aprendizados</p>
+          <p class="text-neutral-300 text-sm font-mono">"Quais são os 10 pontos que não devo esquecer deste conteúdo?"</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">FAQ</p>
+          <p class="text-neutral-300 text-sm font-mono">"Crie uma lista de 10 perguntas frequentes com respostas baseadas nas fontes"</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Extração</p>
+          <p class="text-neutral-300 text-sm font-mono">"Extraia todas as datas, números, estatísticas e métricas mencionados"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Variações e Combinações Úteis</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span class="font-mono text-sm">"Resuma em máximo 3 parágrafos, foco nas implicações práticas"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span class="font-mono text-sm">"Explique para um executivo sem tempo — seja direto"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span class="font-mono text-sm">"O que está implícito mas não dito explicitamente nestes documentos?"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span class="font-mono text-sm">"Quais são as conclusões dos autores? Você concorda com base nas evidências?"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span class="font-mono text-sm">"Crie um cronograma com todas as datas e prazos mencionados"</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Use "Crie um FAQ sobre estes documentos" como primeiro prompt em qualquer notebook novo. O NotebookLM vai revelar o que consegue e não consegue extrair das fontes — funciona como um diagnóstico gratuito da qualidade do seu conjunto de fontes.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">🧠 Prompts Intermediários: Análise Crítica</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Os prompts intermediários exploram capacidades analíticas mais sofisticadas. São ideais para pesquisa acadêmica, análise competitiva, due diligence e síntese de conhecimento de múltiplas perspectivas.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🔍</span> 4 Prompts de Análise Avançada</h3>
+      <div class="space-y-4">
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Contradições</p>
+          <p class="text-neutral-300 text-sm font-mono">"Identifique pontos onde as fontes se contradizem ou apresentam perspectivas opostas sobre o mesmo tema"</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Análise crítica</p>
+          <p class="text-neutral-300 text-sm font-mono">"Quais são as principais limitações, pontos fracos e lacunas nos argumentos apresentados nas fontes?"</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Síntese integrada</p>
+          <p class="text-neutral-300 text-sm font-mono">"Crie uma síntese que integre as perspectivas de todas as fontes, identificando convergências e divergências"</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-sm font-semibold text-emerald-400 mb-1">Insights ocultos</p>
+          <p class="text-neutral-300 text-sm font-mono">"Identifique 5 insights não-óbvios que surgem da leitura cruzada das fontes"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h4 class="font-bold text-neutral-300 mb-4">Prompts Básicos</h4>
+        <ul class="space-y-3 text-neutral-400 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-neutral-500">•</span><span>"Resuma o documento"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-neutral-500">•</span><span>"Explique o conceito X"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-neutral-500">•</span><span>"Liste os pontos principais"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-neutral-500">•</span><span>"Quais são as conclusões?"</span></li>
+        </ul>
+      </div>
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">Prompts Intermediários</h4>
+        <ul class="space-y-3 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Compare as metodologias e avalie pontos fortes/fracos de cada abordagem"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Identifique 5 insights que só aparecem quando se cruza as informações de múltiplas fontes"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Que hipóteses os dados suportam? Quais contradizem?"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>"Analise as implicações não declaradas das conclusões dos autores"</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Use o prompt "Identifique contradições" quando trabalhar com fontes de perspectivas opostas — estudos com resultados diferentes, relatórios de analistas sobre a mesma empresa, documentos legais de partes diferentes. Isso revela nuances que a leitura individual nunca mostraria.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">⚡ Super Prompts da Comunidade</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">A comunidade NotebookLM desenvolveu Super Prompts — estruturas avançadas testadas por pesquisadores, advogados, jornalistas e consultores. Estes prompts extraem resultados de nível profissional.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">⚡</span> Os 3 Super Prompts Mais Poderosos</h3>
+      <div class="space-y-5">
+        <div class="bg-dark-800/60 rounded-lg p-5 border border-emerald-500/20">
+          <p class="text-sm font-bold text-emerald-400 mb-2">Análise Forense (para pesquisa rigorosa)</p>
+          <p class="text-neutral-300 text-sm font-mono leading-relaxed">"Atue como um auditor especialista. Analise estes documentos identificando sistematicamente: (1) principais afirmações feitas, (2) evidências apresentadas para cada afirmação, (3) lacunas de evidência, (4) possíveis vieses do autor, (5) conclusões que excedem as evidências apresentadas."</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-5 border border-emerald-500/20">
+          <p class="text-sm font-bold text-emerald-400 mb-2">Extrator de Insights Contra-Intuitivos</p>
+          <p class="text-neutral-300 text-sm font-mono leading-relaxed">"Leia todos os documentos e identifique os 10 insights mais contra-intuitivos ou surpreendentes — informações que contrariam a sabedoria convencional ou expectativas sobre o tema."</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-5 border border-emerald-500/20">
+          <p class="text-sm font-bold text-emerald-400 mb-2">Consultor Sênior</p>
+          <p class="text-neutral-300 text-sm font-mono leading-relaxed">"Se você fosse um consultor sênior com 20 anos de experiência nesta área, quais 5 recomendações estratégicas você tiraria destes documentos? Baseie cada recomendação em citações específicas."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Super Prompts por Área</h3>
+      <div class="space-y-4">
+        <div class="border-l-2 border-blue-500/50 pl-4">
+          <p class="text-sm font-semibold text-white mb-1">Estudante</p>
+          <p class="text-neutral-300 text-sm font-mono">"Crie 20 questões de múltipla escolha baseadas no conteúdo, com gabarito comentado e indicação da fonte de cada resposta"</p>
+        </div>
+        <div class="border-l-2 border-blue-500/50 pl-4">
+          <p class="text-sm font-semibold text-white mb-1">Pesquisador</p>
+          <p class="text-neutral-300 text-sm font-mono">"Identifique os 5 gaps de pesquisa mais relevantes que estes artigos deixam em aberto e sugira metodologias para preenchê-los"</p>
+        </div>
+        <div class="border-l-2 border-blue-500/50 pl-4">
+          <p class="text-sm font-semibold text-white mb-1">Jornalista</p>
+          <p class="text-neutral-300 text-sm font-mono">"Qual é o ângulo mais impactante desta história? Que perguntas devo fazer aos envolvidos? Que informações ainda faltam?"</p>
+        </div>
+        <div class="border-l-2 border-blue-500/50 pl-4">
+          <p class="text-sm font-semibold text-white mb-1">Advogado</p>
+          <p class="text-neutral-300 text-sm font-mono">"Identifique cláusulas ambíguas, potenciais riscos contratuais, inconsistências e omissões relevantes neste contrato"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Combine Super Prompts com seleção de fontes específicas. Por exemplo: selecione apenas 2 fontes concorrentes, use o prompt de Análise Forense, depois compare os resultados com todas as fontes ativas. Isso é análise competitiva de nível profissional em minutos.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">❌ O que o Chat NÃO Consegue Fazer</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Conhecer os limites reais do chat evita frustração e ajuda a escolher a ferramenta certa para cada tarefa. O NotebookLM é extraordinário no que faz — mas tem limitações claras e importantes.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🚫</span> Limitações Reais e Definitivas</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>NÃO acessa internet ou informações em tempo real</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>NÃO lembra conversas anteriores de outras sessões</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>NÃO faz cálculos matemáticos complexos com confiabilidade</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>NÃO analisa imagens, gráficos ou tabelas visuais dentro de documentos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>NÃO cria conteúdo criativo ou ficcional com qualidade</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-0.5">✗</span><span>NÃO processa planilhas numéricas com precisão analítica</span></li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ NotebookLM Faz</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Análise e síntese de texto com alta precisão</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Extração de informações específicas com citações</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Comparação entre múltiplos documentos textuais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Identificação de padrões e contradições no conteúdo</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Geração de resumos, FAQs e guias estruturados</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ Use Outras Ferramentas</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Criar imagens, gráficos ou visualizações de dados → use Canva/Tableau</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Análise quantitativa de planilhas → use Excel/Python</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Pesquisa na web em tempo real → use Perplexity/ChatGPT</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tradução precisa de textos longos → use DeepL</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Criação criativa geral → use Claude/ChatGPT</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Quando o chat não consegue responder algo, leia a mensagem de erro com atenção. Se diz "não encontrei nas fontes", a informação simplesmente não está nos seus documentos — não é falha da IA. Se a resposta for vaga, provavelmente é uma limitação real do tipo de tarefa. Identifique qual é o caso para saber a melhor solução.</p>
+    </div>
+  </section>
+
+  <!-- Resumo Final -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 1.3</h2>
+      <div class="space-y-4 mb-8">
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">Citações clicáveis são o diferencial principal do chat</strong><span class="text-neutral-400"> — sempre verifique-as antes de usar a informação</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">Perguntas específicas com contexto</strong><span class="text-neutral-400"> — geram respostas 3x mais precisas do que perguntas vagas</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">5 prompts essenciais</strong><span class="text-neutral-400"> — cobrem 80% das necessidades diárias de qualquer usuário</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">Prompts intermediários</strong><span class="text-neutral-400"> — permitem análise crítica e síntese sofisticada de múltiplas fontes</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">Super Prompts da comunidade</strong><span class="text-neutral-400"> — elevam os resultados ao nível profissional em pesquisa, direito e consultoria</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">O chat tem limites claros</strong><span class="text-neutral-400"> — NÃO acessa internet, NÃO lembra sessões anteriores, NÃO faz cálculos complexos</span></div>
+        </div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-emerald-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">1.4 — Studio: Todas as Ferramentas. Descubra o Audio Overview, Mind Maps, Slide Decks e todas as ferramentas de criação do Studio.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 1.2: Fontes</a>
+        <a href="modulo-1-4.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Módulo 1.4: Studio →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
+
+</body>
+</html>

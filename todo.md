@@ -21,15 +21,15 @@ Trilha 2 (Blue)    — Aplicação e Domínio         [Módulos 2.1 a 2.5 + Bôn
 | Landing Page | `index.html` | ✅ Criado |
 | Trilha 1 — Index | `curso/trilha1/index.html` | ✅ Criado |
 | Módulo 1.1 — Introdução | `curso/trilha1/modulo-1-1.html` | ✅ Criado |
-| Módulo 1.2 — Fontes | `curso/trilha1/modulo-1-2.html` | ⬜ Pendente |
-| Módulo 1.3 — Chat | `curso/trilha1/modulo-1-3.html` | ⬜ Pendente |
-| Módulo 1.4 — Studio | `curso/trilha1/modulo-1-4.html` | ⬜ Pendente |
-| Trilha 2 — Index | `curso/trilha2/index.html` | ⬜ Pendente |
-| Módulo 2.1 — Casos de Uso | `curso/trilha2/modulo-2-1.html` | ⬜ Pendente |
-| Módulo 2.2 — Colaboração | `curso/trilha2/modulo-2-2.html` | ⬜ Pendente |
-| Módulo 2.3 — Hacks Avançados | `curso/trilha2/modulo-2-3.html` | ⬜ Pendente |
-| Módulo 2.4 — Boas Práticas | `curso/trilha2/modulo-2-4.html` | ⬜ Pendente |
-| Módulo Bônus — Projetos | `curso/trilha2/modulo-2-bonus.html` | ⬜ Pendente |
+| Módulo 1.2 — Fontes | `curso/trilha1/modulo-1-2.html` | ✅ Criado |
+| Módulo 1.3 — Chat | `curso/trilha1/modulo-1-3.html` | ✅ Criado |
+| Módulo 1.4 — Studio | `curso/trilha1/modulo-1-4.html` | ✅ Criado |
+| Trilha 2 — Index | `curso/trilha2/index.html` | ✅ Criado |
+| Módulo 2.1 — Casos de Uso | `curso/trilha2/modulo-2-1.html` | ✅ Criado |
+| Módulo 2.2 — Colaboração | `curso/trilha2/modulo-2-2.html` | ✅ Criado |
+| Módulo 2.3 — Hacks Avançados | `curso/trilha2/modulo-2-3.html` | ✅ Criado |
+| Módulo 2.4 — Boas Práticas | `curso/trilha2/modulo-2-4.html` | ✅ Criado |
+| Módulo Bônus — Projetos | `curso/trilha2/modulo-2-bonus.html` | ✅ Criado |
 
 ---
 

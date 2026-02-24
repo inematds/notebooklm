@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 2 — Aplicação e Domínio | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+    .modal { display: flex; }
+    .modal.hidden { display: none; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📓</span>
+            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Aplicação</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">TRILHA 2</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🚀 Aplicação e Domínio</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Aplique o NotebookLM em casos de uso reais, domine colaboração, hacks avançados e boas práticas éticas. Para quem quer usar a ferramenta no nível profissional.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-blue-400">6</div>
+          <div class="text-xs text-neutral-400">Módulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-blue-400">37</div>
+          <div class="text-xs text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-blue-400">~5h</div>
+          <div class="text-xs text-neutral-400">Duração</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-blue-400">Avançado</div>
+          <div class="text-xs text-neutral-400">Nível</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACESSO RÁPIDO -->
+  <section class="py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-bold mb-6 text-neutral-300">Acesso Rápido</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <a href="modulo-2-1.html" class="bg-dark-800 rounded-xl border border-dark-600 p-4 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all text-center group">
+          <div class="text-2xl mb-2">🎯</div>
+          <div class="text-blue-400 font-bold text-sm">2.1</div>
+          <div class="text-neutral-400 text-xs mt-1 group-hover:text-neutral-300">Casos de Uso</div>
+        </a>
+        <a href="modulo-2-2.html" class="bg-dark-800 rounded-xl border border-dark-600 p-4 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all text-center group">
+          <div class="text-2xl mb-2">🤝</div>
+          <div class="text-blue-400 font-bold text-sm">2.2</div>
+          <div class="text-neutral-400 text-xs mt-1 group-hover:text-neutral-300">Colaboração</div>
+        </a>
+        <a href="modulo-2-3.html" class="bg-dark-800 rounded-xl border border-dark-600 p-4 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all text-center group">
+          <div class="text-2xl mb-2">⚡</div>
+          <div class="text-blue-400 font-bold text-sm">2.3</div>
+          <div class="text-neutral-400 text-xs mt-1 group-hover:text-neutral-300">Hacks Avançados</div>
+        </a>
+        <a href="modulo-2-4.html" class="bg-dark-800 rounded-xl border border-dark-600 p-4 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all text-center group">
+          <div class="text-2xl mb-2">🛡️</div>
+          <div class="text-blue-400 font-bold text-sm">2.4</div>
+          <div class="text-neutral-400 text-xs mt-1 group-hover:text-neutral-300">Boas Práticas</div>
+        </a>
+        <a href="modulo-2-bonus.html" class="bg-dark-800 rounded-xl border border-dark-600 p-4 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all text-center group col-span-2 sm:col-span-1">
+          <div class="text-2xl mb-2">🏆</div>
+          <div class="text-blue-400 font-bold text-sm">BÔNUS</div>
+          <div class="text-neutral-400 text-xs mt-1 group-hover:text-neutral-300">Projetos Guiados</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- MÓDULO 2.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-blue-400 font-bold">2.1</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🎯 Casos de Uso Práticos</h3>
+        <p class="text-neutral-400 text-sm">Descubra como o NotebookLM transforma o trabalho de estudantes, pesquisadores, profissionais, criadores e especialistas de diversas áreas.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🎓</span>
+            <div>
+              <span class="font-medium">NotebookLM para Estudantes</span>
+              <span class="text-neutral-500 text-sm ml-2">- acelera estudos e cria resumos</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Uso do NotebookLM para otimizar estudos, criar resumos automáticos, gerar flashcards e preparar para provas com base nos próprios materiais de estudo.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Reduz em até 60% o tempo de resumir conteúdo, permite perguntar ao material e obter respostas citadas — eliminando incertezas sobre o que foi dito no livro ou slide.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Study Guide automático, flashcards via chat, Audio Overview para revisão enquanto se locomove, FAQ gerado dos materiais do professor.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🔬</span>
+            <div>
+              <span class="font-medium">NotebookLM para Pesquisa Acadêmica</span>
+              <span class="text-neutral-500 text-sm ml-2">- revisão de literatura e análise de papers</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Uso do NotebookLM para carregar dezenas de artigos científicos e construir revisão de literatura, identificar gaps de pesquisa e cruzar metodologias.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">O que levaria semanas de leitura pode ser sintetizado em horas. Com citações automáticas, você mantém rastreabilidade total da fonte — fundamental para rigor acadêmico.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Deep Research para relatório estruturado, Data Tables para comparação de metodologias, Mind Map de corpus bibliográfico, chat para identificar contradições entre autores.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">💼</span>
+            <div>
+              <span class="font-medium">NotebookLM para Profissionais</span>
+              <span class="text-neutral-500 text-sm ml-2">- análise de contratos, relatórios, reuniões</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Aplicação corporativa do NotebookLM para análise de documentos internos, preparação de reuniões, síntese de relatórios e onboarding de novos colaboradores.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Profissionais que dominam o NotebookLM entregam análises mais rápidas, cometem menos erros de interpretação de documentos complexos e lideram reuniões com mais preparo.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Briefing Document de atas de reuniões, notebook de projetos com múltiplos colaboradores, análise de propostas comerciais via Data Tables, onboarding via Audio Overview de manuais internos.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">✍️</span>
+            <div>
+              <span class="font-medium">NotebookLM para Criadores de Conteúdo</span>
+              <span class="text-neutral-500 text-sm ml-2">- pesquisa, roteiros, newsletters</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Uso do NotebookLM como base de pesquisa para criadores — youtubers, podcasters, escritores de newsletters e produtores de cursos que precisam de fontes confiáveis e bem estruturadas.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Elimina horas de pesquisa manual, garante que o conteúdo publicado está baseado em fontes reais, e permite gerar roteiros e estruturas rapidamente a partir do material de referência.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Notebook por pauta, Audio Overview como rascunho de podcast, Slide Deck como estrutura de aula, FAQ gerado como base de FAQ do produto ou canal.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">📰</span>
+            <div>
+              <span class="font-medium">NotebookLM para Jornalistas</span>
+              <span class="text-neutral-500 text-sm ml-2">- investigação e análise de documentos</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Aplicação do NotebookLM em investigações jornalísticas: análise de documentos públicos, cruzamento de informações de múltiplas fontes, identificação de contradições e síntese de dados complexos.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Jornalistas que trabalham com grandes volumes de documentos (processos, licitações, relatórios) podem acelerar a análise drasticamente mantendo rastreabilidade das citações.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Notebook por investigação, Deep Research para relatório estruturado, identificação de contradições via chat, Data Tables para comparação de dados ao longo do tempo.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">⚖️</span>
+            <div>
+              <span class="font-medium">NotebookLM para Advogados</span>
+              <span class="text-neutral-500 text-sm ml-2">- contratos, jurisprudência, compliance</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Uso do NotebookLM em prática jurídica para análise de contratos extensos, síntese de jurisprudência, preparação para audiências e due diligence em operações societárias.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">A baixa taxa de alucinação (13%) torna o NotebookLM adequado para uso com documentos jurídicos sensíveis, onde erros de interpretação têm consequências reais.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Notebook por processo ou contrato, identificação de cláusulas problemáticas via chat, comparação de versões de contratos via Data Tables, glossário jurídico automático.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span>
+            <span class="text-lg">🏥</span>
+            <div>
+              <span class="font-medium">NotebookLM para Saúde e Educadores</span>
+              <span class="text-neutral-500 text-sm ml-2">- materiais didáticos e protocolos</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Aplicação em saúde e educação: profissionais de saúde consultando protocolos clínicos, educadores criando materiais didáticos e treinamentos baseados em literatura especializada.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Profissionais dessas áreas lidam com conteúdo denso e técnico. O NotebookLM permite consultar protocolos, gerar resumos de guidelines e criar materiais educativos com base nas melhores referências disponíveis.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Notebook de protocolos clínicos por especialidade, glossário médico automático, Audio Overview de guidelines para atualização profissional, Slide Decks de aulas gerados de artigos científicos.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-2-1')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-2-1.html" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 2.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-blue-400 font-bold">2.2</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🤝 Colaboração e Compartilhamento</h3>
+        <p class="text-neutral-400 text-sm">Aprenda a compartilhar notebooks, gerenciar permissões, colaborar em equipe e explorar os recursos enterprise do NotebookLM.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🔐</span>
+            <div>
+              <span class="font-medium">Permissões: Viewer vs Editor</span>
+              <span class="text-neutral-500 text-sm ml-2">- o que cada um pode fazer</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Os dois níveis de acesso do NotebookLM: Viewer pode ler e fazer perguntas no chat, Editor pode adicionar/remover fontes e modificar o notebook.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Definir permissões corretamente evita que colaboradores modifiquem acidentalmente fontes curadas, garantindo integridade do notebook compartilhado.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Viewer: acesso de leitura e chat. Editor: gestão completa de fontes e configurações. Owner: controle total incluindo exclusão e gestão de membros.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🔗</span>
+            <div>
+              <span class="font-medium">Compartilhando via Email e Link Público</span>
+              <span class="text-neutral-500 text-sm ml-2">- como funciona</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Dois métodos de compartilhamento: convite por email (acesso restrito a contas específicas) e link público (qualquer pessoa com o link pode acessar como Viewer).</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Link público é poderoso para compartilhar bases de conhecimento com equipes grandes sem precisar gerenciar permissões individuais. Mas exige cautela com dados sensíveis.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Compartilhar → Copiar link vs Convidar por email. Link público: qualquer conta Google pode acessar. Email: apenas as contas adicionadas. Revogação a qualquer momento.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">👥</span>
+            <div>
+              <span class="font-medium">Colaboração em Tempo Real</span>
+              <span class="text-neutral-500 text-sm ml-2">- limitações e boas práticas</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Múltiplos usuários podem usar o mesmo notebook simultaneamente, mas o chat não é compartilhado em tempo real — cada um tem seu histórico de conversa independente.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Entender as limitações evita frustração: o NotebookLM não é um Google Docs colaborativo. É uma base de conhecimento compartilhada onde cada um faz suas próprias perguntas.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Fontes compartilhadas, histórico de chat individual, sem notificações de atividade dos outros usuários, edições de fontes visíveis a todos após atualização da página.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">📊</span>
+            <div>
+              <span class="font-medium">Analytics de Uso (Plus)</span>
+              <span class="text-neutral-500 text-sm ml-2">- métricas disponíveis</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Recurso exclusivo do plano Plus que mostra métricas de uso dos notebooks compartilhados: número de acessos, perguntas feitas, fontes mais consultadas.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Para gestores que criam bases de conhecimento para equipes, analytics mostra quais conteúdos estão sendo mais consultados e onde há lacunas de informação.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Disponível apenas no Plus. Acesso via painel do notebook compartilhado. Métricas: visualizações únicas, interações de chat, fontes mais acessadas por período.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🏢</span>
+            <div>
+              <span class="font-medium">NotebookLM Enterprise</span>
+              <span class="text-neutral-500 text-sm ml-2">- recursos corporativos</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Versão corporativa do NotebookLM com gestão centralizada de usuários, políticas de segurança customizadas, integração com Google Workspace e suporte dedicado.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Empresas que precisam de controle de dados, compliance e gestão centralizada precisam do Enterprise — com recursos que o plano Plus não oferece para contextos corporativos.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Admin console, políticas de retenção de dados, integração SSO, notebooks por domínio, SLA de disponibilidade, dados não usados para treinar modelos do Google.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">⚠️</span>
+            <div>
+              <span class="font-medium">Limites de Compartilhamento por Plano</span>
+              <span class="text-neutral-500 text-sm ml-2">- o que cada plano permite</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Cada plano tem limites diferentes para compartilhamento: gratuito permite apenas link público com até 5 colaboradores, Plus expande para 50, Enterprise é ilimitado.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Conhecer os limites evita surpresas ao tentar compartilhar com equipes grandes. O upgrade para Plus ou Enterprise pode ser necessário antes de lançar uma base de conhecimento corporativa.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Gratuito: 5 colaboradores por notebook. Plus: 50 colaboradores, analytics, notebooks dedicados de equipe. Enterprise: ilimitado, admin console, compliance avançado.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-2-2')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-2-2.html" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 2.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-blue-400 font-bold">2.3</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚡ Hacks, Extensões e Fluxos Avançados</h3>
+        <p class="text-neutral-400 text-sm">Os melhores truques, extensões do Chrome, integrações com outras ferramentas e fluxos completos de trabalho para dominar o NotebookLM no nível avançado.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🔥</span>
+            <div>
+              <span class="font-medium">Os 20+ Hacks Mais Usados pela Comunidade</span>
+              <span class="text-neutral-500 text-sm ml-2">- truques que mudam tudo</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Compilação dos truques mais eficazes descobertos pela comunidade global do NotebookLM — desde prompts avançados até fluxos de trabalho não documentados oficialmente.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Esses hacks transformam o uso casual em uso profissional. São descobertas da comunidade que raramente aparecem na documentação oficial mas que multiplicam a produtividade.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Nota como fonte, prompt de persona, iterar no Audio Overview, forçar idioma específico, comparar documentos lado a lado via chat, usar a IA como devil's advocate dos seus argumentos.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🌐</span>
+            <div>
+              <span class="font-medium">Extensão Chrome: YouTube to NotebookLM</span>
+              <span class="text-neutral-500 text-sm ml-2">- workflow acelerado</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Extensão do Chrome que permite adicionar vídeos do YouTube diretamente a notebooks do NotebookLM com um clique, sem precisar copiar URLs manualmente.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Acelera dramaticamente o workflow de quem pesquisa via YouTube. Em vez de assistir horas de vídeo, você adiciona a transcrição ao notebook e faz perguntas diretas ao conteúdo.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Instalação via Chrome Web Store, botão "Add to NotebookLM" em qualquer página de vídeo, seleção do notebook de destino, transcrição automática adicionada como fonte.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🔗</span>
+            <div>
+              <span class="font-medium">NotebookLM + Obsidian + Google Drive</span>
+              <span class="text-neutral-500 text-sm ml-2">- stack completo</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Stack de ferramentas integradas: Google Drive para armazenamento e sincronização, NotebookLM para análise e síntese, Obsidian para construção de base de conhecimento pessoal.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Cada ferramenta é excelente em algo diferente. Integradas, criam um sistema de gestão do conhecimento poderoso: Drive organiza, NotebookLM analisa, Obsidian conecta e estrutura.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Drive como fonte sempre atualizada no NotebookLM, exportar sínteses do NotebookLM para notas no Obsidian, manter vault do Obsidian sincronizado via Drive para acesso no NotebookLM.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🎙️</span>
+            <div>
+              <span class="font-medium">Criando Séries de Podcasts Multi-Episódios</span>
+              <span class="text-neutral-500 text-sm ml-2">- passo a passo</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Método para criar séries de podcasts educativos usando múltiplos notebooks do NotebookLM, cada um com fontes específicas por episódio e instruções customizadas de geração.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Criadores de conteúdo podem gerar podcasts de qualidade em escala, com consistência temática e baseados em fontes verificadas — sem horas de roteirização manual.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Um notebook por episódio, fontes específicas por tema, instrução de customização padrão por série, exportar áudio, pós-produção mínima, estrutura de série coerente.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🕵️</span>
+            <div>
+              <span class="font-medium">Análise de Concorrentes com NotebookLM</span>
+              <span class="text-neutral-500 text-sm ml-2">- framework profissional</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Framework para análise competitiva usando NotebookLM: coleta de materiais públicos dos concorrentes (sites, relatórios, reviews, press releases) e análise estruturada via chat e Deep Research.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Análise competitiva tradicional leva dias. Com NotebookLM, você cria um notebook por concorrente, carrega todos os materiais públicos e extrai insights em horas com rastreabilidade total.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Notebook por concorrente, fontes: site, blog, LinkedIn, relatórios anuais, G2/Capterra reviews. Perguntas-padrão: diferenciais, fraquezas, público-alvo, precificação, roadmap inferido.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">📋</span>
+            <div>
+              <span class="font-medium">Fluxo Completo: Pesquisa → Análise → Publicação</span>
+              <span class="text-neutral-500 text-sm ml-2">- do zero ao resultado</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Workflow end-to-end documentado: desde a definição do tema, coleta e curadoria de fontes, análise no NotebookLM, síntese dos insights, até a publicação do conteúdo final.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Ter um processo replicável elimina fricção e decisões desnecessárias. Profissionais com workflow definido produzem conteúdo de qualidade de forma consistente e escalável.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Fase 1: definir tema e fontes. Fase 2: carregar e verificar qualidade das fontes. Fase 3: Mind Map para visão geral. Fase 4: chat para insights. Fase 5: guias e slides para output final.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span>
+            <span class="text-lg">📱</span>
+            <div>
+              <span class="font-medium">App Mobile: Recursos Exclusivos</span>
+              <span class="text-neutral-500 text-sm ml-2">- o que só funciona no celular</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">O app mobile do NotebookLM (Android e iOS) tem recursos exclusivos que não existem na versão web, incluindo gravação de voz direta como fonte e escuta de áudio em background.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">O mobile transforma momentos de deslocamento em oportunidades de aprendizado. Ouvir Audio Overview enquanto se exercita ou commuta é uma das formas mais eficazes de consumir conteúdo denso.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Gravação de voz como fonte (reuniões, ideias), áudio em background enquanto usa outros apps, widget de acesso rápido, notificações de novidades nas fontes monitoradas, câmera para digitalizar documentos físicos.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-2-3')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-2-3.html" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 2.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-blue-400 font-bold">2.4</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🛡️ Boas Práticas, Limitações e Ética</h3>
+        <p class="text-neutral-400 text-sm">Entenda as limitações reais da ferramenta, questões de privacidade, uso ético responsável e o que esperar do futuro do NotebookLM.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🚫</span>
+            <div>
+              <span class="font-medium">Limitações Reais Descobertas pela Comunidade</span>
+              <span class="text-neutral-500 text-sm ml-2">- o que não funciona</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Limitações práticas identificadas pela comunidade após uso extensivo: PDFs com imagens sem OCR, documentos muito longos sem estrutura, conteúdo em idiomas menos suportados e fontes desatualizadas.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Conhecer as limitações antes de depender da ferramenta evita surpresas em momentos críticos. Saber quando o NotebookLM vai falhar permite usar a ferramenta certa para cada situação.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">PDFs escaneados sem OCR: texto não é indexado. Documentos predominantemente numéricos: análise superficial. Fontes contraditórias sem contextualização: possibilidade de síntese imprecisa. Sem acesso à internet: apenas o que está nas fontes.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🔢</span>
+            <div>
+              <span class="font-medium">Taxa de Alucinação: 13% vs 40%</span>
+              <span class="text-neutral-500 text-sm ml-2">- o que isso significa na prática</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Análise do estudo de 2025 que comparou taxas de alucinação: NotebookLM apresentou 13% vs 40% do ChatGPT em tarefas baseadas em documentos. O que isso significa na prática e quando ainda pode errar.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">13% ainda significa que 1 em cada 8 respostas pode conter imprecisões. Para uso profissional com dados sensíveis, verificar as citações é sempre necessário — mesmo com taxa baixa.</span></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Sempre clicar nas citações para verificar o trecho original. Quanto mais específica a pergunta, menor o risco. Perguntas vagas aumentam risco de síntese imprecisa. Verificar claims numéricos sempre.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🔒</span>
+            <div>
+              <span class="font-medium">Privacidade e Segurança dos Documentos</span>
+              <span class="text-neutral-500 text-sm ml-2">- o que o Google faz com seus dados</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Política de privacidade do NotebookLM: o que acontece com os documentos carregados, por quanto tempo ficam armazenados e se são usados para treinar modelos do Google.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Profissionais com dados confidenciais precisam entender os riscos antes de carregar contratos, dados de clientes ou propriedade intelectual. O plano Enterprise oferece garantias adicionais.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Plano gratuito e Plus: dados podem ser usados para melhorar produtos Google. Enterprise: dados não são usados para treinamento. Armazenamento nos servidores do Google. Exclusão de notebooks remove dados. LGPD/GDPR compliance no Enterprise.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">⚖️</span>
+            <div>
+              <span class="font-medium">Uso Ético em Pesquisa e Jornalismo</span>
+              <span class="text-neutral-500 text-sm ml-2">- diretrizes importantes</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Diretrizes éticas para uso do NotebookLM em contextos que exigem rigor: pesquisa acadêmica, jornalismo investigativo, análise jurídica e produção de conteúdo público.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">A facilidade da ferramenta pode criar falsa sensação de segurança. Publicar conteúdo sem verificação das citações, ou usar sínteses como fonte primária, são erros éticos e metodológicos graves.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Sempre verificar citações antes de publicar. Não citar o NotebookLM como fonte — citar os documentos originais. Declarar uso de IA em pesquisa acadêmica quando exigido. Não substituir análise crítica humana por síntese automática em decisões de alto impacto.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">❌</span>
+            <div>
+              <span class="font-medium">O que NÃO usar no NotebookLM</span>
+              <span class="text-neutral-500 text-sm ml-2">- casos onde outras ferramentas são melhores</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Mapeamento dos casos de uso onde o NotebookLM não é a ferramenta ideal: pesquisa na web em tempo real, criação criativa de conteúdo original, análise de dados tabulares complexos e automação de fluxos.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Usar a ferramenta errada cria frustração e resultados ruins. Conhecer os limites permite construir um stack de ferramentas complementares eficiente em vez de forçar o NotebookLM em todo contexto.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Pesquisa web atual: use Perplexity. Criação criativa: use ChatGPT/Claude. Análise de dados tabulares: use Python/Excel. Automação: use Zapier/Make. Geração de imagens: use Midjourney/DALL-E. Código: use GitHub Copilot.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🔮</span>
+            <div>
+              <span class="font-medium">O Futuro: O que Esperar</span>
+              <span class="text-neutral-500 text-sm ml-2">- roadmap e tendências</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Análise do roadmap público e tendências do NotebookLM com base nos padrões de lançamento de 2024-2025 e sinais do Google Labs sobre direção do produto.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Entender para onde a ferramenta está indo permite antecipar mudanças no workflow, planejar adoção de novos recursos e manter vantagem competitiva sobre usuários casuais.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Tendências esperadas: integração nativa com mais ferramentas Google, API pública, mais idiomas para Audio Overview, recursos de automação, integração com Google Workspace ainda mais profunda e possível versão offline.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-2-4')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-2-4.html" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO BÔNUS -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6 border-yellow-500/20">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-yellow-400 font-bold">BÔNUS</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🏆 Projetos Completos Guiados</h3>
+        <p class="text-neutral-400 text-sm">Projetos práticos do início ao fim: criar um curso, newsletter semanal, revisão de literatura acadêmica e série de podcasts — tudo com NotebookLM como base.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">📚</span>
+            <div>
+              <span class="font-medium">Criar um Curso com NotebookLM</span>
+              <span class="text-neutral-500 text-sm ml-2">- do zero ao conteúdo completo</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Projeto guiado completo para criar um curso online usando NotebookLM: desde a curadoria de fontes, criação de módulos, geração de materiais didáticos e exercícios até a produção de áudio e slides.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Criadores de cursos que dominam este workflow produzem conteúdo de qualidade em uma fração do tempo tradicional, com materiais baseados em fontes verificadas e estrutura pedagógica sólida.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Notebook de curadoria por módulo, Study Guide como estrutura de aula, FAQ como material de apoio, Audio Overview como aula em áudio, Slide Deck como apresentação, Data Tables para comparações didáticas.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📧</span>
+            <div>
+              <span class="font-medium">Newsletter Semanal Automatizada</span>
+              <span class="text-neutral-500 text-sm ml-2">- workflow editorial profissional</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Workflow completo para produzir uma newsletter semanal de qualidade usando NotebookLM: curadoria de fontes da semana, síntese de tendências, extração de insights e estruturação do conteúdo final.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Newsletters de qualidade exigem horas de pesquisa semanal. Com este workflow, você reduz o tempo de pesquisa e síntese para menos de 1 hora, mantendo profundidade e rigor de fonte.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Notebook semanal renovado, fontes: artigos, relatórios, posts e vídeos da semana, Briefing Document como rascunho, chat para extrair os 5 melhores insights, Infographic para elemento visual, exportar para Substack/Beehiiv.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">📑</span>
+            <div>
+              <span class="font-medium">Revisão de Literatura de 20 Artigos em 2h</span>
+              <span class="text-neutral-500 text-sm ml-2">- método acadêmico</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Método passo a passo para realizar revisão de literatura de 20 artigos científicos em aproximadamente 2 horas usando NotebookLM — mantendo rigor acadêmico e rastreabilidade total de citações.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Revisão de literatura tradicional consome semanas. Este método permite ao pesquisador passar o tempo em análise crítica e interpretação — onde o julgamento humano é insubstituível — em vez de leitura superficial para triagem.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Carregar todos os artigos (PDF), Mind Map para identificar clusters temáticos, perguntas-padrão de revisão por artigo via chat, Deep Research para relatório integrado, Data Tables para comparação de metodologias, exportar para referenciamento.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🎙️</span>
+            <div>
+              <span class="font-medium">Podcast de 5 Episódios de um Livro</span>
+              <span class="text-neutral-500 text-sm ml-2">- produção completa</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-blue-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm mt-1">Projeto guiado para transformar um livro não-ficcional em uma série de 5 episódios de podcast usando NotebookLM — com planejamento de episódios, customizações específicas por episódio e pós-produção mínima.</p></div>
+              <div><span class="text-blue-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm mt-1">Livros densos se tornam podcasts acessíveis que podem atingir uma audiência muito maior. Este projeto combina todas as habilidades do curso em um produto de conteúdo profissional e escalável.</p></div>
+              <div><span class="text-blue-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm mt-1">Um notebook por capítulo/parte do livro, instrução de customização por episódio (foco, tom, público), gerar 5 Audio Overviews com instruções diferentes, exportar e editar no editor de áudio, publicar na plataforma de podcast escolhida.</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-2-bonus')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-2-bonus.html" class="px-4 py-2 text-sm bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-semibold rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- NAVEGAÇÃO FINAL -->
+    <div class="mt-12 bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-4">Pronto para começar a Trilha 2?</h2>
+      <p class="text-neutral-400 mb-8">Você concluiu a visão geral. Agora vá fundo em cada módulo e aplique o NotebookLM no seu contexto real.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+        <a href="../trilha1/index.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Trilha 1: Fundamentos</a>
+        <a href="modulo-2-1.html" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Começar: Módulo 2.1 →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+    </div>
+  </footer>
+
+  <!-- MODAIS -->
+  <div id="modal-2-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-blue-400 font-bold">2.1</span>
+          <span class="font-semibold">Casos de Uso Práticos</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-2-1.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-2-2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-blue-400 font-bold">2.2</span>
+          <span class="font-semibold">Colaboração e Compartilhamento</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-2-2.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-2-3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-blue-400 font-bold">2.3</span>
+          <span class="font-semibold">Hacks, Extensões e Fluxos Avançados</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-2-3.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-2-4" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-blue-400 font-bold">2.4</span>
+          <span class="font-semibold">Boas Práticas, Limitações e Ética</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-2-4.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-2-bonus" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-yellow-400 font-bold">BÔNUS</span>
+          <span class="font-semibold">Projetos Completos Guiados</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-2-bonus.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) exp.classList.remove('active');
+      });
+      explanation.classList.toggle('active');
+    }
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    }
+
+    function closeModal() {
+      document.querySelectorAll('.modal').forEach(modal => modal.classList.add('hidden'));
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1 Casos de Uso Práticos | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400">Módulo 2.1</span>
+    </div>
+    <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.1</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Casos de Uso Práticos</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Descubra como estudantes, pesquisadores, advogados, jornalistas, criadores de conteúdo e profissionais de saúde estão usando o NotebookLM para transformar seus fluxos de trabalho.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">7</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">40</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">Ap</div>
+        <div class="text-xs text-neutral-400">Aplicado</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">🎓 NotebookLM para Estudantes</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Estudantes foram os primeiros a adotar massivamente o NotebookLM — e com razão. A ferramenta transforma semanas de leituras em horas de compreensão profunda, sem as alucinações que tornam outros chatbots arriscados para estudo.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📘</span> Usos Mais Efetivos para Estudantes</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Carregue livros-texto, artigos e notas de aula em um notebook por disciplina</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Gere Study Guide para ter visão geral antes de começar os estudos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Peça "20 questões de múltipla escolha com gabarito comentado"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Use Flash Cards: "Crie 30 flashcards com perguntas e respostas sobre este capítulo"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Prepare para provas: "Quais são as perguntas mais prováveis de cair na prova sobre este conteúdo?"</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Resultados Reportados pela Comunidade</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Estudantes relatam redução de 60-70% no tempo de preparação para provas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Uso de Audio Overview: revisar enquanto caminha, treina ou dirige</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Revisão de literatura de 20 artigos: de 2 semanas para 2 horas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Geração de mind map visual: substitui horas de anotações manuais</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: Estratégia do "Notebook por Disciplina"</h3>
+      <p class="text-neutral-300 leading-relaxed">Crie um notebook separado para cada matéria do semestre. Carregue TODO o conteúdo do curso (livro, slides, artigos sugeridos). Você terá um professor particular especialista naquele conteúdo disponível 24h.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">🔬 NotebookLM para Pesquisa Acadêmica</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Pesquisadores acadêmicos estão usando o NotebookLM para algo que levaria meses em horas: revisão sistemática de literatura, identificação de lacunas de pesquisa e síntese de centenas de artigos.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔍</span> Workflow de Revisão de Literatura</h3>
+      <div class="space-y-4">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">Carregue 20-50 artigos relevantes para o notebook (PDFs com texto selecionável)</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Gere um Briefing Document para ter panorama geral</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Peça: "Identifique as 5 principais teorias/abordagens usadas neste campo"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Peça: "Quais são os 5 gaps de pesquisa mais relevantes identificados pelos autores?"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">5</span>
+          <p class="text-neutral-300">Peça: "Crie uma tabela comparando metodologias, amostras e resultados principais"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">⚠️</span> Limites e Considerações Acadêmicas</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>50 artigos no plano gratuito (suficiente para maioria das revisões)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Sempre cite a fonte original — o NotebookLM é ferramenta de síntese, não autor</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Verifique SEMPRE as citações clicáveis para garantir precisão das afirmações</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Use para identificar artigos relevantes a ler com mais atenção</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Super Prompt para Pesquisadores</h3>
+      <p class="text-neutral-300 leading-relaxed">"Analise estes artigos identificando: (1) consensos do campo, (2) controvérsias ativas, (3) metodologias dominantes, (4) autores mais citados entre si, (5) questões não respondidas." Este único prompt substitui semanas de leitura exploratória.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">💼 NotebookLM para Profissionais e Corporativo</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">No ambiente corporativo, o NotebookLM resolve um problema crítico: muito conteúdo, pouco tempo. De análise de contratos a onboarding de funcionários, as aplicações profissionais são as mais economicamente valiosas.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🏢</span> Casos de Uso Corporativos de Alto Impacto</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Análise de contratos: carregue e pergunte sobre obrigações, prazos e riscos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Onboarding: carregue todos os manuais e o novo funcionário pode tirar dúvidas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Preparação para reuniões: carregue atas e contexto, gere Briefing em 30s</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Due diligence: analise centenas de documentos de M&A com consistência</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Análise competitiva: carregue relatórios anuais de concorrentes e compare</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📈</span> ROI Documentado pela Comunidade</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Análise de contrato de 50 páginas: de 4h para 30 minutos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Onboarding de funcionário com 200+ docs: dúvidas respondidas em tempo real</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Preparação para reunião semanal: de 45 minutos para 5 minutos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Comparação de 10 propostas comerciais: de 1 dia para 2 horas</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: Uso Corporativo com Documentos Confidenciais</h3>
+      <p class="text-neutral-300 leading-relaxed">Para uso corporativo com documentos confidenciais: verifique a política de privacidade da sua empresa antes de usar. O NotebookLM Plus e Enterprise oferecem termos de uso corporativos com compromissos mais robustos de privacidade de dados.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">✍️ NotebookLM para Criadores de Conteúdo</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Criadores de conteúdo — YouTubers, podcasters, escritores de newsletters, blogueiros — estão usando o NotebookLM para resolver seu maior problema: pesquisa rápida e profunda antes de criar.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🎬</span> Workflow do Criador</h3>
+      <div class="space-y-4">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">Defina o tema do conteúdo</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Carregue 5-10 fontes de referência (artigos, livros, vídeos do YouTube)</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Gere Briefing Document para ter panorama completo</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Peça: "Quais são os 10 ângulos mais interessantes para explorar este tema?"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">5</span>
+          <p class="text-neutral-300">Use Audio Overview para absorver o conteúdo durante a rotina</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">6</span>
+          <p class="text-neutral-300">Peça: "Crie um roteiro para um vídeo/podcast de 20 minutos sobre este tema"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📣</span> O que Criadores Relatam</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Newsletter semanal: pesquisa de 8h → 1h com NotebookLM</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Roteiro de podcast: de 2 dias para 3 horas de preparação</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Blog post fundamentado: fontes checadas automaticamente com citações</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Série de conteúdo: um notebook master para toda a série</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Estratégia da "Biblioteca de Referência"</h3>
+      <p class="text-neutral-300 leading-relaxed">Crie um notebook permanente por nicho de conteúdo. Adicione fontes continuamente. Com 30-50 fontes de qualidade, você tem um co-criador especialista disponível para qualquer ideia de conteúdo no seu nicho.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">📰 NotebookLM para Jornalistas</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Jornalistas investigativos estão usando o NotebookLM para analisar grandes volumes de documentos vazados, processos judiciais e dados públicos — mantendo a precisão que a profissão exige.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🗞️</span> Aplicações Jornalísticas</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Análise de processos judiciais: carregue processos e encontre inconsistências</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Documentos vazados: organize e questione centenas de arquivos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Análise de discursos: compare o que um político disse em diferentes momentos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Verificação de fatos: confronte declarações com documentos oficiais</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Pesquisa de background: unifique informações sobre uma pessoa/empresa</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Prompt Jornalístico</h3>
+      <p class="text-neutral-300 leading-relaxed">"Analise estes documentos como um repórter investigativo: (1) identifique afirmações que precisam verificação independente, (2) aponte contradições entre documentos, (3) liste informações que faltam para a história completa, (4) sugira fontes humanas a ouvir para complementar." Este prompt estrutura uma investigação em minutos.</p>
+    </div>
+
+    <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Responsabilidade Editorial</h3>
+      <p class="text-neutral-300 leading-relaxed">O NotebookLM é uma ferramenta de síntese, não uma fonte jornalística. Toda afirmação importante deve ser verificada nas fontes primárias (clique nas citações) e confirmada com fontes humanas independentes. Nunca publique baseado apenas na síntese da IA.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">⚖️ NotebookLM para Advogados</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Escritórios de advocacia estão adotando o NotebookLM para tarefas que consomem horas de trabalho de júnior: análise de contratos, pesquisa de jurisprudência e due diligence em M&A.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🏛️</span> Casos de Uso Jurídicos</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Análise de contratos: identifique cláusulas problemáticas, ambíguas ou ausentes</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Pesquisa de jurisprudência: carregue acórdãos e extraia precedentes relevantes</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Due diligence M&A: analise centenas de documentos com consistência</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Compliance: verifique se políticas internas atendem regulamentações carregadas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Preparação para audiência: carregue todos os documentos do caso e questione</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📄</span> Prompt para Análise Contratual</h3>
+      <p class="text-neutral-300 leading-relaxed italic">"Analise este contrato identificando: (1) obrigações de cada parte com prazos específicos, (2) penalidades e multas previstas, (3) cláusulas ambíguas que precisam de clareza, (4) omissões importantes que podem criar riscos, (5) condições para rescisão. Para cada item, cite o número da cláusula correspondente."</p>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica para Escritórios</h3>
+      <p class="text-neutral-300 leading-relaxed">O NotebookLM Plus/Enterprise com termos corporativos é obrigatório para documentos de clientes. Nunca use o plano gratuito com documentos confidenciais de clientes — verifique os termos de uso e a política de privacidade de dados da sua empresa.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 7 -->
+  <section id="topico-7" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">7</span>
+      <h2 class="text-2xl font-bold">🏥 NotebookLM para Educadores e Saúde</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Educadores e profissionais de saúde encontraram no NotebookLM uma ferramenta para criar materiais didáticos personalizados e se atualizar sobre literatura médica de forma eficiente.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🍎</span> Educadores</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Carregue currículo, livros-texto e artigos → gere materiais de aula automaticamente</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Crie avaliações: "Gere 20 questões dissertativas sobre o capítulo X"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Diferenciação: "Reescreva este conteúdo para alunos com dificuldade de leitura"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Plano de aula: "Crie um plano de aula de 50 minutos baseado neste conteúdo"</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">💊</span> Profissionais de Saúde</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Atualização em protocolos: carregue guidelines e tire dúvidas sobre casos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Revisão de literatura médica: 20 artigos → síntese em 1 hora</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Preparação de casos clínicos: organize histórico e questione diagnósticos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Educação de pacientes: "Explique esta condição em linguagem acessível"</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atenção: Profissionais de Saúde</h3>
+      <p class="text-neutral-300 leading-relaxed">O NotebookLM é uma ferramenta de síntese e educação, NUNCA de diagnóstico clínico. Use para aprendizado, revisão de literatura e preparação de materiais educativos. Decisões clínicas devem seguir os protocolos estabelecidos e julgamento profissional qualificado.</p>
+    </div>
+  </section>
+
+  <!-- RESUMO -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 2.1</h2>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Estudantes: reduz 60-70% do tempo de preparação para provas</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Pesquisadores: revisão de literatura de semanas para horas</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Profissionais: análise de contratos e reuniões com ROI imediato</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Criadores: pesquisa aprofundada antes de criar conteúdo</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Jornalistas: análise de grandes volumes de documentos com precisão</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Advogados: análise contratual e due diligence estruturada</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Saúde/Educação: materiais didáticos e atualização profissional</span></li>
+      </ul>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-blue-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">2.2 — Colaboração e Compartilhamento</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Trilha 2</a>
+        <a href="modulo-2-2.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Módulo 2.2: Colaboração →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
+</body>
+</html>

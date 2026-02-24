@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bônus: Projetos Completos Guiados | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-amber-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-amber-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-amber-400">Módulo Bônus</span>
+    </div>
+    <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MÓDULO BÔNUS</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">🏆 Projetos Completos Guiados</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Quatro projetos do mundo real, passo a passo, para aplicar tudo que você aprendeu. Cada projeto vai do zero ao resultado final com instruções detalhadas.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-amber-400">4</div>
+        <div class="text-xs text-neutral-400">Projetos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-amber-400">45</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-amber-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-amber-400">Pr</div>
+        <div class="text-xs text-neutral-400">Projeto</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Projeto 1 -->
+  <section id="projeto-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">📚 Criar um Curso com NotebookLM como Base de Pesquisa</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Use o NotebookLM para pesquisar, estruturar e criar um curso completo sobre qualquer tema. Este projeto usa exatamente o que você fez ao seguir este curso como exemplo prático.</p>
+
+    <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🗂️</span> Passo a Passo: Curso de 8 Módulos</h3>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Etapa 1 — Pesquisa e Estruturação:</h4>
+      <div class="space-y-3 mb-6">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">Defina o tema do curso e público-alvo</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Crie notebook 'Pesquisa do Curso [Tema]'</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Carregue 15-20 fontes: livros, artigos, vídeos de referência</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Prompt: "Com base nessas fontes, sugira uma estrutura de curso de 8 módulos progressivos"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">5</span>
+          <p class="text-neutral-300">Prompt: "Para cada módulo, liste 6-8 tópicos essenciais"</p>
+        </div>
+      </div>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Etapa 2 — Desenvolvimento de Conteúdo:</h4>
+      <div class="space-y-3">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">6</span>
+          <p class="text-neutral-300">Para cada módulo: ative apenas fontes relevantes</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">7</span>
+          <p class="text-neutral-300">Prompt: "Crie um briefing detalhado do Módulo X com: objetivo, conceitos centrais, exemplos práticos"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">8</span>
+          <p class="text-neutral-300">Exporte os briefings → use para criar o conteúdo final</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">9</span>
+          <p class="text-neutral-300">Gere Audio Overview por módulo para revisão</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📊</span> Resultados Esperados</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Tempo total: 2-4 dias (vs 2-3 semanas sem NotebookLM)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Pesquisa: cobertura de 20+ fontes de forma sistemática</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Estrutura: validada com múltiplas perspectivas de especialistas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Conteúdo: baseado em fontes verificadas, com citações rastreáveis</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica de Ouro do Projeto 1</h3>
+      <p class="text-neutral-300 leading-relaxed">Crie um 'Notebook do Curso' separado do 'Notebook de Pesquisa'. O de pesquisa tem suas fontes brutas. O do curso tem os briefings gerados como fontes — assim você pode questionar a estrutura do curso com base no que já foi criado.</p>
+    </div>
+  </section>
+
+  <!-- Projeto 2 -->
+  <section id="projeto-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">📧 Newsletter Semanal Automatizada</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Crie um sistema para produzir uma newsletter semanal fundamentada em pesquisa de alto nível. Este projeto transforma o NotebookLM em uma redação editorial que trabalha para você.</p>
+
+    <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">⚙️</span> Sistema de Newsletter Semanal</h3>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Setup inicial (fazer uma vez):</h4>
+      <div class="space-y-3 mb-6">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">Crie notebook 'Newsletter [Nome/Tema]'</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Adicione fontes permanentes: sites de referência, relatórios regulares</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Crie um Google Doc 'Template Newsletter' como fonte</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Defina personas: 'nosso leitor é [descrição do público-alvo]'</p>
+        </div>
+      </div>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Processo semanal (2h por edição):</h4>
+      <div class="space-y-3">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">Adicione 3-5 fontes novas da semana (artigos relevantes)</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Prompt: "Quais os 5 fatos/insights mais relevantes desta semana nestas novas fontes?"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Prompt: "Crie um rascunho de newsletter de 500 palavras baseado nesses insights, para [público]"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Revise e adicione sua perspectiva pessoal</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">5</span>
+          <p class="text-neutral-300">Exporte, edite no seu editor preferido, publique</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📈</span> Métricas de Produtividade</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Antes: 6-8h por edição (pesquisa + escrita + revisão)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Com NotebookLM: 1,5-2h por edição</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong class="text-emerald-400">Economia: ~75% do tempo de produção</strong></span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span>Qualidade: mais fontes, mais fundamentada, menos alucinação</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Segredo do Projeto 2</h3>
+      <p class="text-neutral-300 leading-relaxed">Não use o NotebookLM para escrever a newsletter final — use para pesquisa e extração de insights. A voz editorial, os exemplos pessoais e as conexões únicas devem ser suas. O NotebookLM pesquisa, você cria. Essa divisão produz newsletters muito superiores.</p>
+    </div>
+  </section>
+
+  <!-- Projeto 3 -->
+  <section id="projeto-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">📑 Revisão de Literatura de 20 Artigos em 2 Horas</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Para pesquisadores e estudantes de pós-graduação, este é provavelmente o projeto de maior ROI de todo o curso. Uma revisão de literatura que levaria 2 semanas pode ser feita em 2 horas.</p>
+
+    <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">⏱️</span> O Método de 2 Horas</h3>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Hora 1 — Carregamento e Panorama:</h4>
+      <div class="space-y-3 mb-6">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">Baixe os 20 artigos como PDFs com texto selecionável</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Carregue todos no notebook 'Revisão [Tema]'</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Prompt: "Liste todos os artigos carregados com autor, ano e tema central de cada"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Prompt: "Identifique os 5 temas/abordagens mais recorrentes nestes artigos"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">5</span>
+          <p class="text-neutral-300">Gere Mind Map para visualizar o campo</p>
+        </div>
+      </div>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Hora 2 — Análise Profunda:</h4>
+      <div class="space-y-3">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">6</span>
+          <p class="text-neutral-300">Prompt: "Quais são os consensos desta literatura? Cite os artigos que os sustentam"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">7</span>
+          <p class="text-neutral-300">Prompt: "Quais são as principais controvérsias? Quais artigos defendem posições opostas?"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">8</span>
+          <p class="text-neutral-300">Prompt: "Identifique os 3 gaps de pesquisa mais relevantes apontados pelos autores"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">9</span>
+          <p class="text-neutral-300">Prompt: "Crie uma tabela comparativa: artigo | metodologia | amostra | principais resultados | limitações"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">10</span>
+          <p class="text-neutral-300">Exporte e use como base para escrever a seção de revisão</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">📋</span> Output da Revisão</h3>
+      <p class="text-neutral-300 mb-3">Ao final das 2 horas você terá:</p>
+      <ul class="space-y-2 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Mapa visual do campo de pesquisa</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Lista de consensos com artigos de suporte</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Mapa de controvérsias</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Identificação de gaps de pesquisa</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Tabela comparativa de metodologias</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Citações rastreáveis para cada afirmação</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Responsabilidade Acadêmica</h3>
+      <p class="text-neutral-300 leading-relaxed">Este método ACELERA a revisão, não a substitui. Você ainda deve ler os artigos mais importantes integralmente, verificar todas as citações e adicionar sua análise crítica pessoal. Use o NotebookLM para organizar e sintetizar — a análise qualitativa de nível é sua responsabilidade intelectual.</p>
+    </div>
+  </section>
+
+  <!-- Projeto 4 -->
+  <section id="projeto-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">🎙️ Podcast de 5 Episódios de um Único Livro</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Transforme qualquer livro em uma série de podcast de 5 episódios — ideal para criadores de conteúdo, educadores e qualquer um que queira compartilhar conhecimento de forma dinâmica e acessível.</p>
+
+    <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎧</span> Método da Série de 5 Episódios</h3>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Preparação (30 minutos):</h4>
+      <div class="space-y-3 mb-6">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">Divida o livro em 5 partes temáticas (capítulos agrupados)</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Salve cada parte como PDF separado (usando ferramentas como Smallpdf)</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Crie um Google Doc 'Guia da Série': defina tom, personagens, formato de cada ep</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Carregue o Guia da Série como fonte base</p>
+        </div>
+      </div>
+
+      <h4 class="font-semibold text-neutral-200 mb-3">Gravação (20 min por episódio × 5 = 100 minutos):</h4>
+      <div class="space-y-3">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">5</span>
+          <p class="text-neutral-300">Ep 1: carregue Parte 1 + Guia → customize: "Tom introdutório, episódio piloto"</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">6</span>
+          <p class="text-neutral-300">Gere Audio Overview → salve como episódio 1</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">7</span>
+          <p class="text-neutral-300">Repita para Eps 2-4 com partes correspondentes</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-sm flex-shrink-0">8</span>
+          <p class="text-neutral-300">Ep 5 (final): carregue TODAS as partes + Guia → customize: "Síntese e lições"</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center"><span class="mr-2">🎚️</span> Customizações por Episódio para Consistência</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong class="text-neutral-200">Ep 1:</strong> "Tom: acessível e instigante, apresente os personagens principais do livro"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong class="text-neutral-200">Ep 2:</strong> "Tom: construtivo, o ouvinte já conhece o básico, aprofunde os conceitos"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong class="text-neutral-200">Ep 3:</strong> "Tom: analítico, explore as contradições e tensões do livro"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong class="text-neutral-200">Ep 4:</strong> "Tom: aplicado, foque em como implementar as ideias na vida real"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-amber-400 mt-1">•</span><span><strong class="text-neutral-200">Ep 5:</strong> "Tom: síntese e inspiração, feche com as grandes lições e chamada à ação"</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Segredo da Coerência entre Episódios</h3>
+      <p class="text-neutral-300 leading-relaxed">Para consistência entre episódios: inclua no Guia da Série os nomes dos apresentadores (ex: 'Lucas e Ana'), o nome do podcast, o público-alvo e 3 frases de abertura alternativas. O NotebookLM vai incorporar esses elementos em cada geração, criando uma série coesa.</p>
+    </div>
+  </section>
+
+  <!-- RESUMO BÔNUS -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🏆</span> Resumo do Módulo Bônus</h2>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><span class="text-neutral-300">Projeto 1: curso de 8 módulos com pesquisa estruturada em 2-4 dias</span></li>
+        <li class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><span class="text-neutral-300">Projeto 2: newsletter semanal fundamentada em 1,5-2h (economia de 75%)</span></li>
+        <li class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><span class="text-neutral-300">Projeto 3: revisão de 20 artigos científicos em 2 horas com método sistemático</span></li>
+        <li class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><span class="text-neutral-300">Projeto 4: série de podcast de 5 episódios de qualquer livro em ~2 horas</span></li>
+      </ul>
+
+      <div class="bg-dark-800/50 rounded-lg p-6 mb-8 text-center">
+        <div class="text-4xl mb-3">🎓</div>
+        <h3 class="font-bold text-xl text-neutral-100 mb-2">Parabéns! Você completou o curso NotebookLM Completo.</h3>
+        <p class="text-neutral-400 text-sm">Você agora tem as ferramentas, os prompts e os frameworks para extrair o máximo valor do NotebookLM em qualquer contexto profissional ou acadêmico.</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-2-4.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 2.4: Boas Práticas</a>
+        <a href="../../index.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">🏠 Voltar ao Início</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
+</body>
+</html>

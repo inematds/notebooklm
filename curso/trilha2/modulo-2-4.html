@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4 Boas Práticas, Limitações e Ética | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400">Módulo 2.4</span>
+    </div>
+    <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.4</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">🛡️ Boas Práticas, Limitações e Ética</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Use o NotebookLM com responsabilidade. Entenda as limitações reais, o que acontece com seus dados, como usar eticamente em pesquisa e jornalismo, e o que o futuro reserva.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">6</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">35</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">Te</div>
+        <div class="text-xs text-neutral-400">Teórico</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">🚫 Limitações Reais Descobertas pela Comunidade</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Além das limitações técnicas oficiais, a comunidade de usuários descobriu — na prática — onde o NotebookLM ainda falha. Conhecer essas limitações antes de encontrá-las em produção economiza muito tempo.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">⚠️</span> As 8 Limitações Práticas Mais Reportadas</h3>
+      <div class="space-y-3">
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">1</span><p class="text-neutral-300">Raciocínio matemático: cálculos e estatísticas têm erros frequentes</p></div>
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">2</span><p class="text-neutral-300">Tabelas complexas: dados tabulares são processados com imprecisão</p></div>
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">3</span><p class="text-neutral-300">Citações longas: às vezes parafraseia em vez de citar o texto exato</p></div>
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">4</span><p class="text-neutral-300">Contexto entre sessões: sem memória de conversas anteriores</p></div>
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">5</span><p class="text-neutral-300">Documentos muito técnicos: terminologia muito específica pode ser mal interpretada</p></div>
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">6</span><p class="text-neutral-300">PDFs com layout complexo: múltiplas colunas, notas de rodapé complexas</p></div>
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">7</span><p class="text-neutral-300">Síntese de +20 fontes: qualidade cai quando há fontes demais sem foco</p></div>
+        <div class="flex items-start space-x-3"><span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xs flex-shrink-0">8</span><p class="text-neutral-300">Idiomas misturados: documentos em vários idiomas no mesmo notebook</p></div>
+      </div>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Comparação: Promessas vs Realidade</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold text-emerald-400 mb-3">Funciona conforme prometido:</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Citações clicáveis: quase sempre precisas</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Audio Overview: qualidade surpreendentemente alta</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Resumos de documentos longos: excelentes</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">✓</span><span>Análise comparativa: muito boa com 2-5 fontes</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-red-400 mb-3">Realidade mais limitada:</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>"Sem alucinação": ainda ocorre, especialmente em análises complexas</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>Processamento de tabelas: muito menos preciso do que anunciado</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>Docs muito longos: partes além de ~200 páginas têm qualidade menor</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Como Detectar Imprecisões</h3>
+      <p class="text-neutral-300 leading-relaxed">Quando o NotebookLM der uma resposta que parece imprecisa, teste: pergunte "Cite o trecho exato de onde você tirou esta informação." Se ele não conseguir citar, ou a citação não confirmar o que disse, a resposta provavelmente tem imprecisão. Nunca confie em respostas críticas sem verificar a citação.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">🔢 Taxa de Alucinação: 13% vs 40%</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM é famoso pela sua taxa de alucinação de 13% comparada a 40% do ChatGPT. Mas o que isso significa na prática? Quando a alucinação acontece e como identificá-la?</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🧠</span> O que é Alucinação no Contexto do NotebookLM</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Alucinação clássica: inventar informações que não existem nas fontes</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>O NotebookLM tem alucinação de 13% — MUITO mais baixa que outros LLMs</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Mas 13% significa: em cada 100 afirmações, ~13 podem ter imprecisões</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Como acontece: paráfrase imprecisa, generalização indevida, síntese que adiciona nuances não presentes</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔬</span> Por que 13% vs 40%?</h3>
+      <p class="text-neutral-300 mb-3">O RAG (Retrieval Augmented Generation) explica:</p>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>LLMs tradicionais (GPT, Claude): respondem do conhecimento pré-treinado (propenso a "lembrar" incorretamente)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>NotebookLM: responde APENAS dos seus documentos (menos espaço para inventar)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>A diferença é estrutural: não é melhor IA, é abordagem diferente</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Mesmo com RAG, imprecisões ocorrem na síntese e paráfrase</span></li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">✓</span> O que Minimiza Alucinação</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Documentos com texto claro e sem ambiguidade</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Perguntas específicas com contexto</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Verificar citações clicáveis em respostas importantes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Usar múltiplas fontes que se corroboram</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">✗</span> O que Aumenta Alucinação</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Fontes com texto muito fragmentado ou mal formatado</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Perguntas vagas ou muito amplas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Documentos em idiomas misturados</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Solicitar sínteses de muitas fontes díspares</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Para Uso Crítico: Feche o Loop com Citações</h3>
+      <p class="text-neutral-300 leading-relaxed">Sempre feche o loop com as citações. Após uma resposta importante, clique em CADA citação e leia o trecho original. Se o NotebookLM disse 'o estudo provou X' mas a citação diz 'o estudo sugere X como possibilidade', há paráfrase imprecisa. Ajuste conforme necessário.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">🔒 Privacidade e Segurança dos Documentos</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Antes de carregar documentos confidenciais no NotebookLM, é essencial entender exatamente o que o Google faz com seus dados. As políticas diferem entre planos e têm implicações importantes.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🛡️</span> O que o Google Faz com Seus Dados</h3>
+      <div class="space-y-6">
+        <div>
+          <h4 class="font-semibold text-neutral-200 mb-2">Plano Gratuito:</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Documentos podem ser usados para melhorar os modelos do Google</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Dados armazenados nos servidores do Google (EUA/global)</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Retenção: o Google pode manter dados por período indeterminado</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Sem garantias contratuais específicas de privacidade</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-neutral-200 mb-2">Plano Plus:</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Termos de uso mais favoráveis (semelhantes ao Google Workspace)</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Dados não são usados para treinar modelos por padrão</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Retenção definida conforme política do produto</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-neutral-200 mb-2">Enterprise:</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>DPA (Data Processing Agreement) personalizado</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Controle total sobre onde os dados são armazenados</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Auditoria e conformidade com LGPD/GDPR/HIPAA</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">🚫</span> NUNCA Carregue no Plano Gratuito</h3>
+      <ul class="space-y-2 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>Documentos de clientes (violação de confidencialidade)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>Processos judiciais sigilosos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>Dados de saúde de pacientes</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>Informações financeiras corporativas confidenciais</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">✗</span><span>Segredos industriais ou de negócios</span></li>
+      </ul>
+      <p class="text-neutral-400 text-sm mt-3">Para esses casos, use Plus/Enterprise ou mantenha os dados internos.</p>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Checklist Antes de Usar com Documentos Empresariais</h3>
+      <p class="text-neutral-300 leading-relaxed">Antes de usar o NotebookLM com documentos da sua empresa: (1) consulte o departamento jurídico sobre a política de dados em cloud, (2) verifique se a empresa tem acordo corporativo com o Google, (3) use o Enterprise se houver dúvida. O custo do Enterprise é muito menor que o custo de um vazamento de dados confidenciais.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">⚖️ Uso Ético em Pesquisa e Jornalismo</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Com grande poder vem grande responsabilidade. O NotebookLM levanta questões éticas importantes sobre autoria, citação, verificação e transparência que cada profissional precisa ter na cabeça.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📐</span> Princípios Éticos do Uso</h3>
+      <div class="space-y-6">
+        <div>
+          <h4 class="font-semibold text-neutral-200 mb-2">Pesquisa acadêmica:</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>O NotebookLM é ferramenta de ANÁLISE, não de AUTORIA</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Insights gerados precisam ser verificados nas fontes primárias</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Cite sempre as fontes originais — não cite o NotebookLM como fonte</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Verifique cada citação antes de usar em publicação</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-neutral-200 mb-2">Jornalismo:</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Use para análise de documentos, não como verificador de fatos</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Toda afirmação que vai a público precisa ser verificada na fonte original</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>O NotebookLM não substitui entrevistas e apuração independente</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Declare uso de ferramentas de IA conforme política editorial</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📋</span> Diretrizes de Transparência por Área</h3>
+      <div class="space-y-4 text-neutral-300 text-sm">
+        <div><strong class="text-neutral-200">Academia:</strong> muitas instituições já têm políticas sobre uso de IA em pesquisa. Declare o uso na metodologia: "A síntese inicial foi apoiada por NotebookLM, todas as citações foram verificadas nas fontes primárias."</div>
+        <div><strong class="text-neutral-200">Jornalismo:</strong> seguir as diretrizes da Associação Nacional de Jornais e políticas editoriais de cada veículo.</div>
+        <div><strong class="text-neutral-200">Jurídico:</strong> documentos gerados com auxílio de IA precisam ser revisados por profissional habilitado antes de submissão formal.</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">✓</span> Uso Ético</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Síntese e análise de documentos com verificação posterior</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Geração de perguntas para entrevistas ou análises</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Aceleração de pesquisa exploratória inicial</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Material de apoio ao aprendizado verificado pelo profissional</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">✗</span> Uso Não Ético</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Publicar conteúdo sem verificação como sendo de sua autoria</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Usar síntese da IA como fonte primária citável</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Apresentar análise de IA como substituição de expertise humana</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Usar para tomar decisões clínicas ou jurídicas sem revisão profissional</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">❌ O que NÃO Usar no NotebookLM</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Saber quando NÃO usar o NotebookLM é tão valioso quanto saber quando usá-lo. Existem tarefas onde outras ferramentas são claramente superiores e usar o NotebookLM seria perda de tempo ou risco.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔀</span> Quando Escolher Outra Ferramenta</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">→</span><span>Para pesquisa na web em tempo real → use <strong class="text-neutral-200">Perplexity</strong> ou ChatGPT com web search</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">→</span><span>Para análise de dados quantitativos → use <strong class="text-neutral-200">Excel, Python, Power BI</strong></span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">→</span><span>Para criação de conteúdo criativo → use <strong class="text-neutral-200">Claude, ChatGPT, Jasper</strong></span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">→</span><span>Para tradução de longa extensão → use <strong class="text-neutral-200">DeepL</strong> ou Google Translate</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">→</span><span>Para análise de imagens → use <strong class="text-neutral-200">Claude Vision</strong> ou GPT-4V</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">→</span><span>Para geração de código → use <strong class="text-neutral-200">Cursor, GitHub Copilot, Claude</strong></span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">→</span><span>Para cálculos e modelagem financeira → use ferramentas especializadas</span></li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">✓</span> Use NotebookLM</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Análise de documentos que você já tem</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Síntese de múltiplas fontes textuais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Extração de informações com rastreabilidade</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Criação de materiais baseados em fontes verificadas</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">✗</span> Use Outra Ferramenta</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Pesquisa em tempo real de informações novas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Cálculos e análises numéricas complexas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Criação puramente criativa sem base documental</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Tradução profissional de documentos longos</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> A Regra de Ouro</h3>
+      <p class="text-neutral-300 leading-relaxed">Se você não tem os documentos, use Perplexity ou ChatGPT. Se você TEM os documentos e quer analisá-los com precisão, use NotebookLM. A distinção entre 'busca de informação nova' e 'análise de informação que já tenho' define qual ferramenta usar.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">🔮 O Futuro: O que Esperar</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM está em desenvolvimento acelerado. Com base no roadmap público, lançamentos recentes e tendências da indústria, podemos antecipar o que está por vir.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🗺️</span> O que Está no Radar (2025-2026)</h3>
+      <p class="text-neutral-400 text-sm mb-4">Baseado em sinais públicos:</p>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Memória entre sessões: histórico de conversas persistente (esperado em breve)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Integração com mais ferramentas Google (Gmail, Calendar, Meet)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>API pública para desenvolvedores criarem integrações</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Análise de imagens e tabelas com maior precisão</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Suporte a mais tipos de arquivo (PowerPoint, eBooks)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Modos de foco: configurações salvas por tipo de análise</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📡</span> Tendências da Indústria que Impactam o NotebookLM</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>RAG evoluindo para Graph RAG: melhor entendimento de relacionamentos entre documentos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Modelos multimodais: análise de texto, imagem e áudio integrada</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Agentes de pesquisa: IA que busca, seleciona e carrega fontes automaticamente</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Preços reduzindo: aumento de capacidade com mesmo custo</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Regulação europeia: novos requisitos de transparência e privacidade</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Como se Manter Atualizado</h3>
+      <p class="text-neutral-300 leading-relaxed">Para se manter atualizado sobre o NotebookLM: (1) siga @NotebookLM no Twitter/X, (2) monitore o blog do Google Workspace Updates, (3) participe de comunidades Reddit r/notebooklm e Facebook. Os power users costumam descobrir novos recursos antes dos anúncios oficiais.</p>
+    </div>
+  </section>
+
+  <!-- RESUMO -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 2.4</h2>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Alucinação de 13% não significa zero erro — sempre verifique citações em decisões críticas</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Tabelas complexas, cálculos e documentos fragmentados são as maiores fontes de imprecisão</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Plano gratuito: não carregar documentos confidenciais; Plus/Enterprise para uso corporativo</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Ética: NotebookLM é ferramenta de análise — não autoria, não substituição de expertise</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Existem tarefas onde Perplexity, Claude ou Excel são claramente superiores</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">O futuro inclui memória de sessões, API pública e integração mais profunda com Google</span></li>
+      </ul>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-blue-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">BÔNUS — Projetos Completos Guiados</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-2-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 2.3</a>
+        <a href="modulo-2-bonus.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Módulo Bônus: Projetos →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2 Fontes: O Coração do NotebookLM | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span>
+          <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+  <!-- Breadcrumb -->
+  <nav class="flex items-center space-x-2 text-sm text-neutral-400 mb-6">
+    <a href="../../index.html" class="hover:text-neutral-300 transition-colors">Início</a>
+    <span>/</span>
+    <a href="index.html" class="hover:text-neutral-300 transition-colors">Trilha 1</a>
+    <span>/</span>
+    <span class="text-neutral-300">Módulo 1.2</span>
+  </nav>
+
+  <!-- Header -->
+  <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-2xl border border-emerald-500/30 p-8 mb-10">
+    <div class="flex items-start justify-between flex-wrap gap-4">
+      <div>
+        <div class="flex items-center space-x-3 mb-3">
+          <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full border border-emerald-500/30">MÓDULO 1.2</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-3">📄 Fontes: O Coração do NotebookLM</h1>
+        <p class="text-neutral-300 text-lg leading-relaxed max-w-2xl">Aprenda a selecionar, preparar e organizar fontes para extrair o máximo do NotebookLM. Fontes bem escolhidas são a diferença entre respostas vagas e insights precisos.</p>
+        <div class="flex flex-wrap gap-4 mt-5 text-sm text-neutral-400">
+          <span class="flex items-center space-x-1"><span>📚</span><span>7 tópicos</span></span>
+          <span class="flex items-center space-x-1"><span>⏱</span><span>35 min</span></span>
+          <span class="flex items-center space-x-1"><span>📊</span><span>Básico</span></span>
+          <span class="flex items-center space-x-1"><span>🛠</span><span>Prático</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">📄 O que são Fontes e Por que Importam</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">As fontes são o combustível do NotebookLM. Sem boas fontes, você terá respostas vagas e imprecisas. Com fontes bem escolhidas e preparadas, você transforma a ferramenta em um assistente de pesquisa de elite.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📌</span> O que é uma Fonte?</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Fonte = qualquer documento carregado no notebook</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>O NotebookLM analisa, indexa e usa as fontes para responder</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Cada notebook tem suas próprias fontes independentes</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>As fontes NÃO são compartilhadas entre notebooks</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Você controla completamente quais fontes participam de cada consulta</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Números das Fontes</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span>Limite gratuito: 50 fontes por notebook</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span>Cada fonte suporta até 500.000 palavras</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span>Mais de 10 tipos de arquivo suportados</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span>Processamento: 30-60 segundos por fonte em média</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span>Fontes podem ser pausadas/reativadas sem serem deletadas</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300"><strong class="text-white">Regra das 3 Fontes:</strong> Para qualquer projeto, carregue pelo menos 3 fontes complementares. Uma única fonte limita as perspectivas disponíveis. Três fontes sobre o mesmo tema criam triangulação — o NotebookLM consegue comparar, contrastar e sintetizar.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">📁 Tipos de Arquivo Suportados</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM aceita uma variedade surpreendente de formatos. Entender as características e limitações de cada tipo é fundamental para obter os melhores resultados possíveis.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📂</span> Formatos Aceitos</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>PDF (até 500.000 palavras ou ~200 MB)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Google Docs e Google Slides (com sincronização)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>URLs de sites (texto extraído automaticamente)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Vídeos do YouTube (transcrição automática)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Arquivos de áudio (transcrição automática)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Arquivos de texto (.txt, .md)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Documentos Word (.docx)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Google Sheets (dados tabulares)</span></li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ O que FAZER</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>PDFs com texto selecionável (não escaneados)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Google Docs bem formatados</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Vídeos do YouTube com legendas ativas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Artigos de sites com texto limpo</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Documentos focados em um tema</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ O que EVITAR</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>PDFs escaneados (imagens de texto sem OCR)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Slides com texto embutido em imagens</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Vídeos sem legendas disponíveis</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Sites com muito conteúdo dinâmico/ads</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Documentos com tabelas complexas como conteúdo principal</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Vídeos do YouTube são uma fonte poderosa e subestimada. Conferências, aulas e tutoriais — carregue apenas com a URL. O NotebookLM extrai a transcrição automaticamente. Uma palestra de 1 hora pode virar uma fonte de 10.000 palavras em segundos.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">⬆️ Carregando Fontes Corretamente</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Carregar fontes parece trivial, mas existem detalhes importantes que fazem diferença real na qualidade das respostas que você receberá.</p>
+
+    <div class="space-y-4 mb-6">
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">1</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Clique em "Adicionar fonte"</h4>
+          <p class="text-sm text-neutral-400">No painel esquerdo do notebook, localize e clique no botão de adicionar fonte.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">2</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Escolha o tipo de fonte</h4>
+          <p class="text-sm text-neutral-400">Selecione entre: arquivo local, URL, Google Drive ou YouTube.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">3</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Aguarde o processamento</h4>
+          <p class="text-sm text-neutral-400">30-60s para textos, mais tempo para áudios longos. Não feche a janela durante o processo.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">4</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Verifique o resumo automático</h4>
+          <p class="text-sm text-neutral-400">O NotebookLM gera um resumo automático da fonte. Leia-o para confirmar que o conteúdo foi capturado corretamente.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">5</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Renomeie a fonte</h4>
+          <p class="text-sm text-neutral-400">Use um nome descritivo para fácil identificação em consultas futuras.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atenção</h3>
+      <p class="text-neutral-300">PDFs escaneados são a maior causa de frustração com fontes. Se você não consegue selecionar texto no PDF (é uma imagem digitalizada), o NotebookLM não consegue ler o conteúdo. Solução: converta para PDF pesquisável usando Adobe Acrobat, iLovePDF.com ou faça upload no Google Drive — ele aplica OCR automaticamente.</p>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Nomeie fontes de forma descritiva. Em vez de "documento.pdf", use "Relatório Financeiro Q3-2024 — Empresa X". Quando o NotebookLM cita uma fonte nas respostas, você saberá exatamente de onde vem a informação.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">🔪 "Cirurgia nos Documentos"</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Um dos maiores hacks da comunidade NotebookLM é fazer "cirurgia" nos documentos antes de carregá-los — remover ruído, destacar o essencial. Um documento de 50 páginas bem preparado supera 150 páginas brutas.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Por que a Preparação Importa</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>O NotebookLM indexa TODO o conteúdo, incluindo rodapés e cabeçalhos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Textos legais repetitivos, índices e disclaimers criam ruído</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Menos ruído = mais precisão e respostas mais ricas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Dividir documentos grandes por tema melhora a granularidade das citações</span></li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ O que FAZER</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Remover rodapés legais e disclaimers repetitivos</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Eliminar páginas de índice (já estão no conteúdo)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Dividir documentos de 300+ páginas em partes temáticas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Adicionar um resumo executivo como primeira fonte complementar</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ O que EVITAR</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Carregar documentos de 500+ páginas sem dividir</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Incluir planilhas com apenas números sem contexto textual</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Usar PDFs de slides cheios de bullet points sem explicação</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Carregar o mesmo conteúdo em múltiplos formatos</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Estratégia de "chunking": divida livros e relatórios longos em partes de 50-80 páginas por tema. Um livro de 300 páginas pode virar 4-5 fontes separadas. Isso melhora a precisão das citações e permite selecionar apenas as partes relevantes para cada consulta.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">☑️ Selecionando Fontes por Checkboxes</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Poucos usuários exploram um dos recursos mais poderosos do NotebookLM: controlar exatamente quais fontes participam de cada consulta. Isso transforma um notebook com 20 fontes em múltiplos "modos de trabalho" especializados.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">☑️</span> Como Funciona a Seleção</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Por padrão, TODAS as fontes ativas participam das respostas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>No painel esquerdo, clique no checkbox de cada fonte para ativar/desativar</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Fontes desmarcadas são completamente ignoradas naquela consulta</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Você pode criar combinações diferentes para cada tipo de análise</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>As fontes não são deletadas — apenas pausadas temporariamente</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Casos de Uso da Seleção Estratégica</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Comparação A vs B:</strong> ative apenas fontes de cada lado para análise limpa</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Análise temporal:</strong> selecione docs de períodos específicos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Teste de consistência:</strong> compare respostas com e sem uma fonte específica</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Foco temático:</strong> use apenas fontes sobre um subtópico de interesse</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-0.5">•</span><span><strong class="text-white">Revisão progressiva:</strong> analise fontes uma a uma para identificar a mais relevante</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Crie notebooks "master" com 30-40 fontes sobre um tema amplo. Use os checkboxes como filtros dinâmicos para diferentes análises. É muito mais eficiente do que criar um notebook separado para cada subconsulta.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">🔄 Integração com Google Drive</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">A integração nativa com Google Drive é um diferencial importante para quem vive no ecossistema Google. Documentos que mudam frequentemente — atas de reunião, relatórios em construção — podem ser atualizados sem recarregar do zero.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🔄</span> Como Funciona a Sincronização</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Carregue um Google Doc ou Slide diretamente pelo Drive</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>O NotebookLM indexa a versão atual do documento no momento do carregamento</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Quando o documento é editado, você pode solicitar re-sincronização manual</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Ideal para: atas semanais, relatórios em evolução, documentação de projetos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Funciona com: Google Docs, Google Slides e PDFs armazenados no Drive</span></li>
+      </ul>
+    </div>
+
+    <div class="space-y-4 mb-6">
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">1</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Adicione a fonte via Google Drive</h4>
+          <p class="text-sm text-neutral-400">Clique em "Adicionar fonte" e selecione "Google Drive".</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">2</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Navegue e selecione o documento</h4>
+          <p class="text-sm text-neutral-400">Use o seletor de Drive para encontrar e confirmar o arquivo desejado.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">3</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Confirme a versão indexada</h4>
+          <p class="text-sm text-neutral-400">O NotebookLM indexa a versão atual — confira a data de sincronização exibida.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+          <span class="text-emerald-400 font-bold">4</span>
+        </div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Sincronize após edições</h4>
+          <p class="text-sm text-neutral-400">Quando o doc for editado: clique nos 3 pontinhos da fonte → "Sincronizar".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atenção</h3>
+      <p class="text-neutral-300">A sincronização NÃO é automática em tempo real. Edições no Google Drive não aparecem automaticamente no NotebookLM — você precisa sincronizar manualmente. Em projetos com documentos que mudam diariamente, crie um lembrete para sincronizar antes de cada sessão de análise.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 7 -->
+  <section id="topico-7" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">7</span>
+      <h2 class="text-2xl font-bold">⚠️ Limites e Restrições por Plano</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Conhecer os limites do NotebookLM evita surpresas desagradáveis no meio de um projeto importante. A boa notícia: o plano gratuito é generoso para a maioria dos casos de uso individuais.</p>
+
+    <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📋</span> Tabela de Limites por Plano</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-neutral-300">
+          <thead>
+            <tr class="border-b border-dark-600">
+              <th class="text-left py-2 pr-4 text-emerald-400 font-semibold">Limite</th>
+              <th class="text-center py-2 px-4 text-emerald-400 font-semibold">Gratuito</th>
+              <th class="text-center py-2 px-4 text-emerald-400 font-semibold">Plus</th>
+              <th class="text-center py-2 px-4 text-emerald-400 font-semibold">Ultra</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-dark-700">
+            <tr><td class="py-2 pr-4">Fontes/notebook</td><td class="text-center px-4">50</td><td class="text-center px-4">300</td><td class="text-center px-4">600</td></tr>
+            <tr><td class="py-2 pr-4">Palavras/fonte</td><td class="text-center px-4">500.000</td><td class="text-center px-4">500.000</td><td class="text-center px-4">500.000</td></tr>
+            <tr><td class="py-2 pr-4">Notebooks totais</td><td class="text-center px-4">100</td><td class="text-center px-4">500</td><td class="text-center px-4">Ilimitado</td></tr>
+            <tr><td class="py-2 pr-4">Áudios/dia</td><td class="text-center px-4">3</td><td class="text-center px-4">20</td><td class="text-center px-4">Máximo</td></tr>
+            <tr><td class="py-2 pr-4">Chats/dia</td><td class="text-center px-4">50</td><td class="text-center px-4">500</td><td class="text-center px-4">Máximo</td></tr>
+            <tr><td class="py-2 pr-4 font-semibold text-white">Preço</td><td class="text-center px-4 text-emerald-400 font-semibold">Grátis</td><td class="text-center px-4">USD 19,99/mês</td><td class="text-center px-4">Empresarial</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ Gratuito é Suficiente</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Análise de 1-10 livros ou artigos por projeto</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Pesquisa individual com até 30-40 fontes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Uso casual diário (menos de 3 áudios/dia)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Projetos pessoais e estudos independentes</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ Considere o Plus</h4>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Cursos com 50+ módulos como fontes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Pesquisa acadêmica com 100+ papers</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Equipes usando o mesmo notebook</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Mais de 3 áudios gerados por dia regularmente</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+      <p class="text-neutral-300">Se atingir o limite de 50 fontes no gratuito: crie um notebook irmão para o mesmo projeto. Use notebook A para fontes 1-50 e notebook B para fontes 51-100. Alterne entre eles conforme necessário — é uma solução eficaz antes de migrar para o Plus.</p>
+    </div>
+  </section>
+
+  <!-- Resumo Final -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 1.2</h2>
+      <div class="space-y-4 mb-8">
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">Fontes são a base do NotebookLM</strong><span class="text-neutral-400"> — qualidade supera quantidade em todos os casos</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">10+ formatos suportados</strong><span class="text-neutral-400"> — PDFs com texto selecionável são os mais confiáveis</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">PDFs escaneados precisam de OCR</strong><span class="text-neutral-400"> — use Google Drive, iLovePDF ou Adobe Acrobat antes de carregar</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">"Cirurgia" no documento</strong><span class="text-neutral-400"> — melhora dramaticamente a precisão das respostas geradas</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">Use checkboxes para criar "modos de trabalho"</strong><span class="text-neutral-400"> — diferentes combinações de fontes para cada análise</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">Sincronização Google Drive não é automática</strong><span class="text-neutral-400"> — sincronize manualmente antes de cada sessão de análise</span></div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <span class="text-emerald-400 mt-1">✓</span>
+          <div><strong class="text-white">50 fontes/notebook no gratuito</strong><span class="text-neutral-400"> — suficiente para a maioria dos projetos individuais</span></div>
+        </div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-emerald-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">1.3 — Chat com Documentos. Aprenda a fazer as perguntas certas e usar prompts avançados para extrair insights profissionais dos seus documentos.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-1-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 1.1: Introdução</a>
+        <a href="modulo-1-3.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Módulo 1.3: Chat →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2 Colaboração e Compartilhamento | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400">Módulo 2.2</span>
+    </div>
+    <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.2</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">🤝 Colaboração e Compartilhamento</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Aprenda a compartilhar notebooks com equipes, configurar permissões, usar o Analytics (Plus) e entender as capacidades do NotebookLM Enterprise.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">6</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">35</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-blue-400">Pr</div>
+        <div class="text-xs text-neutral-400">Prático</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">🔐 Permissões: Viewer vs Editor</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM tem um sistema de permissões simples mas importante de entender antes de compartilhar notebooks com equipes. Saber a diferença entre Viewer e Editor evita acidentes e protege seu trabalho.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Viewer vs Editor — Diferenças</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-dark-600">
+              <th class="text-left py-2 pr-4 text-neutral-300 font-semibold">Capacidade</th>
+              <th class="text-center py-2 px-4 text-blue-400 font-semibold">Viewer</th>
+              <th class="text-center py-2 px-4 text-blue-400 font-semibold">Editor</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-dark-700">
+            <tr><td class="py-2 pr-4 text-neutral-300">Ver fontes</td><td class="text-center px-4 text-emerald-400">✓</td><td class="text-center px-4 text-emerald-400">✓</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Fazer perguntas no chat</td><td class="text-center px-4 text-emerald-400">✓</td><td class="text-center px-4 text-emerald-400">✓</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Ouvir Audio Overviews</td><td class="text-center px-4 text-emerald-400">✓</td><td class="text-center px-4 text-emerald-400">✓</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Adicionar/remover fontes</td><td class="text-center px-4 text-red-400">✗</td><td class="text-center px-4 text-emerald-400">✓</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Gerar novos Guides/Audios</td><td class="text-center px-4 text-red-400">✗</td><td class="text-center px-4 text-emerald-400">✓</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Gerenciar compartilhamento</td><td class="text-center px-4 text-red-400">✗</td><td class="text-center px-4 text-neutral-400 text-xs">✓ (só dono)</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Deletar o notebook</td><td class="text-center px-4 text-red-400">✗</td><td class="text-center px-4 text-neutral-400 text-xs">✗ (só dono)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📋</span> Quando Usar Cada Permissão</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold text-neutral-200 mb-3">Viewer ideal para:</h4>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Clientes que precisam consultar o conteúdo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Alunos acessando material de curso</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Stakeholders que apenas consomem análises</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Acesso público de leitura</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-neutral-200 mb-3">Editor ideal para:</h4>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Equipes de pesquisa colaborando</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Colegas adicionando fontes complementares</span></li>
+            <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Times criando conteúdo coletivamente</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Regra de Ouro das Permissões</h3>
+      <p class="text-neutral-300 leading-relaxed">Compartilhe como Viewer por padrão. Promova para Editor apenas quando a pessoa precisar ativamente adicionar conteúdo. Notebooks com muitos Editors tendem a ficar desorganizados com fontes duplicadas ou irrelevantes.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">🔗 Compartilhando via Email e Link Público</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM oferece duas formas de compartilhamento: por email (acesso controlado) e link público (acesso aberto). Entender quando usar cada um é fundamental para equilíbrio entre colaboração e segurança.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📧</span> Compartilhamento por Email</h3>
+      <div class="space-y-4">
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">1</span>
+          <p class="text-neutral-300">No notebook: clique em "Compartilhar" (ícone de pessoa +)</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">2</span>
+          <p class="text-neutral-300">Digite o email do colaborador (precisa ter conta Google)</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">3</span>
+          <p class="text-neutral-300">Escolha o nível: Viewer ou Editor</p>
+        </div>
+        <div class="flex items-start space-x-4">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 font-bold text-sm flex-shrink-0">4</span>
+          <p class="text-neutral-300">Adicione uma mensagem opcional e envie</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🌐</span> Link Público</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Gera um link que qualquer pessoa com o link pode acessar</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Por padrão: acesso como Viewer (leitura apenas)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Compartilhe em redes sociais, newsletters, sites</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Pode ser revogado a qualquer momento</span></li>
+        <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Cuidado: não use para documentos confidenciais</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atenção: Links Públicos</h3>
+      <p class="text-neutral-300 leading-relaxed">Links públicos são permanentes até você revogar. Se o notebook contém informações confidenciais — documentos de clientes, contratos, dados pessoais — NUNCA use link público. Prefira sempre o compartilhamento por email com controle de acesso.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">👥 Colaboração em Tempo Real</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM permite colaboração, mas com características específicas diferentes do Google Docs. Entender como funciona evita expectativas erradas sobre a experiência colaborativa.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔄</span> Como Funciona a Colaboração</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Múltiplos usuários podem ter o notebook aberto simultaneamente</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Adições de fonte por um Editor ficam disponíveis para todos em segundos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>O chat NÃO é compartilhado: cada usuário tem sua própria conversa</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Guides e Audios gerados ficam disponíveis para todos Viewers/Editors</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Não há cursor de outros usuários (não é colaboração em tempo real como no Docs)</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🏆</span> Melhores Práticas para Times</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Defina um "curador de fontes" responsável por manter as fontes organizadas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Use convenção de nomenclatura nas fontes: [Data][Tipo][Tema]</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Crie um Google Doc de "instruções de uso" e adicione como fonte do notebook</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Revise as fontes mensalmente: remova o que ficou desatualizado</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>No Plus: use Analytics para ver quais fontes são mais consultadas</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: Notebooks Temáticos para Times Maiores</h3>
+      <p class="text-neutral-300 leading-relaxed">Para times maiores, crie notebooks temáticos em vez de um notebook único gigante. Por exemplo: 'Concorrentes 2024', 'Regulatório', 'Tendências de Mercado'. Cada notebook com responsável definido gera muito mais qualidade e organização.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">📊 Analytics de Uso (Plus)</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O plano Plus oferece Analytics de uso — métricas sobre como o notebook está sendo usado pela equipe. É um recurso frequentemente subestimado mas extremamente valioso para gestores e criadores de cursos.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📈</span> Métricas Disponíveis</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Visualizações do notebook por período</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Número de consultas no chat</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Fontes mais acessadas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Áudios mais gerados/ouvidos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Usuários mais ativos (emails)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Horários de pico de uso</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">💼</span> Casos de Uso do Analytics</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Professores: veja quais materiais de aula os alunos mais consultam</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Gestores de conhecimento: identifique fontes nunca usadas (pode remover)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Criadores de cursos: descubra quais módulos geram mais dúvidas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Times de P&D: veja quais temas a equipe pesquisa mais frequentemente</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Marketing: entenda quais materiais de produtos o time de vendas usa</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: Otimização Contínua com Analytics</h3>
+      <p class="text-neutral-300 leading-relaxed">Use o Analytics para otimizar seu notebook continuamente. Fontes com zero consultas em 30 dias: considere remover ou substituir. Fontes com muitas consultas: adicione fontes complementares sobre o mesmo tema. Dados de uso são o melhor guia para curadoria.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">🏢 NotebookLM Enterprise</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM Enterprise é a versão corporativa da ferramenta, com recursos de segurança, compliance e escala que atendem aos requisitos de grandes organizações.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🔒</span> Recursos Exclusivos do Enterprise</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>SSO (Single Sign-On) com sistemas corporativos (Okta, Azure AD)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Auditoria completa: log de quem acessou o quê e quando</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Controles de DLP (Data Loss Prevention)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>SLAs de uptime garantidos</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Suporte dedicado com gestor de conta</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Customização de limites: fontes, notebooks e usuários sob demanda</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Termos contratuais corporativos para compliance jurídico</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">🎯</span> Quando o Enterprise faz Sentido</h3>
+      <ul class="space-y-3 text-neutral-300">
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Empresas com requisitos de compliance regulatório (LGPD, HIPAA, SOC2)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Organizações com 50+ usuários ativos no NotebookLM</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Setores que lidam com dados altamente sensíveis (saúde, financeiro, jurídico)</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400 mt-1">•</span><span>Empresas que precisam de integração com sistemas de identidade corporativa</span></li>
+      </ul>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: PoC antes de Contratar</h3>
+      <p class="text-neutral-300 leading-relaxed">Se você está avaliando o Enterprise para sua empresa, solicite uma PoC (Proof of Concept) com o time de vendas do Google. Eles oferecem período trial com todos os recursos disponíveis para validação antes da contratação.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">⚠️ Limites de Compartilhamento por Plano</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Os limites de compartilhamento variam entre os planos e são frequentemente mal compreendidos. Entender as restrições evita surpresas desagradáveis ao tentar colaborar com equipes maiores.</p>
+
+    <div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Tabela de Limites por Plano</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-dark-600">
+              <th class="text-left py-2 pr-4 text-neutral-300 font-semibold">Recurso</th>
+              <th class="text-center py-2 px-3 text-blue-400 font-semibold">Gratuito</th>
+              <th class="text-center py-2 px-3 text-blue-400 font-semibold">Plus</th>
+              <th class="text-center py-2 px-3 text-blue-400 font-semibold">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-dark-700">
+            <tr><td class="py-2 pr-4 text-neutral-300">Colaboradores/notebook</td><td class="text-center px-3 text-neutral-300">5</td><td class="text-center px-3 text-neutral-300">50</td><td class="text-center px-3 text-emerald-400">Ilimitado</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Links públicos</td><td class="text-center px-3 text-emerald-400">✓</td><td class="text-center px-3 text-emerald-400">✓</td><td class="text-center px-3 text-neutral-400 text-xs">Configurável</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Analytics</td><td class="text-center px-3 text-red-400">✗</td><td class="text-center px-3 text-emerald-400">✓</td><td class="text-center px-3 text-neutral-400 text-xs">✓ Avançado</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">SSO</td><td class="text-center px-3 text-red-400">✗</td><td class="text-center px-3 text-red-400">✗</td><td class="text-center px-3 text-emerald-400">✓</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">Auditoria</td><td class="text-center px-3 text-red-400">✗</td><td class="text-center px-3 text-neutral-400 text-xs">Básica</td><td class="text-center px-3 text-neutral-400 text-xs">Completa</td></tr>
+            <tr><td class="py-2 pr-4 text-neutral-300">SLA uptime</td><td class="text-center px-3 text-neutral-400 text-xs">Padrão</td><td class="text-center px-3 text-neutral-400 text-xs">Padrão</td><td class="text-center px-3 text-emerald-400 text-xs">Garantido</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">✓</span> Gratuito Suficiente</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Compartilhar com até 5 pessoas</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Projetos pessoais ou pequenos times</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Conteúdo não-confidencial público</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Professores com turmas pequenas</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 border border-red-500/30 rounded-xl p-5">
+        <h3 class="text-base font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">✗</span> Precisa de Plus/Enterprise</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Times com 6+ pessoas no mesmo notebook</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Analytics de uso para otimização</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Compartilhamento com dezenas de colaboradores</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400 mt-1">•</span><span>Compliance corporativo e auditoria</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: Verifique Antes de Fazer Upgrade</h3>
+      <p class="text-neutral-300 leading-relaxed">Antes de comprar o Plus por causa dos limites de colaboração: verifique se o modelo de 'múltiplos notebooks' resolve sem upgrade. Para equipes de 10 pessoas, às vezes é mais eficiente ter 5 notebooks de 2 pessoas cada, todos no gratuito, do que 1 notebook centralizado no Plus.</p>
+    </div>
+  </section>
+
+  <!-- RESUMO -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 2.2</h2>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Viewer vs Editor: share como Viewer por padrão, promova apenas quando necessário</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Email = acesso controlado; Link público = acesso aberto (cuidado com dados confidenciais)</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Colaboração: fontes são compartilhadas, chats são individuais</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Analytics (Plus): dado de uso para otimizar curadoria e identificar tendências</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Enterprise: para compliance, SSO, auditoria e escala corporativa</span></li>
+        <li class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><span class="text-neutral-300">Limites: gratuito suporta até 5 colaboradores por notebook</span></li>
+      </ul>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-blue-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">2.3 — Hacks, Extensões e Fluxos Avançados</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-2-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 2.1</a>
+        <a href="modulo-2-3.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Módulo 2.3: Hacks →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
+</body>
+</html>
