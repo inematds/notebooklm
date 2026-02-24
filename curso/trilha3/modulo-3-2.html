@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo 3.2 — Research Engine: Pesquisa Sem Hype | INEMA.CLUB</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'dark': { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e', 600: '#252538' } } } } }</script>
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    * { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
     html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
     html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
     html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
@@ -26,30 +27,41 @@
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
   <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur border-b border-dark-600">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center space-x-4">
-        <a href="/notebooklm/" class="flex items-center space-x-2">
-          <span class="text-2xl">📓</span>
-          <span class="font-bold text-neutral-100">NotebookLM</span>
-        </a>
-        <span class="text-neutral-500">|</span>
-        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
-      </div>
-      <div class="flex items-center space-x-3">
-        <a href="/notebooklm/curso/trilha1/" class="text-sm text-emerald-400 hover:text-emerald-300 font-medium">Trilha 1</a>
-        <a href="/notebooklm/curso/trilha2/" class="text-sm text-blue-400 hover:text-blue-300 font-medium">Trilha 2</a>
-        <a href="/notebooklm/curso/trilha3/" class="text-sm text-purple-400 font-bold border-b border-purple-400">Trilha 3</a>
-        <button onclick="toggleTheme()" class="p-2 rounded-lg bg-dark-700 text-neutral-400 hover:text-neutral-100 text-sm">🌙</button>
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📓</span>
+            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
 
   <!-- HEADER -->
   <div class="bg-gradient-to-r from-purple-900/30 via-dark-800 to-violet-900/20 border-b border-purple-500/20 py-12">
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
-        <a href="/notebooklm/" class="hover:text-neutral-200">Início</a>
+        <a href="../../index.html" class="hover:text-neutral-200">Início</a>
         <span>›</span>
         <a href="index.html" class="hover:text-neutral-200 text-purple-400">Trilha 3</a>
         <span>›</span>
@@ -83,7 +95,7 @@
     </div>
   </div>
 
-  <div class="max-w-4xl mx-auto px-4 py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="space-y-4">
 
       <!-- TÓPICO 1 -->
@@ -472,18 +484,28 @@
 
   <!-- FOOTER -->
   <footer class="border-t border-dark-600 py-8 mt-16">
-    <div class="max-w-4xl mx-auto px-4 text-center text-neutral-500 text-sm">
+    <div class="max-w-6xl mx-auto px-4 text-center text-neutral-500 text-sm">
       <p>Curso NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
     </div>
   </footer>
 
   <script>
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') document.documentElement.classList.remove('dark');
-    function toggleTheme() {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
     }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
     function toggleTopic(num) {
       const el = document.getElementById('topic' + num);
       el.classList.toggle('hidden');
