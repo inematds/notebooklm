@@ -10,6 +10,7 @@
 ```
 Trilha 1 (Emerald) — Fundamentos e Ferramentas  [Módulos 1.1 a 1.4]
 Trilha 2 (Blue)    — Aplicação e Domínio         [Módulos 2.1 a 2.5 + Bônus]
+Trilha 3 (Purple)  — NotebookLM para Criadores   [Módulos 3.1 a 3.6]
 ```
 
 ---
@@ -30,6 +31,13 @@ Trilha 2 (Blue)    — Aplicação e Domínio         [Módulos 2.1 a 2.5 + Bôn
 | Módulo 2.3 — Hacks Avançados | `curso/trilha2/modulo-2-3.html` | ✅ Criado |
 | Módulo 2.4 — Boas Práticas | `curso/trilha2/modulo-2-4.html` | ✅ Criado |
 | Módulo Bônus — Projetos | `curso/trilha2/modulo-2-bonus.html` | ✅ Criado |
+| Trilha 3 — Index | `curso/trilha3/index.html` | ✅ Criado |
+| Módulo 3.1 — Método INEMA | `curso/trilha3/modulo-3-1.html` | ✅ Criado |
+| Módulo 3.2 — Research Engine | `curso/trilha3/modulo-3-2.html` | ✅ Criado |
+| Módulo 3.3 — Script Engine | `curso/trilha3/modulo-3-3.html` | ✅ Criado |
+| Módulo 3.4 — Prompt Engineering | `curso/trilha3/modulo-3-4.html` | ✅ Criado |
+| Módulo 3.5 — Custom Instructions | `curso/trilha3/modulo-3-5.html` | ✅ Criado |
+| Módulo 3.6 — Workflow Completo | `curso/trilha3/modulo-3-6.html` | ✅ Criado |
 
 ---
 
@@ -152,6 +160,44 @@ Trilha 2 (Blue)    — Aplicação e Domínio         [Módulos 2.1 a 2.5 + Bôn
 2. Montar uma newsletter semanal automatizada
 3. Revisão de literatura de 20 artigos em 2 horas
 4. Criar um podcast de 5 episódios de um único livro
+
+---
+
+## TRILHA 3 — NotebookLM para Criadores (Purple)
+
+### ✅ curso/trilha3/index.html — Índice da Trilha 3
+- [x] Nav com trilha 3 ativa (purple)
+- [x] Header: gradiente purple, stats (6 módulos, 35 tópicos, ~5h, Avançado)
+- [x] Navegação rápida (6 cards com emojis e links diretos)
+- [x] Cards detalhados com tópicos expansíveis (toggleTopic)
+- [x] Botões ESQUERDA (justify-start)
+- [x] Números em círculo (não setas)
+- [x] Navegação: Voltar Trilha 2 / Começar Trilha 3
+
+### ✅ curso/trilha3/modulo-3-1.html — Método INEMA — Os 3 Engines
+- [x] 6 tópicos: o método, regra de ouro, os 3 notebooks, quando usar, limitações, primeiros passos
+- [x] 3 seções por tópico (O que é / Por que aprender / Conceitos-chave)
+- [x] Resumo final com checklist de aprendizado
+
+### ✅ curso/trilha3/modulo-3-2.html — Research Engine — Pesquisa Sem Hype
+- [x] 6 tópicos: criar notebook, fontes certas, Custom Instructions template, prompt template, atualização semanal, erros comuns
+- [x] Template de Custom Instructions copiável
+
+### ✅ curso/trilha3/modulo-3-3.html — Script Engine — Roteiros com Sua Identidade
+- [x] 6 tópicos: criar notebook, alimentar com seu estilo, Custom Instructions, Master Prompt 60s, checklist viral, estrutura Hook-Conteúdo-CTA
+- [x] 3 seções por tópico (O que é / Por que aprender / Conceitos-chave)
+- [x] Checklist do módulo com 6 itens
+- [x] Navegação: Módulo 3.2 ← → Módulo 3.4
+
+### ✅ curso/trilha3/modulo-3-4.html — Prompt Engineering Engine — Sintaxe Oficial
+- [x] 6 tópicos: criar notebook, docs em PDF, Custom Instructions, template imagem, template vídeo, exemplos prontos
+
+### ✅ curso/trilha3/modulo-3-5.html — Custom Instructions Avançadas (10k chars)
+- [x] 5 tópicos: expansão dez/2025, arquitetura das instruções, técnicas avançadas, múltiplas personas, testando e otimizando
+
+### ✅ curso/trilha3/modulo-3-6.html — Workflow Completo — Do Zero ao Post
+- [x] 6 tópicos: visão geral, passo 1 Research, passo 2 Script, passo 3 Prompt, rotina 10 min, checklist publicação
+- [x] Seção especial de conclusão da Trilha 3
 
 ---
 
