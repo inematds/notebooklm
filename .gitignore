@@ -1,0 +1,15 @@
+# Dependências
+node_modules/
+package-lock.json
+
+# BMad / Claude
+.bmad-core/
+.claude/
+
+# Referências locais (não fazem parte do site)
+ref/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
