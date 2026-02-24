@@ -7,10 +7,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
     .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+    .modal { display: flex; }
+    .modal.hidden { display: none; }
     html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
     html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
     html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
@@ -82,18 +86,17 @@
           <div class="text-xs text-neutral-400">Duração</div>
         </div>
         <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">🎯</div>
-          <div class="text-xs text-neutral-400">Prático</div>
+          <div class="text-xl font-bold text-purple-400">Av.</div>
+          <div class="text-xs text-neutral-400">Nível</div>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
     <!-- NAVEGAÇÃO RÁPIDA -->
-    <h2 class="text-xl font-bold mb-6 text-purple-400">Módulos desta Trilha</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
       <a href="modulo-3-1.html" class="bg-dark-800 border border-dark-600 hover:border-purple-500/50 rounded-xl p-4 transition-all group">
         <div class="text-2xl mb-2">🎯</div>
         <div class="text-xs text-purple-400 font-bold mb-1">MÓDULO 3.1</div>
@@ -126,288 +129,646 @@
       </a>
     </div>
 
-    <!-- CARDS DETALHADOS -->
-    <h2 class="text-xl font-bold mb-6">Tópicos por Módulo</h2>
-    <div class="space-y-4">
+    <div class="border-t border-dark-600 mb-10"></div>
+    <h2 class="text-lg font-semibold text-neutral-400 mb-6">Conteúdo Detalhado</h2>
 
-      <!-- MÓDULO 3.1 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <div class="p-6 flex items-start justify-between">
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xl flex-shrink-0">🎯</div>
-            <div>
-              <div class="text-xs text-purple-400 font-bold mb-1">MÓDULO 3.1 · 6 TÓPICOS · 45 MIN</div>
-              <h3 class="text-2xl font-bold mb-1">Método I3NM — Os 3 Engines</h3>
-              <p class="text-neutral-400 text-sm">Visão geral do sistema de 3 notebooks especializados para criadores de conteúdo.</p>
-            </div>
-          </div>
-          <button onclick="toggleTopic('mod31')" class="text-neutral-400 hover:text-purple-400 transition-colors text-xl flex-shrink-0 ml-4">▼</button>
+    <!-- MÓDULO 3.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.1</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
         </div>
-        <div id="mod31" class="hidden px-6 pb-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <span class="text-sm">O que é o Método I3NM e por que funciona</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              <span class="text-sm">A regra de ouro: boas fontes = bons resultados</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <span class="text-sm">Os 3 notebooks: visão geral do sistema</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-              <span class="text-sm">Quando usar cada engine</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-              <span class="text-sm">Limitações do NotebookLM para criadores</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
-              <span class="text-sm">Primeiros passos para montar sua máquina</span>
-            </div>
-          </div>
-          <div class="flex justify-start space-x-2 mt-4">
-            <a href="modulo-3-1.html" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold rounded-lg transition-colors">Acessar Módulo →</a>
-            <button onclick="openModal('modal-31')" class="px-4 py-2 bg-dark-600 hover:bg-dark-500 text-neutral-300 text-sm font-semibold rounded-lg transition-colors">Ver Preview</button>
-          </div>
-        </div>
+        <h3 class="text-2xl font-bold mb-2">🎯 Método I3NM — Os 3 Engines</h3>
+        <p class="text-neutral-400 text-sm">Visão geral do sistema de 3 notebooks especializados para criadores de conteúdo.</p>
       </div>
+      <div class="divide-y divide-dark-600">
 
-      <!-- MÓDULO 3.2 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <div class="p-6 flex items-start justify-between">
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xl flex-shrink-0">🔍</div>
-            <div>
-              <div class="text-xs text-purple-400 font-bold mb-1">MÓDULO 3.2 · 6 TÓPICOS · 50 MIN</div>
-              <h3 class="text-2xl font-bold mb-1">Research Engine — Pesquisa Sem Hype</h3>
-              <p class="text-neutral-400 text-sm">Monte um notebook que recomenda ferramentas somente com base em fontes confiáveis.</p>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">O que é o Método I3NM</span><span class="text-neutral-500 text-sm ml-2">- Por que funciona</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Sistema de 3 notebooks especializados (Research Engine, Script Engine, Prompt Engineering Engine) que trabalham em sequência para transformar o NotebookLM em uma máquina de criação de conteúdo.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem um método, você usa o NotebookLM de forma genérica e perde 80% do seu potencial. Com o Método I3NM, você reduz em 40-60% o tempo de produção e sai de "semanas de pesquisa" para "decisões em 10 minutos".</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">3 engines em sequência • Research → Script → Prompt • Cada engine especializado • Sistema reproduzível diariamente</p></div>
             </div>
-          </div>
-          <button onclick="toggleTopic('mod32')" class="text-neutral-400 hover:text-purple-400 transition-colors text-xl flex-shrink-0 ml-4">▼</button>
-        </div>
-        <div id="mod32" class="hidden px-6 pb-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <span class="text-sm">Criando o notebook Research Engine</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              <span class="text-sm">Fontes certas para cada nicho</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <span class="text-sm">Custom Instructions: template completo</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-              <span class="text-sm">Prompt template para pesquisa de ferramentas</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-              <span class="text-sm">Atualizando fontes semanalmente</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
-              <span class="text-sm">Erros comuns e como corrigir</span>
-            </div>
-          </div>
-          <div class="flex justify-start space-x-2 mt-4">
-            <a href="modulo-3-2.html" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold rounded-lg transition-colors">Acessar Módulo →</a>
-            <button onclick="openModal('modal-32')" class="px-4 py-2 bg-dark-600 hover:bg-dark-500 text-neutral-300 text-sm font-semibold rounded-lg transition-colors">Ver Preview</button>
           </div>
         </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🏆</span>
+            <div><span class="font-medium">A regra de ouro</span><span class="text-neutral-500 text-sm ml-2">- Boas fontes = bons resultados</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">O NotebookLM só é tão bom quanto as fontes que você adiciona. A regra de ouro: GIGO (Garbage In, Garbage Out). Fontes de qualidade — changelogs oficiais, repositórios GitHub, documentação verificada — geram respostas de qualidade.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Criadores que usam fontes ruins perdem tempo gerando conteúdo incorreto que precisa ser refeito. Entender esta regra muda a forma como você curadoria as fontes desde o início.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">GIGO • Fontes primárias > secundárias • Documentação oficial • Changelogs verificados • Curadoria como skill</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">📚</span>
+            <div><span class="font-medium">Os 3 notebooks</span><span class="text-neutral-500 text-sm ml-2">- Visão geral do sistema</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Research Engine: notebook com fontes de ferramentas e changelogs para recomendar stacks. Script Engine: notebook treinado com seus próprios vídeos para gerar roteiros no seu estilo. Prompt Engineering Engine: notebook com documentação oficial de IA para gerar prompts com sintaxe correta.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Cada engine tem uma função específica e não substituível. Usar o engine errado para a tarefa errada gera resultados medíocres — entender a divisão de responsabilidades é fundamental.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Research Engine = stack decisions • Script Engine = conteúdo no seu estilo • Prompt Engine = sintaxe correta de IA • Especialização por função</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🔀</span>
+            <div><span class="font-medium">Quando usar cada engine</span><span class="text-neutral-500 text-sm ml-2">- Mapeamento de casos de uso</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Research Engine: antes de começar um projeto — "qual ferramenta usar?". Script Engine: quando for criar roteiro para vídeo, post ou newsletter. Prompt Engine: quando precisar de prompt para imagem, vídeo ou qualquer modelo de IA generativa.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Usar o engine errado é o erro mais comum dos iniciantes. Mapear os casos de uso elimina o desperdício de tempo e garante que cada consulta vai ao notebook certo.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Research = decisão de stack • Script = criação de conteúdo • Prompt = geração de assets visuais • Sequência lógica de uso</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">⚠️</span>
+            <div><span class="font-medium">Limitações do NotebookLM para criadores</span><span class="text-neutral-500 text-sm ml-2">- O que ele não faz</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Não acessa a internet em tempo real, não publica conteúdo, não edita vídeos, não gera imagens. Ele analisa, sintetiza e gera texto com base nas fontes carregadas — nada mais.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Expectativas erradas geram frustração. Saber o que o NotebookLM NÃO faz é tão importante quanto saber o que ele faz — evita tentativas inúteis e posiciona a ferramenta corretamente no workflow.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Sem acesso à internet • Sem geração de imagem • Só trabalha com fontes carregadas • Ferramenta de análise e síntese, não de publicação</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🚀</span>
+            <div><span class="font-medium">Primeiros passos para montar sua máquina</span><span class="text-neutral-500 text-sm ml-2">- Setup inicial dos 3 engines</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Criação dos 3 notebooks com nomes padronizados (I3NM — Research Engine, I3NM — Script Engine, I3NM — Prompt Engineering Engine), adição das primeiras fontes e configuração das Custom Instructions básicas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Nomear corretamente e estruturar desde o início evita confusão quando você tiver dezenas de notebooks. O setup inicial define a qualidade do sistema para os próximos meses.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Nomes padronizados • 3 notebooks criados • Primeiras fontes • Custom Instructions básicas • Pronto para os próximos módulos</p></div>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- MÓDULO 3.3 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <div class="p-6 flex items-start justify-between">
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xl flex-shrink-0">✍️</div>
-            <div>
-              <div class="text-xs text-purple-400 font-bold mb-1">MÓDULO 3.3 · 6 TÓPICOS · 55 MIN</div>
-              <h3 class="text-2xl font-bold mb-1">Script Engine — Roteiros com Sua Identidade</h3>
-              <p class="text-neutral-400 text-sm">Treine o NotebookLM com seus próprios vídeos para gerar roteiros com sua voz e estilo.</p>
-            </div>
-          </div>
-          <button onclick="toggleTopic('mod33')" class="text-neutral-400 hover:text-purple-400 transition-colors text-xl flex-shrink-0 ml-4">▼</button>
-        </div>
-        <div id="mod33" class="hidden px-6 pb-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <span class="text-sm">Criando o notebook Script Engine</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              <span class="text-sm">Alimentando com seu estilo: seus vídeos como fonte</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <span class="text-sm">Custom Instructions: template do roteirista</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-              <span class="text-sm">Master Prompt para roteiros de 60 segundos</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-              <span class="text-sm">Checklist de qualidade para roteiro viral</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
-              <span class="text-sm">Estrutura Hook-Promessa-Passos-Prova-CTA</span>
-            </div>
-          </div>
-          <div class="flex justify-start space-x-2 mt-4">
-            <a href="modulo-3-3.html" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold rounded-lg transition-colors">Acessar Módulo →</a>
-            <button onclick="openModal('modal-33')" class="px-4 py-2 bg-dark-600 hover:bg-dark-500 text-neutral-300 text-sm font-semibold rounded-lg transition-colors">Ver Preview</button>
-          </div>
-        </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-3-1')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-3-1.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors">Ver Completo →</a>
       </div>
+    </div>
 
-      <!-- MÓDULO 3.4 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <div class="p-6 flex items-start justify-between">
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xl flex-shrink-0">⚡</div>
-            <div>
-              <div class="text-xs text-purple-400 font-bold mb-1">MÓDULO 3.4 · 6 TÓPICOS · 55 MIN</div>
-              <h3 class="text-2xl font-bold mb-1">Prompt Engineering Engine</h3>
-              <p class="text-neutral-400 text-sm">Use documentação oficial para gerar prompts com sintaxe e parâmetros corretos.</p>
-            </div>
-          </div>
-          <button onclick="toggleTopic('mod34')" class="text-neutral-400 hover:text-purple-400 transition-colors text-xl flex-shrink-0 ml-4">▼</button>
+    <!-- MÓDULO 3.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.2</span>
+          <span class="text-xs text-neutral-500">~50 min</span>
         </div>
-        <div id="mod34" class="hidden px-6 pb-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <span class="text-sm">Criando o notebook Prompt Engineering Engine</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              <span class="text-sm">Coletando documentação oficial em PDF</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <span class="text-sm">Custom Instructions: template do engenheiro</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-              <span class="text-sm">Prompts para imagem: template completo</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-              <span class="text-sm">Prompts para vídeo: template completo</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
-              <span class="text-sm">Exemplos prontos: thumbnail cinematográfica</span>
-            </div>
-          </div>
-          <div class="flex justify-start space-x-2 mt-4">
-            <a href="modulo-3-4.html" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold rounded-lg transition-colors">Acessar Módulo →</a>
-            <button onclick="openModal('modal-34')" class="px-4 py-2 bg-dark-600 hover:bg-dark-500 text-neutral-300 text-sm font-semibold rounded-lg transition-colors">Ver Preview</button>
-          </div>
-        </div>
+        <h3 class="text-2xl font-bold mb-2">🔍 Research Engine — Pesquisa Sem Hype</h3>
+        <p class="text-neutral-400 text-sm">Monte um notebook que recomenda ferramentas somente com base em fontes confiáveis.</p>
       </div>
+      <div class="divide-y divide-dark-600">
 
-      <!-- MÓDULO 3.5 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <div class="p-6 flex items-start justify-between">
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xl flex-shrink-0">🎛️</div>
-            <div>
-              <div class="text-xs text-purple-400 font-bold mb-1">MÓDULO 3.5 · 5 TÓPICOS · 40 MIN</div>
-              <h3 class="text-2xl font-bold mb-1">Custom Instructions Avançadas</h3>
-              <p class="text-neutral-400 text-sm">Domine os 10.000 caracteres de Custom Instructions para extrair o máximo do NotebookLM.</p>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🔬</span>
+            <div><span class="font-medium">Criando o notebook Research Engine</span><span class="text-neutral-500 text-sm ml-2">- Configuração inicial</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Passo a passo para criar e nomear o notebook "I3NM — Research Engine" com as configurações iniciais corretas para funcionar como consultor de ferramentas de IA para criadores.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A criação correta define o sucesso do engine. Um notebook mal configurado gera recomendações inconsistentes — o setup inicial é o que garante que ele saiba o que deve e o que não deve fazer.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Nome padronizado • Foco em ferramentas de criadores • Configurado como consultor • Base para todo o Método I3NM</p></div>
             </div>
-          </div>
-          <button onclick="toggleTopic('mod35')" class="text-neutral-400 hover:text-purple-400 transition-colors text-xl flex-shrink-0 ml-4">▼</button>
-        </div>
-        <div id="mod35" class="hidden px-6 pb-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <span class="text-sm">O que mudou em dez/2025: expansão para 10k chars</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              <span class="text-sm">Arquitetura das Custom Instructions</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <span class="text-sm">Técnicas avançadas de instrução</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-              <span class="text-sm">Combinando múltiplas personas em uma instrução</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-              <span class="text-sm">Testando e otimizando suas instruções</span>
-            </div>
-          </div>
-          <div class="flex justify-start space-x-2 mt-4">
-            <a href="modulo-3-5.html" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold rounded-lg transition-colors">Acessar Módulo →</a>
-            <button onclick="openModal('modal-35')" class="px-4 py-2 bg-dark-600 hover:bg-dark-500 text-neutral-300 text-sm font-semibold rounded-lg transition-colors">Ver Preview</button>
           </div>
         </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📂</span>
+            <div><span class="font-medium">Fontes certas para cada nicho</span><span class="text-neutral-500 text-sm ml-2">- O que adicionar e por quê</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">As fontes ideais são: changelogs oficiais das ferramentas (ex: changelog.kling.ai), repositórios GitHub com benchmarks, newsletters técnicas especializadas e reviews comparativos de fontes verificadas — não reviews pagos ou afiliados.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A qualidade das fontes determina 100% da qualidade das recomendações. Fontes ruins = recomendações erradas = tempo perdido testando ferramentas que não servem para seu caso.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Changelogs oficiais • Repositórios GitHub • Newsletters técnicas • Sem reviews pagos • Fontes primárias sempre</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">⚙️</span>
+            <div><span class="font-medium">Custom Instructions: template completo</span><span class="text-neutral-500 text-sm ml-2">- Configurando o consultor</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template de Custom Instructions que define o engine como "consultor de ferramentas de IA para criadores de conteúdo brasileiro", com regras para recomendar baseado em custo-benefício real, hardware disponível e nível de experiência.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem Custom Instructions adequadas, o notebook dá respostas genéricas. Com o template certo, cada recomendação considera o contexto específico do criador — nicho, orçamento e hardware.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Persona de consultor • Contexto: BR criadores • Critérios: custo, hardware, experiência • Recomendação estruturada</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">Prompt template para pesquisa de ferramentas</span><span class="text-neutral-500 text-sm ml-2">- A pergunta certa</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template de prompt que inclui: objetivo do vídeo, orçamento disponível, hardware (GPU/CPU), nível de experiência técnica, nicho e urgência. Gera recomendação de stack completa com alternativas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem um template estruturado, você faz perguntas incompletas e recebe respostas genéricas. O template garante que o notebook receba todas as informações necessárias para uma recomendação precisa.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Template estruturado • Contexto completo • Stack recomendada • Alternativas graduadas • Reutilizável</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Atualizando fontes semanalmente</span><span class="text-neutral-500 text-sm ml-2">- Manter o engine atualizado</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Rotina semanal de 15 minutos: verificar changelogs das principais ferramentas, adicionar novos documentos ao notebook, remover fontes desatualizadas. Manter o engine atual é manutenção obrigatória.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Ferramentas de IA atualizam semanalmente. Um Research Engine desatualizado recomenda ferramentas obsoletas. A manutenção semanal garante que suas recomendações reflitam o estado atual do mercado.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">15 min/semana • Changelogs monitorados • Fontes removidas quando obsoletas • Engine sempre atual • Manutenção como hábito</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🐛</span>
+            <div><span class="font-medium">Erros comuns e como corrigir</span><span class="text-neutral-500 text-sm ml-2">- Problemas frequentes</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Erros mais comuns: adicionar fontes de reviews pagos, fazer perguntas sem contexto suficiente, não atualizar fontes, misturar finalidades no mesmo notebook, ignorar as Custom Instructions.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Identificar e corrigir esses erros evita meses de frustração. Cada erro tem uma solução específica — conhecê-los de antemão economiza tempo e garante resultados melhores desde o início.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Fontes confiáveis apenas • Contexto completo nos prompts • Atualização regular • Um notebook por função • Custom Instructions sempre ativas</p></div>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- MÓDULO 3.6 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <div class="p-6 flex items-start justify-between">
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xl flex-shrink-0">🚀</div>
-            <div>
-              <div class="text-xs text-purple-400 font-bold mb-1">MÓDULO 3.6 · 6 TÓPICOS · ÚLTIMO MÓDULO</div>
-              <h3 class="text-2xl font-bold mb-1">Workflow Completo — Do Zero ao Post</h3>
-              <p class="text-neutral-400 text-sm">Do zero ao post em 10 minutos: integre os 3 engines em um fluxo diário eficiente.</p>
-            </div>
-          </div>
-          <button onclick="toggleTopic('mod36')" class="text-neutral-400 hover:text-purple-400 transition-colors text-xl flex-shrink-0 ml-4">▼</button>
-        </div>
-        <div id="mod36" class="hidden px-6 pb-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-              <span class="text-sm">Visão geral do workflow completo</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-              <span class="text-sm">Passo 1: Research Engine → escolha de stack</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-              <span class="text-sm">Passo 2: Script Engine → roteiro 60 segundos</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-              <span class="text-sm">Passo 3: Prompt Engineer → thumb e b-roll</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-              <span class="text-sm">Rotina diária de 10 minutos</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-              <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
-              <span class="text-sm">Checklist de publicação para Reels/TikTok</span>
-            </div>
-          </div>
-          <div class="flex justify-start space-x-2 mt-4">
-            <a href="modulo-3-6.html" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold rounded-lg transition-colors">Acessar Módulo →</a>
-            <button onclick="openModal('modal-36')" class="px-4 py-2 bg-dark-600 hover:bg-dark-500 text-neutral-300 text-sm font-semibold rounded-lg transition-colors">Ver Preview</button>
-          </div>
-        </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-3-2')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-3-2.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors">Ver Completo →</a>
       </div>
+    </div>
 
+    <!-- MÓDULO 3.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.3</span>
+          <span class="text-xs text-neutral-500">~55 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">✍️ Script Engine — Roteiros com Sua Identidade</h3>
+        <p class="text-neutral-400 text-sm">Treine o NotebookLM com seus próprios vídeos para gerar roteiros com sua voz e estilo.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">✍️</span>
+            <div><span class="font-medium">Criando o notebook Script Engine</span><span class="text-neutral-500 text-sm ml-2">- Setup inicial</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Criação do notebook "I3NM — Script Engine" com foco em gerar roteiros em linguagem falada, no estilo do criador, para vídeos de 60 segundos (Reels/TikTok) ou formatos mais longos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">O Script Engine é o mais pessoal dos 3. Sem a configuração correta, gera roteiros genéricos que não soam como você. O setup define se o engine vai capturar ou ignorar sua identidade como criador.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Nome padronizado • Foco em fala natural • Identidade do criador • 60s como formato base • Escalável para outros formatos</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🎬</span>
+            <div><span class="font-medium">Alimentando com seu estilo</span><span class="text-neutral-500 text-sm ml-2">- Seus vídeos como fonte</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Transcrever seus 5-10 melhores vídeos e adicioná-los como fontes. O notebook aprende suas expressões, ritmo de fala, tamanho de frases e CTAs característicos. Quanto mais transcrições, mais fiel ao seu estilo.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem exemplos do seu estilo, o notebook gera roteiros no "estilo padrão de IA" — formal, genérico e não-natural para fala. Suas transcrições são o que diferencia o engine de qualquer outro gerador de texto.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">5-10 transcrições mínimas • Melhores vídeos = melhores exemplos • YouTube auto-transcription • Atualizar periodicamente • Quanto mais, melhor</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">⚙️</span>
+            <div><span class="font-medium">Custom Instructions: template do roteirista</span><span class="text-neutral-500 text-sm ml-2">- Configurando a identidade</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template que define: persona ("você é um roteirista especializado em conteúdo para criadores de tecnologia"), regras ("use SEMPRE linguagem falada, nunca formal"), formato ("máximo 150 palavras, frases de 8 palavras") e CTA característico.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">As Custom Instructions são o "DNA" do engine. Com elas corretas, cada prompt gera roteiro no seu estilo automaticamente — sem precisar descrever seu estilo toda vez.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Persona de roteirista • Linguagem falada obrigatória • Limite de palavras • CTA fixado • Estilo por padrão</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">Master Prompt para roteiros de 60 segundos</span><span class="text-neutral-500 text-sm ml-2">- A fórmula</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template: "Crie um roteiro de 60 segundos sobre [TEMA] para [PÚBLICO] com objetivo de [OBJETIVO]. Hook: [GANCHO]. CTA: [CHAMADA]. Estilo: igual aos meus vídeos anteriores." Preencher os 5 campos e enviar.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Um prompt mal estruturado gera roteiro genérico. O Master Prompt é a fórmula que, combinada com as Custom Instructions e transcrições, produz roteiros publicáveis com mínima edição.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">5 campos obrigatórios • Tema + público + objetivo + hook + CTA • Reutilizável • 3-4 min de geração • Edição mínima</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">✅</span>
+            <div><span class="font-medium">Checklist de qualidade para roteiro viral</span><span class="text-neutral-500 text-sm ml-2">- 6 critérios obrigatórios</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Checklist: ✅ Hook nos 2 primeiros segundos ✅ Uma ideia central (não duas) ✅ Frases de 5-8 palavras ✅ Pergunta para comentários ✅ Pattern interrupt no meio ✅ CTA de 1 frase no final.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Um roteiro gerado pela IA raramente está 100% pronto. O checklist é a peneira de qualidade que identifica o que revisar antes de gravar — economiza tempo de regravação.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">6 critérios verificáveis • Hook obrigatório • 1 ideia por vídeo • Frases curtas • Pattern interrupt • CTA direto</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🪝</span>
+            <div><span class="font-medium">Estrutura Hook-Conteúdo-CTA</span><span class="text-neutral-500 text-sm ml-2">- A fórmula de 3 partes</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Hook (0-3s): frase de impacto que força a pausa no scroll. Conteúdo (3-55s): uma informação útil apresentada em passos claros. CTA (55-60s): uma ação específica e direta ("comenta aqui X", "salva esse vídeo").</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Esta estrutura está comprovada em bilhões de visualizações de Reels e TikToks de sucesso. Internalizá-la permite avaliar qualquer roteiro gerado em segundos e identificar o que precisa ajuste.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">3 partes fixas • Hook = primeiros 3s • Conteúdo = valor único • CTA = ação específica • Estrutura universal para short-form</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-3-3')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-3-3.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 3.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.4</span>
+          <span class="text-xs text-neutral-500">~55 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚡ Prompt Engineering Engine — Sintaxe Oficial</h3>
+        <p class="text-neutral-400 text-sm">Use documentação oficial para gerar prompts com sintaxe e parâmetros corretos.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">Criando o notebook Prompt Engineering Engine</span><span class="text-neutral-500 text-sm ml-2">- Setup inicial</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Criação do notebook "I3NM — Prompt Engineering Engine" focado em gerar prompts com sintaxe e parâmetros exatos de cada modelo de IA para imagem e vídeo, baseado em documentação oficial.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A criação correta define o sucesso do engine. Um notebook bem configurado elimina prompts com parâmetros inventados e garante resultados consistentes ao usar Midjourney, Runway, Kling e outros modelos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Nome padronizado • Foco em sintaxe oficial • Parâmetros verificados • Documentação como base • Elimina alucinação de parâmetros</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📄</span>
+            <div><span class="font-medium">Coletando documentação oficial em PDF</span><span class="text-neutral-500 text-sm ml-2">- Fontes certas</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Documentação oficial de Midjourney, Runway Gen-3, Kling AI, Sora, Stable Diffusion e outros. Disponível nos sites oficiais, Discord, GitHub e releases notes — convertido para PDF e adicionado ao notebook.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem documentação oficial, o modelo "inventa" parâmetros que não existem. Com os PDFs certos, o notebook cita a sintaxe exata — eliminando horas de tentativa e erro ao gerar assets visuais.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">PDFs oficiais • Changelog de cada modelo • Discord announcements • GitHub release notes • Atualizar a cada major release</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">⚙️</span>
+            <div><span class="font-medium">Custom Instructions: template do engenheiro</span><span class="text-neutral-500 text-sm ml-2">- Configurando o especialista</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template que define o engine como "engenheiro de prompt especializado em síntese visual para criadores", com regras para citar sempre o parâmetro exato da documentação, entregar 3 variações e explicar cada parâmetro.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">As Custom Instructions garantem que cada saída seja um prompt utilizável, não uma descrição genérica. Com o template certo, o engine entrega sintaxe correta + variações + explicação em cada resposta.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Persona de engenheiro • Parâmetros da documentação • 3 variações obrigatórias • Explicação de cada parâmetro • Pronto para copiar e colar</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🖼️</span>
+            <div><span class="font-medium">Prompts para imagem: template completo</span><span class="text-neutral-500 text-sm ml-2">- Thumbnails profissionais</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template para gerar prompts de thumbnail: "Crie um prompt para [MODELO DE IMAGEM] de uma thumbnail para vídeo sobre [TEMA]. Estilo: [REFERÊNCIA VISUAL]. Elemento principal: [SUJEITO]. Formato: 16:9."</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Thumbnail é o elemento de maior impacto no CTR do vídeo. Um prompt gerado com documentação oficial produz thumbnails consistentes com parâmetros corretos para cada modelo — sem tentativa e erro.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Template estruturado • Modelo especificado • Estilo de referência • 16:9 obrigatório • Parâmetros do modelo incluídos</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🎬</span>
+            <div><span class="font-medium">Prompts para vídeo: template completo</span><span class="text-neutral-500 text-sm ml-2">- B-roll com IA</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template para gerar prompts de b-roll e cenas: "Crie um prompt para [RUNWAY/KLING/SORA] de [DESCRIÇÃO DA CENA]. Duração: [Xs]. Movimento de câmera: [TIPO]. Estilo cinematográfico: [REFERÊNCIA]."</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">B-roll gerado por IA com prompts incorretos fica distorcido e inutilizável. Com a sintaxe correta da documentação oficial, você gera b-roll utilizável na primeira ou segunda tentativa.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Modelo especificado • Duração definida • Movimento de câmera • Estilo cinematográfico • Parâmetros oficiais incluídos</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">💡</span>
+            <div><span class="font-medium">Exemplos prontos: thumbnail cinematográfica</span><span class="text-neutral-500 text-sm ml-2">- Casos reais</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Exemplos prontos de prompts para thumbnail estilo cinematográfico, b-roll de tecnologia, cenas de apresentador e imagens de produto — todos gerados com documentação oficial e testados em produção.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Exemplos reais economizam horas de tentativa. Você pode adaptar os prompts prontos para seu nicho e ter resultados imediatos — sem partir do zero e sem errar parâmetros básicos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Prompts testados em produção • Adaptáveis por nicho • Thumbnail + b-roll + apresentador • Referência para criar os seus • Começar a partir de exemplos</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-3-4')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-3-4.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 3.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.5</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🎛️ Custom Instructions Avançadas — 10.000 Caracteres</h3>
+        <p class="text-neutral-400 text-sm">Domine os 10.000 caracteres de Custom Instructions para extrair o máximo do NotebookLM.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🔢</span>
+            <div><span class="font-medium">O que mudou em dez/2025</span><span class="text-neutral-500 text-sm ml-2">- Expansão para 10k caracteres</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Em dezembro de 2025, o Google expandiu o limite de Custom Instructions do NotebookLM de 2.000 para 10.000 caracteres — 5x mais espaço para instruções detalhadas, múltiplas regras e personas complexas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Com 10k caracteres, você pode criar instruções tão completas que o notebook praticamente se auto-configura para qualquer tarefa. É a mudança mais impactante para power users desde o lançamento do recurso.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">10.000 chars (dez/2025) • Antes: 2.000 chars • 5x mais espaço • Múltiplas personas • Regras complexas possíveis</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🏗️</span>
+            <div><span class="font-medium">Arquitetura das Custom Instructions</span><span class="text-neutral-500 text-sm ml-2">- 6 seções para alto desempenho</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Estrutura em 6 seções: (1) Persona/Papel, (2) Missão, (3) Restrições — o que NÃO fazer, (4) Formato de resposta, (5) Exemplos concretos de saída, (6) Regras especiais para casos de borda.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Instruções mal estruturadas geram respostas inconsistentes. A arquitetura em 6 seções garante que o notebook entende papel, missão, restrições e formato de uma vez — sem precisar repetir no prompt.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Persona + Missão + Restrições + Formato + Exemplos + Regras especiais • 6 seções fixas • Ordem importa • Consistência garantida</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🧠</span>
+            <div><span class="font-medium">Técnicas avançadas de instrução</span><span class="text-neutral-500 text-sm ml-2">- 5 técnicas profissionais</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">5 técnicas: (1) Chain-of-thought forçado, (2) Formato markdown obrigatório, (3) Verificação de fontes com citação, (4) Idioma fixo em PT-BR, (5) Limite de tamanho por seção. Composição das técnicas multiplica resultados.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Técnicas avançadas transformam o notebook de "assistente genérico" em "especialista configurado". A diferença entre resultados medianos e profissionais está na composição dessas técnicas.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Chain-of-thought • Markdown obrigatório • Citação de fontes • PT-BR fixado • Limite de tamanho • Composição de técnicas</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🎭</span>
+            <div><span class="font-medium">Combinando múltiplas personas</span><span class="text-neutral-500 text-sm ml-2">- Um notebook, múltiplos modos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Com 10k chars, você combina personas condicionalmente: "Se eu perguntar sobre ferramenta → aja como consultor. Se sobre roteiro → aja como roteirista. Se sobre prompt → aja como engenheiro." Um notebook, múltiplos modos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Em vez de trocar entre 3 notebooks, você pode ter um notebook multi-modo para consultas rápidas do dia a dia. Não substitui os engines especializados, mas é eficiente para perguntas pontuais.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Personas condicionais • If/then em linguagem natural • Switching automático • Multi-modo • Não substitui engines especializados</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Testando e otimizando suas instruções</span><span class="text-neutral-500 text-sm ml-2">- Metodologia de melhoria</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Metodologia: (1) Faça 3 perguntas de referência antes de mudar, (2) Modifique uma variável por vez, (3) Teste com as mesmas perguntas, (4) Compare resultados, (5) Mantenha log de versões. Itere até a consistência desejada.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem metodologia, você muda instruções aleatoriamente e não sabe o que causou melhora ou piora. O método de teste garante evolução mensurável e reproduzível das suas Custom Instructions.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">3 perguntas de referência • Uma variável por vez • Log de versões • A/B manual • Métricas de qualidade • Iteração sistemática</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-3-5')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-3-5.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 3.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-purple-400 font-bold">3.6</span>
+          <span class="text-xs text-neutral-500 font-bold text-purple-400">Último Módulo</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🚀 Workflow Completo — Do Zero ao Post em 10 Minutos</h3>
+        <p class="text-neutral-400 text-sm">Do zero ao post em 10 minutos: integre os 3 engines em um fluxo diário eficiente.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🗺️</span>
+            <div><span class="font-medium">Visão geral do workflow completo</span><span class="text-neutral-500 text-sm ml-2">- Os 5 passos do Método I3NM</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">5 passos em sequência: (1) Research Engine → decide stack, (2) Script Engine → gera roteiro 60s, (3) Prompt Engineer → cria prompt thumbnail/b-roll, (4) Produção → grava/gera com as ferramentas, (5) Publicação → usa checklist.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Visualizar o fluxo completo antes de executar reduz erros e aumenta velocidade. Quem entende o sistema executa cada passo com clareza sobre onde está e para onde vai — sem improvisar.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">5 passos em série • Research → Script → Prompt → Produção → Publicação • 10 minutos de setup • Sistema reproduzível • ROI de tempo mensurável</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🔍</span>
+            <div><span class="font-medium">Passo 1: Research Engine → escolha de stack</span><span class="text-neutral-500 text-sm ml-2">- 2 minutos de decisão</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Abrir o Research Engine, usar o prompt template preenchido com nicho, orçamento e hardware, esperar a recomendação de stack e anotar as ferramentas escolhidas. Tempo médio: 1-2 minutos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Definir a stack antes de produzir evita o erro clássico de começar a gravar e descobrir que a ferramenta não serve. Uma decisão de 2 minutos evita horas de retrabalho.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Stack definida antes de produzir • Prompt template preenchido • 1-2 minutos • Anotar ferramentas • Uma stack por projeto</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">✍️</span>
+            <div><span class="font-medium">Passo 2: Script Engine → roteiro 60 segundos</span><span class="text-neutral-500 text-sm ml-2">- 3-4 minutos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Abrir o Script Engine, usar o Master Prompt com tema, objetivo, público e CTA preenchidos, receber o roteiro falado de 60 segundos, verificar com o checklist de qualidade. Tempo: 3-4 minutos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">O roteiro é o produto mais demorado de criar manualmente. Com o Script Engine treinado no seu estilo, você reduz de 30-60 minutos para 3-4 minutos sem perder autenticidade.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Master Prompt preenchido • 3-4 minutos • Checklist de qualidade • Frases para fala • Hook nos 2s • CTA no final</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">Passo 3: Prompt Engineer → thumbnail e b-roll</span><span class="text-neutral-500 text-sm ml-2">- 3-4 minutos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Abrir o Prompt Engineering Engine, usar o template de imagem para thumbnail e o template de vídeo para b-roll. Receber prompt final + 2 variações + parâmetros explicados. Tempo: 3-4 minutos.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Thumbnail e b-roll com prompts profissionais têm resultado visualmente superior. O Prompt Engine entrega prompts prontos para copiar e colar sem precisar aprender a sintaxe de cada ferramenta individualmente.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Template de imagem • Template de vídeo • Prompt + 2 variações • 3-4 minutos • Copiar e colar • Sintaxe correta garantida</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">⏰</span>
+            <div><span class="font-medium">Rotina diária de 10 minutos</span><span class="text-neutral-500 text-sm ml-2">- O hábito que sustenta tudo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Distribuição diária: (1min) Research → "o que mudou no meu nicho hoje?". (4min) Script → roteiro 60s do dia. (4min) Prompt → thumbnail + b-roll. (restante) Gravar/gerar e postar. Total: 10 min de "cabeça".</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A rotina diária é o que transforma o método em hábito. Sem estrutura, você usa o NotebookLM aleatoriamente. Com os 10 minutos, você mantém consistência de publicação sem burnout criativo.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">10 min de setup • 1min Research + 4min Script + 4min Prompt • Diário • Sem burnout • Consistência como resultado</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">✅</span>
+            <div><span class="font-medium">Checklist de publicação para Reels/TikTok</span><span class="text-neutral-500 text-sm ml-2">- 7 itens obrigatórios</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-purple-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">7 itens: ✅ Gancho forte nos 2s iniciais ✅ Legendas grandes/curtas (2-4 palavras por linha) ✅ Cortes a cada 1-2s ✅ Pergunta no final para comentários ✅ CTA em 1 frase ✅ Thumbnail chamativa ✅ Primeiro comentário com palavras-chave.</p></div>
+              <div><span class="text-purple-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">O checklist separa criadores amadores de profissionais. Um vídeo bom com publicação ruim performa mal. O checklist garante que você não pule etapas no momento de pressão.</p></div>
+              <div><span class="text-purple-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">7 itens verificáveis • Gancho 2s • Legendas curtas • Pergunta final • CTA direto • Thumbnail • Primeiro comentário</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-3-6')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-3-6.html" class="px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
     </div>
 
     <!-- NAVEGAÇÃO -->
@@ -416,7 +777,7 @@
       <a href="modulo-3-1.html" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-colors">Começar Trilha 3 →</a>
     </div>
 
-  </main>
+  </div>
 
   <!-- FOOTER -->
   <footer class="border-t border-dark-600 py-8">
@@ -426,58 +787,58 @@
   </footer>
 
   <!-- MODAIS -->
-  <div id="modal-31" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeModal('modal-31')">
-    <div class="bg-dark-800 rounded-2xl w-full max-w-5xl h-[80vh] overflow-hidden" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between p-4 border-b border-dark-600">
-        <span class="font-bold text-purple-400">Módulo 3.1 — Método I3NM: Os 3 Engines</span>
-        <button onclick="closeModal('modal-31')" class="text-neutral-400 hover:text-neutral-100 text-xl px-2">✕</button>
+  <div id="modal-3-1" class="modal hidden fixed inset-0 z-50 items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.1</span><span class="font-semibold">Método I3NM — Os 3 Engines</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
       </div>
-      <iframe src="modulo-3-1.html" class="w-full h-[calc(100%-60px)]" frameborder="0"></iframe>
+      <iframe src="modulo-3-1.html" class="flex-1 w-full rounded-b-xl"></iframe>
     </div>
   </div>
-  <div id="modal-32" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeModal('modal-32')">
-    <div class="bg-dark-800 rounded-2xl w-full max-w-5xl h-[80vh] overflow-hidden" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between p-4 border-b border-dark-600">
-        <span class="font-bold text-purple-400">Módulo 3.2 — Research Engine: Pesquisa Sem Hype</span>
-        <button onclick="closeModal('modal-32')" class="text-neutral-400 hover:text-neutral-100 text-xl px-2">✕</button>
+  <div id="modal-3-2" class="modal hidden fixed inset-0 z-50 items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.2</span><span class="font-semibold">Research Engine — Pesquisa Sem Hype</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
       </div>
-      <iframe src="modulo-3-2.html" class="w-full h-[calc(100%-60px)]" frameborder="0"></iframe>
+      <iframe src="modulo-3-2.html" class="flex-1 w-full rounded-b-xl"></iframe>
     </div>
   </div>
-  <div id="modal-33" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeModal('modal-33')">
-    <div class="bg-dark-800 rounded-2xl w-full max-w-5xl h-[80vh] overflow-hidden" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between p-4 border-b border-dark-600">
-        <span class="font-bold text-purple-400">Módulo 3.3 — Script Engine: Roteiros com Sua Identidade</span>
-        <button onclick="closeModal('modal-33')" class="text-neutral-400 hover:text-neutral-100 text-xl px-2">✕</button>
+  <div id="modal-3-3" class="modal hidden fixed inset-0 z-50 items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.3</span><span class="font-semibold">Script Engine — Roteiros com Sua Identidade</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
       </div>
-      <iframe src="modulo-3-3.html" class="w-full h-[calc(100%-60px)]" frameborder="0"></iframe>
+      <iframe src="modulo-3-3.html" class="flex-1 w-full rounded-b-xl"></iframe>
     </div>
   </div>
-  <div id="modal-34" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeModal('modal-34')">
-    <div class="bg-dark-800 rounded-2xl w-full max-w-5xl h-[80vh] overflow-hidden" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between p-4 border-b border-dark-600">
-        <span class="font-bold text-purple-400">Módulo 3.4 — Prompt Engineering Engine</span>
-        <button onclick="closeModal('modal-34')" class="text-neutral-400 hover:text-neutral-100 text-xl px-2">✕</button>
+  <div id="modal-3-4" class="modal hidden fixed inset-0 z-50 items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.4</span><span class="font-semibold">Prompt Engineering Engine — Sintaxe Oficial</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
       </div>
-      <iframe src="modulo-3-4.html" class="w-full h-[calc(100%-60px)]" frameborder="0"></iframe>
+      <iframe src="modulo-3-4.html" class="flex-1 w-full rounded-b-xl"></iframe>
     </div>
   </div>
-  <div id="modal-35" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeModal('modal-35')">
-    <div class="bg-dark-800 rounded-2xl w-full max-w-5xl h-[80vh] overflow-hidden" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between p-4 border-b border-dark-600">
-        <span class="font-bold text-purple-400">Módulo 3.5 — Custom Instructions Avançadas</span>
-        <button onclick="closeModal('modal-35')" class="text-neutral-400 hover:text-neutral-100 text-xl px-2">✕</button>
+  <div id="modal-3-5" class="modal hidden fixed inset-0 z-50 items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.5</span><span class="font-semibold">Custom Instructions Avançadas</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
       </div>
-      <iframe src="modulo-3-5.html" class="w-full h-[calc(100%-60px)]" frameborder="0"></iframe>
+      <iframe src="modulo-3-5.html" class="flex-1 w-full rounded-b-xl"></iframe>
     </div>
   </div>
-  <div id="modal-36" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeModal('modal-36')">
-    <div class="bg-dark-800 rounded-2xl w-full max-w-5xl h-[80vh] overflow-hidden" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between p-4 border-b border-dark-600">
-        <span class="font-bold text-purple-400">Módulo 3.6 — Workflow Completo: Do Zero ao Post</span>
-        <button onclick="closeModal('modal-36')" class="text-neutral-400 hover:text-neutral-100 text-xl px-2">✕</button>
+  <div id="modal-3-6" class="modal hidden fixed inset-0 z-50 items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-purple-400 font-bold">3.6</span><span class="font-semibold">Workflow Completo — Do Zero ao Post</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
       </div>
-      <iframe src="modulo-3-6.html" class="w-full h-[calc(100%-60px)]" frameborder="0"></iframe>
+      <iframe src="modulo-3-6.html" class="flex-1 w-full rounded-b-xl"></iframe>
     </div>
   </div>
 
@@ -498,13 +859,31 @@
       html.classList.toggle('dark');
       localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
     });
-    function toggleTopic(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle('hidden');
+
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) exp.classList.remove('active');
+      });
+      explanation.classList.toggle('active');
     }
-    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { document.querySelectorAll('[id^="modal-"]').forEach(m => m.classList.add('hidden')); } });
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      document.querySelectorAll('.modal').forEach(modal => modal.classList.add('hidden'));
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
