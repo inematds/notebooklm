@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo 3.4 — Prompt Engineering Engine | INEMA.CLUB</title>
+  <title>3.4 Prompt Engineering Engine: Sintaxe Oficial | NotebookLM Completo</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
     .dark body { background-color: #111827; }
@@ -26,332 +30,422 @@
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-14">
-        <div class="flex items-center space-x-4">
-          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
-            <span class="text-2xl">📓</span>
-            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
-          </a>
-          <span class="text-neutral-600">|</span>
-          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
-        </div>
-        <div class="flex items-center space-x-1 sm:space-x-2">
-          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
-            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
-          </a>
-          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
-            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
-          </a>
-          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
-            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
-          </a>
-          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
-            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-          </button>
-        </div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
       </div>
-    </div>
-  </nav>
-
-  <!-- HEADER -->
-  <div class="bg-gradient-to-r from-purple-900/30 via-dark-800 to-violet-900/20 border-b border-purple-500/20 py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
-        <a href="../../index.html" class="hover:text-neutral-200">Início</a>
-        <span>›</span>
-        <a href="index.html" class="hover:text-neutral-200 text-purple-400">Trilha 3</a>
-        <span>›</span>
-        <span>Módulo 3.4</span>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+          <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
       </div>
-      <div class="flex items-center space-x-3 mb-4">
-        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-bold rounded-full border border-purple-500/30">MÓDULO 3.4</span>
-        <span class="px-3 py-1 bg-dark-700 text-neutral-400 text-xs rounded-full">Avançado</span>
-        <span class="px-3 py-1 bg-dark-700 text-neutral-400 text-xs rounded-full">6 tópicos</span>
-        <span class="px-3 py-1 bg-dark-700 text-neutral-400 text-xs rounded-full">55 min</span>
-        <span class="px-3 py-1 bg-dark-700 text-neutral-400 text-xs rounded-full">Prático</span>
-      </div>
-      <h1 class="text-3xl font-black mb-2">⚡ <span class="text-purple-400">Prompt Engineering Engine — Sintaxe Oficial</span></h1>
-      <p class="text-neutral-300 text-lg">Configure o terceiro engine do Método INEMA para gerar prompts com sintaxe e parâmetros exatos de cada modelo de IA.</p>
     </div>
   </div>
+</nav>
 
-  <!-- CONTENT -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="space-y-4">
-
-      <!-- Tópico 1 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(1)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">1</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Criando o notebook Prompt Engineering Engine</h3>
-            <p class="text-neutral-400 text-sm mt-1">Configuração inicial do terceiro notebook do Método INEMA</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic1" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Passo a passo para criar o terceiro notebook do Método INEMA. Nome padronizado "INEMA — Prompt Engineering Engine". Foco: gerar prompts com sintaxe e parâmetros exatos de cada modelo de IA (imagem e vídeo).</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Prompts genéricos desperdiçam créditos e geram resultados medíocres. Com documentação oficial carregada, você gera prompts que o modelo entende de verdade, economizando dinheiro e tempo.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">📝</div><div class="text-xs font-semibold">Sintaxe oficial</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">⚙️</div><div class="text-xs font-semibold">Parâmetros corretos</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">📚</div><div class="text-xs font-semibold">Documentação carregada</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🚫</div><div class="text-xs font-semibold">Sem parâmetros inventados</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🎯</div><div class="text-xs font-semibold">Modelo específico</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">✏️</div><div class="text-xs font-semibold">3 variações por prompt</div></div>
-            </div>
-          </div>
-        </div>
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-purple-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
+      <span>/</span>
+      <span class="text-purple-400">Módulo 3.4</span>
+    </div>
+    <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.4</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ Prompt Engineering Engine — Sintaxe Oficial</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Configure o terceiro engine do Método INEMA para gerar prompts com sintaxe e parâmetros exatos de cada modelo de IA — imagem e vídeo.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">6</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
       </div>
-
-      <!-- Tópico 2 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(2)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">2</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Coletando documentação oficial em PDF</h3>
-            <p class="text-neutral-400 text-sm mt-1">Como salvar e carregar as referências oficiais de cada modelo de IA</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic2" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Para cada modelo (Midjourney, Runway, Kling AI, Stable Diffusion, DALL-E, Sora), buscar a documentação oficial, salvar em PDF (Ctrl+P &gt; Salvar como PDF) e fazer upload no NotebookLM. PDF "congela" a referência mesmo quando o site muda.</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Links quebram. Documentação online muda. PDF garante que o notebook sempre terá acesso à sintaxe correta que você testou. É a única forma de garantir que o Prompt Engine não invente parâmetros.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">📄</div><div class="text-xs font-semibold">PDF como fonte primária</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🖨️</div><div class="text-xs font-semibold">Ctrl+P para salvar</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">⬆️</div><div class="text-xs font-semibold">Upload no NotebookLM</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🔄</div><div class="text-xs font-semibold">Atualizar quando muda</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🎨</div><div class="text-xs font-semibold">Midjourney</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🎬</div><div class="text-xs font-semibold">Runway</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🤖</div><div class="text-xs font-semibold">Kling AI</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🖼️</div><div class="text-xs font-semibold">Stable Diffusion</div></div>
-            </div>
-          </div>
-        </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">55</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
       </div>
-
-      <!-- Tópico 3 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(3)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">3</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Custom Instructions: template do engenheiro de prompts</h3>
-            <p class="text-neutral-400 text-sm mt-1">Template completo para configurar o Prompt Engine como especialista restrito</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic3" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Template de Custom Instructions: "Aja como engenheiro sênior de prompt. Conhecimento estritamente limitado às documentações carregadas. Use apenas parâmetros que existirem nas fontes. Se não encontrar, diga 'não encontrado na documentação'. Formato: 1) Prompt final 2) Variação realista 3) Variação cinematográfica 4) Parâmetros usados + por quê 5) Checklist de uso."</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Sem essa instrução, o NotebookLM pode misturar parâmetros de modelos diferentes ou inventar sintaxe. Com ela, você tem um especialista que só fala o que conhece com certeza.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🔒</div><div class="text-xs font-semibold">Limitação explícita</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">📋</div><div class="text-xs font-semibold">Formato estruturado</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">3️⃣</div><div class="text-xs font-semibold">3 variações obrigatórias</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🧪</div><div class="text-xs font-semibold">Parâmetros justificados</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">✅</div><div class="text-xs font-semibold">Checklist de uso</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🚫</div><div class="text-xs font-semibold">Não inventa</div></div>
-            </div>
-          </div>
-        </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
       </div>
-
-      <!-- Tópico 4 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(4)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">4</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Prompts para imagem: template completo</h3>
-            <p class="text-neutral-400 text-sm mt-1">11 campos obrigatórios para gerar prompts de imagem profissionais</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic4" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Template padronizado para geração de prompts de imagem: Modelo/ferramenta, Objetivo (thumbnail/capa/anúncio), Assunto principal, Estilo (realista/cinematic/anime), Ambiente, Iluminação, Câmera (ângulo/lente/enquadramento), Emoção, Texto na imagem (sim/não), Restrições, Formato (9:16/16:9/1:1).</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Um template padronizado elimina o "eu não sei por onde começar" e garante que você fornece ao Prompt Engine todas as variáveis necessárias para gerar um prompt profissional.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">1️⃣</div><div class="text-xs font-semibold">11 campos do template</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🎯</div><div class="text-xs font-semibold">Objetivo definido</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">📷</div><div class="text-xs font-semibold">Câmera descrita</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🚫</div><div class="text-xs font-semibold">Restrições explícitas</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">📐</div><div class="text-xs font-semibold">Formato especificado</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🔁</div><div class="text-xs font-semibold">Reproduzível</div></div>
-            </div>
-          </div>
-        </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Pr</div>
+        <div class="text-xs text-neutral-400">Prático</div>
       </div>
+    </div>
+  </div>
+</header>
 
-      <!-- Tópico 5 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(5)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">5</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Prompts para vídeo: template completo</h3>
-            <p class="text-neutral-400 text-sm mt-1">Template específico por modelo para geração de vídeos com IA</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic5" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Template para prompts de vídeo: Modelo/ferramenta, Duração desejada, Estilo, Cena em 1 frase, Movimento de câmera, Movimento do personagem/objeto, Ambiente/luz, Qualidade desejada, Formato (9:16/16:9), Restrições. Instrução obrigatória: "Explique quais parâmetros foram usados e por quê."</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Vídeo gerado por IA tem parâmetros muito específicos por modelo. Runway Gen-3 é diferente de Kling AI que é diferente de Sora. O template garante que você especifica tudo que o modelo precisa para gerar exatamente o que você quer.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🎥</div><div class="text-xs font-semibold">Movimento de câmera</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🏃</div><div class="text-xs font-semibold">Movimento de objeto</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">⏱️</div><div class="text-xs font-semibold">Duração</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">💎</div><div class="text-xs font-semibold">Qualidade</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🤖</div><div class="text-xs font-semibold">Por modelo</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">❓</div><div class="text-xs font-semibold">Explique os parâmetros</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-      <!-- Tópico 6 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(6)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">6</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Exemplos prontos: thumbnail e b-roll</h3>
-            <p class="text-neutral-400 text-sm mt-1">3 exemplos reais do Prompt Engine em ação para remover o bloqueio criativo</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic6" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">3 exemplos prontos de uso do Prompt Engine: (1) Thumbnail cinematográfica "cérebro de IA futurista, contraste forte, fundo minimalista, 16:9", (2) B-roll "câmera drone descendo sobre cidade futurista, noite, neon, 9:16, 8 segundos", (3) Avatar "pessoa falando, fundo clean, iluminação de estúdio, 9:16". Cada exemplo com o prompt final e as variações.</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Ver exemplos reais remove o bloqueio criativo e demonstra como o template se transforma em um prompt profissional pronto para usar nos modelos de IA.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🖼️</div><div class="text-xs font-semibold">Thumbnail</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🎬</div><div class="text-xs font-semibold">B-roll</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🧑</div><div class="text-xs font-semibold">Avatar</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">✍️</div><div class="text-xs font-semibold">Prompt final</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">2️⃣</div><div class="text-xs font-semibold">2 variações</div></div>
-              <div class="bg-dark-800 p-2 rounded-lg text-center"><div class="text-lg">🔍</div><div class="text-xs font-semibold">Parâmetros explicados</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">📝 Criando o notebook Prompt Engineering Engine</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Passo a passo para criar o terceiro notebook do Método INEMA. Nome padronizado "INEMA — Prompt Engineering Engine". Foco: gerar prompts com sintaxe e parâmetros exatos de cada modelo de IA (imagem e vídeo). A criação correta define o sucesso do engine — um notebook bem configurado elimina prompts com parâmetros inventados e garante resultados consistentes.</p>
 
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Prompts genéricos desperdiçam créditos e geram resultados medíocres. Com documentação oficial carregada, você gera prompts que o modelo entende de verdade, economizando dinheiro e tempo. Sem o Prompt Engine configurado corretamente, você vai inventar parâmetros que simplesmente não existem — e perder horas gerando imagens e vídeos que não correspondem ao que você pediu.</p>
     </div>
 
-    <!-- RESUMO FINAL -->
-    <div class="mt-12 p-6 bg-dark-800 rounded-2xl border border-purple-500/30">
-      <h2 class="text-2xl font-black mb-4 text-purple-400">✅ O que você aprendeu neste módulo</h2>
-      <div class="space-y-3">
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-          <p class="text-neutral-300 text-sm">Como criar e nomear o notebook Prompt Engineering Engine dentro do Método INEMA</p>
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📝</div>
+          <div class="text-sm font-semibold">Sintaxe oficial</div>
+          <div class="text-xs text-neutral-400">Parâmetros reais</div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-          <p class="text-neutral-300 text-sm">Como coletar e salvar documentação oficial em PDF para cada modelo de IA (Midjourney, Runway, Kling AI e outros)</p>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⚙️</div>
+          <div class="text-sm font-semibold">Parâmetros corretos</div>
+          <div class="text-xs text-neutral-400">Da documentação</div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-          <p class="text-neutral-300 text-sm">Como configurar as Custom Instructions para limitar o engine à documentação carregada e evitar parâmetros inventados</p>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📚</div>
+          <div class="text-sm font-semibold">Documentação carregada</div>
+          <div class="text-xs text-neutral-400">PDFs por modelo</div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-          <p class="text-neutral-300 text-sm">Como usar o template de 11 campos para gerar prompts de imagem profissionais com objetivo, câmera e formato definidos</p>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🚫</div>
+          <div class="text-sm font-semibold">Sem inventar</div>
+          <div class="text-xs text-neutral-400">Zero parâmetros falsos</div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-          <p class="text-neutral-300 text-sm">Como usar o template de vídeo com movimento de câmera, duração e qualidade especificados por modelo</p>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎯</div>
+          <div class="text-sm font-semibold">Modelo específico</div>
+          <div class="text-xs text-neutral-400">Midjourney, Runway...</div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
-          <p class="text-neutral-300 text-sm">Como aplicar os 3 exemplos prontos (thumbnail, b-roll e avatar) para eliminar o bloqueio criativo e produzir prompts imediatamente</p>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">✏️</div>
+          <div class="text-sm font-semibold">3 variações por prompt</div>
+          <div class="text-xs text-neutral-400">Base + Realista + Cinema</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- BOTÕES DE NAVEGAÇÃO -->
-    <div class="flex justify-start space-x-3 mt-12">
-      <a href="modulo-3-3.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 font-semibold rounded-xl transition-colors">← Módulo Anterior</a>
-      <a href="modulo-3-5.html" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-colors">Próximo Módulo →</a>
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">📄 Coletando documentação oficial em PDF</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Para cada modelo (Midjourney, Runway, Kling AI, Stable Diffusion, DALL-E, Sora), buscar a documentação oficial, salvar em PDF (Ctrl+P → Salvar como PDF) e fazer upload no NotebookLM. PDF "congela" a referência mesmo quando o site muda — é a única forma de garantir que o Prompt Engine sempre terá acesso à sintaxe correta que você testou.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Links quebram. Documentação online muda. PDF garante que o notebook sempre terá acesso à sintaxe correta que você testou. É a única forma de garantir que o Prompt Engine não invente parâmetros. Quando a documentação de um modelo é atualizada, você salva o novo PDF, remove o antigo, e o engine continua preciso.</p>
     </div>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-dark-600 py-8 mt-16">
-    <div class="max-w-6xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Curso NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📄</div>
+          <div class="text-sm font-semibold">PDF como fonte primária</div>
+          <div class="text-xs text-neutral-400">Congela a referência</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🖨️</div>
+          <div class="text-sm font-semibold">Ctrl+P para salvar</div>
+          <div class="text-xs text-neutral-400">Salvar como PDF</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⬆️</div>
+          <div class="text-sm font-semibold">Upload no NotebookLM</div>
+          <div class="text-xs text-neutral-400">Por modelo de IA</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔄</div>
+          <div class="text-sm font-semibold">Atualizar quando muda</div>
+          <div class="text-xs text-neutral-400">Substituir PDF antigo</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎨</div>
+          <div class="text-sm font-semibold">Midjourney</div>
+          <div class="text-xs text-neutral-400">Imagem estilo artístico</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎬</div>
+          <div class="text-sm font-semibold">Runway / Kling AI</div>
+          <div class="text-xs text-neutral-400">Geração de vídeo</div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-    const html = document.documentElement;
-    if (localStorage.getItem('theme') === 'light') {
-      themeToggleDarkIcon.classList.remove('hidden');
-      html.classList.remove('dark');
-    } else {
-      themeToggleLightIcon.classList.remove('hidden');
-    }
-    themeToggle.addEventListener('click', () => {
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
-    function toggleTopic(n) {
-      const el = document.getElementById('topic' + n);
-      el.classList.toggle('hidden');
-    }
-  </script>
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">🔒 Custom Instructions: template do engenheiro de prompts</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Template de Custom Instructions: "Aja como engenheiro sênior de prompt. Conhecimento estritamente limitado às documentações carregadas. Use apenas parâmetros que existirem nas fontes. Se não encontrar, diga 'não encontrado na documentação'. Formato: 1) Prompt final 2) Variação realista 3) Variação cinematográfica 4) Parâmetros usados + por quê 5) Checklist de uso."</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Sem essa instrução, o NotebookLM pode misturar parâmetros de modelos diferentes ou inventar sintaxe. Com ela, você tem um especialista que só fala o que conhece com certeza. A limitação explícita ("se não encontrar, diga que não encontrou") é o que transforma o engine em uma ferramenta confiável — ele admite quando não sabe, em vez de inventar.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔒</div>
+          <div class="text-sm font-semibold">Limitação explícita</div>
+          <div class="text-xs text-neutral-400">Só fontes carregadas</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📋</div>
+          <div class="text-sm font-semibold">Formato estruturado</div>
+          <div class="text-xs text-neutral-400">5 seções obrigatórias</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">3️⃣</div>
+          <div class="text-sm font-semibold">3 variações obrigatórias</div>
+          <div class="text-xs text-neutral-400">Base, realista, cinema</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🧪</div>
+          <div class="text-sm font-semibold">Parâmetros justificados</div>
+          <div class="text-xs text-neutral-400">Explica o porquê</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">✅</div>
+          <div class="text-sm font-semibold">Checklist de uso</div>
+          <div class="text-xs text-neutral-400">Antes de executar</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🚫</div>
+          <div class="text-sm font-semibold">Não inventa</div>
+          <div class="text-xs text-neutral-400">Admite quando não sabe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">🖼️ Prompts para imagem: template completo</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Template padronizado para geração de prompts de imagem com 11 campos: Modelo/ferramenta, Objetivo (thumbnail/capa/anúncio), Assunto principal, Estilo (realista/cinematic/anime), Ambiente, Iluminação, Câmera (ângulo/lente/enquadramento), Emoção, Texto na imagem (sim/não), Restrições, Formato (9:16/16:9/1:1). Um template padronizado elimina o "eu não sei por onde começar" e garante que você fornece ao Prompt Engine todas as variáveis necessárias para gerar um prompt profissional.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Sem o template de 11 campos, você esquece variáveis cruciais — formato, iluminação, câmera — que fazem toda a diferença no resultado visual. Com o template preenchido, o Prompt Engine recebe contexto suficiente para gerar um prompt completo em vez de um esboço vago. A diferença entre um thumbnail profissional e um resultado genérico começa no template de input.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">1️⃣</div>
+          <div class="text-sm font-semibold">11 campos do template</div>
+          <div class="text-xs text-neutral-400">Contexto completo</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎯</div>
+          <div class="text-sm font-semibold">Objetivo definido</div>
+          <div class="text-xs text-neutral-400">Thumbnail, capa, anúncio</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📷</div>
+          <div class="text-sm font-semibold">Câmera descrita</div>
+          <div class="text-xs text-neutral-400">Ângulo, lente, enquadramento</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🚫</div>
+          <div class="text-sm font-semibold">Restrições explícitas</div>
+          <div class="text-xs text-neutral-400">O que evitar</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📐</div>
+          <div class="text-sm font-semibold">Formato especificado</div>
+          <div class="text-xs text-neutral-400">9:16 / 16:9 / 1:1</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔁</div>
+          <div class="text-sm font-semibold">Reproduzível</div>
+          <div class="text-xs text-neutral-400">Reutilizar por projeto</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">🎥 Prompts para vídeo: template completo</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Template para prompts de vídeo: Modelo/ferramenta, Duração desejada, Estilo, Cena em 1 frase, Movimento de câmera, Movimento do personagem/objeto, Ambiente/luz, Qualidade desejada, Formato (9:16/16:9), Restrições. Instrução obrigatória: "Explique quais parâmetros foram usados e por quê." Vídeo gerado por IA tem parâmetros muito específicos por modelo — Runway Gen-3 é diferente de Kling AI que é diferente de Sora.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">O template garante que você especifica tudo que o modelo precisa para gerar exatamente o que você quer — movimento de câmera, duração, qualidade. Sem o template de vídeo, você gera resultados aleatórios. Com ele, você tem controle sobre cada elemento visual, o que reduz drasticamente o número de tentativas necessárias para conseguir o b-roll ou cena ideal.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎥</div>
+          <div class="text-sm font-semibold">Movimento de câmera</div>
+          <div class="text-xs text-neutral-400">Pan, tilt, zoom, drone</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🏃</div>
+          <div class="text-sm font-semibold">Movimento de objeto</div>
+          <div class="text-xs text-neutral-400">Lento, rápido, suave</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⏱️</div>
+          <div class="text-sm font-semibold">Duração</div>
+          <div class="text-xs text-neutral-400">4s, 8s, 16s por modelo</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">💎</div>
+          <div class="text-sm font-semibold">Qualidade</div>
+          <div class="text-xs text-neutral-400">HD, 4K, cinemático</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🤖</div>
+          <div class="text-sm font-semibold">Por modelo</div>
+          <div class="text-xs text-neutral-400">Sintaxe diferente</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">❓</div>
+          <div class="text-sm font-semibold">Explique os parâmetros</div>
+          <div class="text-xs text-neutral-400">Transparência total</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">🔍 Exemplos prontos: thumbnail e b-roll</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">3 exemplos prontos de uso do Prompt Engine: (1) Thumbnail cinematográfica "cérebro de IA futurista, contraste forte, fundo minimalista, 16:9", (2) B-roll "câmera drone descendo sobre cidade futurista, noite, neon, 9:16, 8 segundos", (3) Avatar "pessoa falando, fundo clean, iluminação de estúdio, 9:16". Cada exemplo com o prompt final e as variações. Ver exemplos reais remove o bloqueio criativo e demonstra como o template se transforma em um prompt profissional pronto para usar nos modelos de IA.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Ver exemplos reais remove o bloqueio criativo e demonstra como o template se transforma em um prompt profissional. Os 3 exemplos cobrem os casos de uso mais comuns para criadores de vídeo — thumbnail, b-roll e avatar. Depois de ver os exemplos, você entende o padrão e consegue criar os seus próprios em minutos, sem precisar reinventar a estrutura toda vez.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🖼️</div>
+          <div class="text-sm font-semibold">Thumbnail</div>
+          <div class="text-xs text-neutral-400">Cinematic, contraste forte</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎬</div>
+          <div class="text-sm font-semibold">B-roll</div>
+          <div class="text-xs text-neutral-400">Drone, cidade futurista</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🧑</div>
+          <div class="text-sm font-semibold">Avatar</div>
+          <div class="text-xs text-neutral-400">Pessoa falando, estúdio</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">✍️</div>
+          <div class="text-sm font-semibold">Prompt final</div>
+          <div class="text-xs text-neutral-400">Pronto para copiar</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">2️⃣</div>
+          <div class="text-sm font-semibold">2 variações</div>
+          <div class="text-xs text-neutral-400">Por exemplo pronto</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔍</div>
+          <div class="text-sm font-semibold">Parâmetros explicados</div>
+          <div class="text-xs text-neutral-400">Entenda o porquê</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMO -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 3.4</h2>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como criar e nomear o notebook Prompt Engineering Engine dentro do Método INEMA</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como coletar e salvar documentação oficial em PDF para cada modelo de IA (Midjourney, Runway, Kling AI e outros)</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como configurar as Custom Instructions para limitar o engine à documentação carregada e evitar parâmetros inventados</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como usar o template de 11 campos para gerar prompts de imagem profissionais com objetivo, câmera e formato definidos</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como usar o template de vídeo com movimento de câmera, duração e qualidade especificados por modelo</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como aplicar os 3 exemplos prontos (thumbnail, b-roll e avatar) para eliminar o bloqueio criativo</span></li>
+      </ul>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-purple-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">3.5 — Custom Instructions Avançadas: 10.000 Caracteres</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-3-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 3.3</a>
+        <a href="modulo-3-5.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Módulo 3.5: Custom Instructions →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
 </body>
 </html>

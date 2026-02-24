@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo 3.3 — Script Engine: Roteiros com Sua Identidade | INEMA.CLUB</title>
+  <title>3.3 Script Engine: Roteiros com Sua Identidade | NotebookLM Completo</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
     .dark body { background-color: #111827; }
@@ -26,490 +30,423 @@
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-14">
-        <div class="flex items-center space-x-4">
-          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
-            <span class="text-2xl">📓</span>
-            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
-          </a>
-          <span class="text-neutral-600">|</span>
-          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
-        </div>
-        <div class="flex items-center space-x-1 sm:space-x-2">
-          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
-            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
-          </a>
-          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
-            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
-          </a>
-          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
-            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
-          </a>
-          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
-            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-          </button>
-        </div>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
       </div>
-    </div>
-  </nav>
-
-  <!-- HEADER -->
-  <div class="bg-gradient-to-r from-purple-900/30 via-dark-800 to-violet-900/20 border-b border-purple-500/20 py-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
-        <a href="../../index.html" class="hover:text-neutral-200">Início</a>
-        <span>›</span>
-        <a href="index.html" class="hover:text-neutral-200 text-purple-400">Trilha 3</a>
-        <span>›</span>
-        <span class="text-neutral-300">Módulo 3.3</span>
-      </div>
-      <div class="flex items-center space-x-3 mb-4">
-        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-bold rounded-full border border-purple-500/30">MÓDULO 3.3</span>
-        <span class="px-3 py-1 bg-dark-700 text-neutral-400 text-xs rounded-full">Avançado</span>
-        <span class="px-3 py-1 bg-dark-700 text-neutral-400 text-xs rounded-full">Prático</span>
-      </div>
-      <h1 class="text-4xl font-black mb-3">Script Engine — <span class="text-purple-400">Roteiros com Sua Identidade</span></h1>
-      <p class="text-neutral-300 text-lg mb-6">Monte um notebook que escreve roteiros no seu tom de voz, com sua cadência e seus ganchos — sem parecer gerado por IA. Conteúdo que soa 100% você, produzido em minutos.</p>
-      <div class="grid grid-cols-4 gap-4">
-        <div class="bg-dark-800 rounded-xl p-4 border border-dark-600 text-center">
-          <div class="text-2xl font-black text-purple-400">6</div>
-          <div class="text-xs text-neutral-400">Tópicos</div>
-        </div>
-        <div class="bg-dark-800 rounded-xl p-4 border border-dark-600 text-center">
-          <div class="text-2xl font-black text-purple-400">50</div>
-          <div class="text-xs text-neutral-400">Minutos</div>
-        </div>
-        <div class="bg-dark-800 rounded-xl p-4 border border-dark-600 text-center">
-          <div class="text-2xl font-black text-purple-400">✍️</div>
-          <div class="text-xs text-neutral-400">Script</div>
-        </div>
-        <div class="bg-dark-800 rounded-xl p-4 border border-dark-600 text-center">
-          <div class="text-2xl font-black text-purple-400">🎯</div>
-          <div class="text-xs text-neutral-400">Prático</div>
-        </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+          <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
       </div>
     </div>
   </div>
+</nav>
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="space-y-4">
-
-      <!-- TÓPICO 1 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(1)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">1</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Criando o notebook Script Engine</h3>
-            <p class="text-neutral-400 text-sm mt-1">Configuração inicial do notebook dedicado a roteiros — nome, estrutura e primeiras fontes</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic1" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">O Script Engine é um notebook separado do Research Engine, criado exclusivamente para produção de roteiros. Nome padrão: "INEMA — Script Engine". As primeiras fontes são os seus próprios roteiros e conteúdos: transcrições de vídeos publicados, posts que performaram bem, newsletters que o público respondeu. Quanto mais exemplos do seu estilo você adicionar, mais precisa será a clonagem da sua voz. O setup inicial leva 30-45 minutos e precisa acontecer uma única vez.</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Criadores que tentam usar um notebook genérico para roteiros recebem textos com "tom de IA" — neutros, sem personalidade, sem os bordões e cadências que o público reconhece. Um notebook dedicado, treinado no seu próprio conteúdo, produz roteiros que parecem ter sido escritos por você em 5 minutos. A separação entre Research e Script Engine é a diferença entre usar o NotebookLM como ferramenta e como extensão da sua identidade criativa.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">➕</div>
-                <div class="text-sm font-semibold">Notebook Dedicado</div>
-                <div class="text-xs text-neutral-400">Separado do Research</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🏷️</div>
-                <div class="text-sm font-semibold">Nome Padrão</div>
-                <div class="text-xs text-neutral-400">INEMA — Script Engine</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📄</div>
-                <div class="text-sm font-semibold">Seu Conteúdo</div>
-                <div class="text-xs text-neutral-400">Vídeos, posts, emails</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🎙️</div>
-                <div class="text-sm font-semibold">Transcrições</div>
-                <div class="text-xs text-neutral-400">Vídeos publicados</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">⚙️</div>
-                <div class="text-sm font-semibold">Custom Instructions</div>
-                <div class="text-xs text-neutral-400">Configuradas na criação</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🔁</div>
-                <div class="text-sm font-semibold">Setup Único</div>
-                <div class="text-xs text-neutral-400">30-45 min, só uma vez</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TÓPICO 2 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(2)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">2</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Alimentando o engine com seu estilo</h3>
-            <p class="text-neutral-400 text-sm mt-1">Quais materiais incluir para que o notebook aprenda e reproduza sua voz com fidelidade</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic2" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Para clonar seu estilo com precisão, o Script Engine precisa de pelo menos 5 exemplos do seu conteúdo que performaram bem. Hierarquia de fontes: (1) Transcrições dos seus 5-10 melhores vídeos ou podcasts, (2) seus roteiros já escritos em PDF ou Google Docs, (3) posts de texto longo que viralizaram, (4) newsletters com alto índice de abertura. Evite adicionar conteúdo fraco ou que não representa o que você quer replicar. O notebook aprende com o que você coloca — lixo dentro, lixo fora.</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">A qualidade da clonagem de estilo depende diretamente da qualidade e quantidade dos exemplos fornecidos. Com menos de 3 exemplos, o notebook não tem padrão suficiente para identificar sua cadência e bordões. Com 10 ou mais exemplos de alto desempenho, o resultado é impressionante — o notebook começa a usar suas expressões favoritas, seu ritmo de pausas e até seu jeito de construir argumentos. Essa etapa é o investimento que determina o ROI do engine.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🏆</div>
-                <div class="text-sm font-semibold">Melhores Conteúdos</div>
-                <div class="text-xs text-neutral-400">Top performers primeiro</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🎙️</div>
-                <div class="text-sm font-semibold">Transcrições</div>
-                <div class="text-xs text-neutral-400">Ferramenta: Otter.ai</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📝</div>
-                <div class="text-sm font-semibold">Min. 5 Exemplos</div>
-                <div class="text-xs text-neutral-400">Para padrão reconhecível</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🚫</div>
-                <div class="text-sm font-semibold">Sem Conteúdo Fraco</div>
-                <div class="text-xs text-neutral-400">Só o que você ama</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🔄</div>
-                <div class="text-sm font-semibold">Atualizar Mensalmente</div>
-                <div class="text-xs text-neutral-400">Adicionar novos hits</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📊</div>
-                <div class="text-sm font-semibold">Padrão de Voz</div>
-                <div class="text-xs text-neutral-400">Bordões, cadência, ritmo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TÓPICO 3 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(3)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">3</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Custom Instructions para o Script Engine</h3>
-            <p class="text-neutral-400 text-sm mt-1">Template de instruções que define tom, formato e restrições de escrita para todos os roteiros</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic3" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Template de Custom Instructions para o Script Engine: "Você é um ghostwriter especializado no estilo de [seu nome]. Analise TODOS os exemplos de conteúdo carregados e identifique: tom de voz (formal/informal/coloquial), expressões recorrentes, estrutura de argumentação, ritmo de frases, tipos de gancho usados. Ao criar roteiros: mantenha o tom identificado, use frases curtas quando há urgência, use o nome da audiência diretamente, inclua 1 bordão autêntico por roteiro. NUNCA use 'mergulhar', 'jornada', 'vamos lá!', 'absolutamente'. Formato: Hook (15s) → Contexto (30s) → Conteúdo (90s) → CTA (15s)."</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">As Custom Instructions do Script Engine fazem o trabalho pesado de análise de estilo funcionar automaticamente em cada conversa. Sem elas, você precisaria descrever seu estilo em cada prompt — processo lento e inconsistente. Com instruções bem calibradas, o notebook já chega na conversa sabendo que você não usa clichês, que seu tom é direto e que seus hooks são baseados em provocação, não em promessa. O campo de palavras proibidas ("nunca use X") é o detalhe que mais elimina o "sotaque de IA" nos roteiros.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🎭</div>
-                <div class="text-sm font-semibold">Ghostwriter Role</div>
-                <div class="text-xs text-neutral-400">Persona definida</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🚫</div>
-                <div class="text-sm font-semibold">Palavras Proibidas</div>
-                <div class="text-xs text-neutral-400">Elimina clichês de IA</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">⏱️</div>
-                <div class="text-sm font-semibold">Formato Temporal</div>
-                <div class="text-xs text-neutral-400">Hook/Contexto/CTA</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🗣️</div>
-                <div class="text-sm font-semibold">Bordão por Roteiro</div>
-                <div class="text-xs text-neutral-400">1 expressão autêntica</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📝</div>
-                <div class="text-sm font-semibold">10.000 Chars</div>
-                <div class="text-xs text-neutral-400">Espaço para detalhar</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🔍</div>
-                <div class="text-sm font-semibold">Análise de Padrão</div>
-                <div class="text-xs text-neutral-400">Baseado nas fontes</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TÓPICO 4 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(4)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">4</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Master Prompt para roteiros de 60 segundos</h3>
-            <p class="text-neutral-400 text-sm mt-1">O prompt definitivo para gerar roteiros de short-form prontos para gravar em menos de 5 minutos</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic4" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">O Master Prompt 60s é o prompt padronizado para gerar roteiros de Reels, Shorts e TikTok. Estrutura: "Tema: [assunto]. Audiência: [quem vai ver]. Objetivo: [informar / provocar / converter]. Ângulo: [perspectiva incomum ou polêmica]. Resultado desejado: roteiro de 60 segundos com Hook de 3 segundos, 2-3 pontos principais com frase de impacto, e CTA com ação específica. Tom: igual aos exemplos carregados. Escreva o roteiro já com indicações de pausa e ênfase." Esse prompt, preenchido em 2 minutos, gera um roteiro pronto para gravar.</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Short-form é o formato de maior alcance orgânico em 2025. Um roteiro ruim desperdiça todo o esforço de gravação, edição e publicação. O Master Prompt 60s resolve o problema do "bloco criativo" — você nunca mais fica olhando para a tela em branco sem saber como começar. Com o template salvo, a geração de roteiros vira um processo de produção: você preenche, revisa e grava. Criadores que usam o sistema produzem 5-10 roteiros por semana com consistência de qualidade.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">⚡</div>
-                <div class="text-sm font-semibold">Hook 3s</div>
-                <div class="text-xs text-neutral-400">Gancho de abertura</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🎯</div>
-                <div class="text-sm font-semibold">Ângulo Único</div>
-                <div class="text-xs text-neutral-400">Perspectiva incomum</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📢</div>
-                <div class="text-sm font-semibold">CTA Específico</div>
-                <div class="text-xs text-neutral-400">Ação clara no final</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">⏸️</div>
-                <div class="text-sm font-semibold">Pausas e Ênfase</div>
-                <div class="text-xs text-neutral-400">Indicações no roteiro</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📋</div>
-                <div class="text-sm font-semibold">Template Salvo</div>
-                <div class="text-xs text-neutral-400">Reutilizar sempre</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🔁</div>
-                <div class="text-sm font-semibold">5-10/Semana</div>
-                <div class="text-xs text-neutral-400">Volume com qualidade</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TÓPICO 5 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(5)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">5</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Checklist viral: o que todo roteiro precisa ter</h3>
-            <p class="text-neutral-400 text-sm mt-1">Os 7 elementos que os algoritmos e a audiência recompensam — e como verificá-los antes de gravar</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic5" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">Antes de gravar, verifique 7 elementos no roteiro: (1) Hook nos primeiros 3 segundos — a primeira frase já fisgou? (2) Loop de curiosidade — criou uma pergunta que só é respondida no final? (3) Dado concreto — tem um número ou fato verificável? (4) Conflito ou tensão — há um "mas" ou "porém" que gera suspense? (5) Frase de saída — tem uma linha memorável que a pessoa vai repetir? (6) CTA natural — o pedido de ação flui ou parece forçado? (7) Tom consistente — está no mesmo tom dos seus melhores conteúdos? Use o Script Engine para verificar esses elementos: "Este roteiro tem os 7 elementos do checklist viral? Liste o que falta."</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">Um roteiro pode estar bem escrito e ainda assim não viralizar se faltar o loop de curiosidade ou se o CTA parecer forçado. O checklist é a diferença entre postar e torcer, e postar com consciência. Com o Script Engine verificando os 7 elementos automaticamente, você transforma a revisão — que levava 15 minutos de releitura — em 30 segundos de prompt. Criadores que usam checklists têm taxa de retenção 40% maior nos primeiros 15 segundos do que quem grava sem revisão estruturada.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">⚡</div>
-                <div class="text-sm font-semibold">Hook 3s</div>
-                <div class="text-xs text-neutral-400">Primeiro gatilho</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🔄</div>
-                <div class="text-sm font-semibold">Loop de Curiosidade</div>
-                <div class="text-xs text-neutral-400">Pergunta sem resposta</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🔢</div>
-                <div class="text-sm font-semibold">Dado Concreto</div>
-                <div class="text-xs text-neutral-400">Número ou fato real</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">⚔️</div>
-                <div class="text-sm font-semibold">Conflito/Tensão</div>
-                <div class="text-xs text-neutral-400">O "mas" que engaja</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">💬</div>
-                <div class="text-sm font-semibold">Frase de Saída</div>
-                <div class="text-xs text-neutral-400">Linha memorável</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📢</div>
-                <div class="text-sm font-semibold">CTA Natural</div>
-                <div class="text-xs text-neutral-400">Flui, não força</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TÓPICO 6 -->
-      <div class="bg-dark-800 rounded-2xl border border-dark-600 overflow-hidden">
-        <button onclick="toggleTopic(6)" class="w-full p-6 flex items-start space-x-4 text-left hover:bg-dark-700/50 transition-colors">
-          <span class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-400 font-black flex items-center justify-center flex-shrink-0">6</span>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">Estrutura Hook-Conteúdo-CTA na prática</h3>
-            <p class="text-neutral-400 text-sm mt-1">Como aplicar a estrutura de 3 partes em diferentes formatos — Reels, Shorts, TikTok e YouTube</p>
-          </div>
-          <span class="text-neutral-500 text-xl flex-shrink-0">▼</span>
-        </button>
-        <div id="topic6" class="hidden px-6 pb-6">
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-purple-500">
-            <h4 class="font-bold text-purple-400 mb-2">📌 O que é</h4>
-            <p class="text-neutral-300 text-sm">A estrutura Hook-Conteúdo-CTA tem variações por formato: (Reels/Shorts/TikTok 60s) Hook 3-5s + Conteúdo 45-50s + CTA 5-10s. (YouTube Longo) Hook 30s + Apresentação 60s + Conteúdo principal + Recapitulação + CTA 60s. O Hook tem 3 variações eficazes: (A) Provocação — "A maioria das pessoas faz errado", (B) Dado chocante — "Só 3% de criadores fazem isso", (C) Promessa direta — "Em 60 segundos você vai saber X". O Script Engine consegue gerar os 3 tipos de hook para o mesmo tema e você escolhe o que mais combina com sua audiência.</p>
-          </div>
-          <div class="mb-4 p-4 bg-dark-700 rounded-xl border-l-4 border-violet-500">
-            <h4 class="font-bold text-violet-400 mb-2">💡 Por que aprender</h4>
-            <p class="text-neutral-300 text-sm">A mesma mensagem pode converter 5% ou 35% da audiência dependendo do hook. Criar 3 variações e testar é o que separa criadores amadores de criadores profissionais. O Script Engine acelera esse processo: gera as 3 variações em 30 segundos, você grava a que sentir mais natural, posta, e usa o desempenho para calibrar as próximas. Com o tempo, você descobre qual tipo de hook funciona melhor para sua audiência e passa a criar diretamente nesse estilo — o engine aprende junto com você.</p>
-          </div>
-          <div class="p-4 bg-dark-700 rounded-xl border-l-4 border-fuchsia-500">
-            <h4 class="font-bold text-fuchsia-400 mb-3">🔑 Conceitos-chave</h4>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">⚡</div>
-                <div class="text-sm font-semibold">Hook Provocação</div>
-                <div class="text-xs text-neutral-400">"A maioria erra..."</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📊</div>
-                <div class="text-sm font-semibold">Hook Dado</div>
-                <div class="text-xs text-neutral-400">"Só X% fazem isso"</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">🎯</div>
-                <div class="text-sm font-semibold">Hook Promessa</div>
-                <div class="text-xs text-neutral-400">"Em 60s você saberá"</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📱</div>
-                <div class="text-sm font-semibold">3 Variações</div>
-                <div class="text-xs text-neutral-400">Teste A/B de hooks</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📐</div>
-                <div class="text-sm font-semibold">Formato por Canal</div>
-                <div class="text-xs text-neutral-400">Reels vs YouTube</div>
-              </div>
-              <div class="bg-dark-800 p-3 rounded-lg text-center">
-                <div class="text-lg mb-1">📈</div>
-                <div class="text-sm font-semibold">Calibrar com Dados</div>
-                <div class="text-xs text-neutral-400">Aprendizado contínuo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-purple-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
+      <span>/</span>
+      <span class="text-purple-400">Módulo 3.3</span>
     </div>
-
-    <!-- CHECKLIST DE APRENDIZADO -->
-    <div class="mt-12 bg-dark-800 rounded-2xl border border-purple-500/30 p-6">
-      <h2 class="text-xl font-bold mb-4 text-purple-400">✅ Checklist do Módulo 3.3</h2>
-      <p class="text-neutral-400 text-sm mb-4">Verifique o que você já domina antes de avançar para o Prompt Engineering Engine:</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
-          <span class="text-sm">Criei o notebook "INEMA — Script Engine" separado do Research</span>
-        </div>
-        <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
-          <span class="text-sm">Adicionei pelo menos 5 exemplos dos meus melhores conteúdos</span>
-        </div>
-        <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
-          <span class="text-sm">Configurei Custom Instructions com palavras proibidas e formato</span>
-        </div>
-        <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
-          <span class="text-sm">Tenho o Master Prompt 60s salvo e pronto para reutilizar</span>
-        </div>
-        <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
-          <span class="text-sm">Sei usar o checklist viral dos 7 elementos antes de gravar</span>
-        </div>
-        <div class="flex items-center space-x-3 p-3 bg-dark-700 rounded-lg">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">✓</span>
-          <span class="text-sm">Gero 3 variações de hook para testar qual converte mais</span>
-        </div>
+    <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.3</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">✍️ Script Engine — Roteiros com Sua Identidade</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Monte um notebook que escreve roteiros no seu tom de voz, com sua cadência e seus ganchos — sem parecer gerado por IA. Conteúdo que soa 100% você, produzido em minutos.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">6</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">50</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Pr</div>
+        <div class="text-xs text-neutral-400">Prático</div>
       </div>
     </div>
-
-    <!-- NAVEGAÇÃO -->
-    <div class="flex justify-start space-x-3 mt-8">
-      <a href="modulo-3-2.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 font-semibold rounded-xl transition-colors">← Módulo Anterior</a>
-      <a href="modulo-3-4.html" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-colors">Próximo Módulo →</a>
-    </div>
-
   </div>
+</header>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-dark-600 py-8 mt-16">
-    <div class="max-w-6xl mx-auto px-4 text-center text-neutral-500 text-sm">
-      <p>Curso NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">➕ Criando o notebook Script Engine</h2>
     </div>
-  </footer>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O Script Engine é um notebook separado do Research Engine, criado exclusivamente para produção de roteiros. Nome padrão: "INEMA — Script Engine". As primeiras fontes são os seus próprios roteiros e conteúdos: transcrições de vídeos publicados, posts que performaram bem, newsletters que o público respondeu. Quanto mais exemplos do seu estilo você adicionar, mais precisa será a clonagem da sua voz. O setup inicial leva 30-45 minutos e precisa acontecer uma única vez.</p>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-    const html = document.documentElement;
-    if (localStorage.getItem('theme') === 'light') {
-      themeToggleDarkIcon.classList.remove('hidden');
-      html.classList.remove('dark');
-    } else {
-      themeToggleLightIcon.classList.remove('hidden');
-    }
-    themeToggle.addEventListener('click', () => {
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
-    function toggleTopic(num) {
-      const el = document.getElementById('topic' + num);
-      el.classList.toggle('hidden');
-    }
-  </script>
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Criadores que tentam usar um notebook genérico para roteiros recebem textos com "tom de IA" — neutros, sem personalidade, sem os bordões e cadências que o público reconhece. Um notebook dedicado, treinado no seu próprio conteúdo, produz roteiros que parecem ter sido escritos por você em 5 minutos. A separação entre Research e Script Engine é a diferença entre usar o NotebookLM como ferramenta e como extensão da sua identidade criativa.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">➕</div>
+          <div class="text-sm font-semibold">Notebook Dedicado</div>
+          <div class="text-xs text-neutral-400">Separado do Research</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🏷️</div>
+          <div class="text-sm font-semibold">Nome Padrão</div>
+          <div class="text-xs text-neutral-400">INEMA — Script Engine</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📄</div>
+          <div class="text-sm font-semibold">Seu Conteúdo</div>
+          <div class="text-xs text-neutral-400">Vídeos, posts, emails</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎙️</div>
+          <div class="text-sm font-semibold">Transcrições</div>
+          <div class="text-xs text-neutral-400">Vídeos publicados</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⚙️</div>
+          <div class="text-sm font-semibold">Custom Instructions</div>
+          <div class="text-xs text-neutral-400">Configuradas na criação</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔁</div>
+          <div class="text-sm font-semibold">Setup Único</div>
+          <div class="text-xs text-neutral-400">30-45 min, só uma vez</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">🏆 Alimentando o engine com seu estilo</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Para clonar seu estilo com precisão, o Script Engine precisa de pelo menos 5 exemplos do seu conteúdo que performaram bem. Hierarquia de fontes: (1) Transcrições dos seus 5-10 melhores vídeos ou podcasts, (2) seus roteiros já escritos em PDF ou Google Docs, (3) posts de texto longo que viralizaram, (4) newsletters com alto índice de abertura. Evite adicionar conteúdo fraco ou que não representa o que você quer replicar. O notebook aprende com o que você coloca — lixo dentro, lixo fora.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">A qualidade da clonagem de estilo depende diretamente da qualidade e quantidade dos exemplos fornecidos. Com menos de 3 exemplos, o notebook não tem padrão suficiente para identificar sua cadência e bordões. Com 10 ou mais exemplos de alto desempenho, o resultado é impressionante — o notebook começa a usar suas expressões favoritas, seu ritmo de pausas e até seu jeito de construir argumentos. Essa etapa é o investimento que determina o ROI do engine.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🏆</div>
+          <div class="text-sm font-semibold">Melhores Conteúdos</div>
+          <div class="text-xs text-neutral-400">Top performers primeiro</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎙️</div>
+          <div class="text-sm font-semibold">Transcrições</div>
+          <div class="text-xs text-neutral-400">Ferramenta: Otter.ai</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📝</div>
+          <div class="text-sm font-semibold">Min. 5 Exemplos</div>
+          <div class="text-xs text-neutral-400">Para padrão reconhecível</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🚫</div>
+          <div class="text-sm font-semibold">Sem Conteúdo Fraco</div>
+          <div class="text-xs text-neutral-400">Só o que você ama</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔄</div>
+          <div class="text-sm font-semibold">Atualizar Mensalmente</div>
+          <div class="text-xs text-neutral-400">Adicionar novos hits</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📊</div>
+          <div class="text-sm font-semibold">Padrão de Voz</div>
+          <div class="text-xs text-neutral-400">Bordões, cadência, ritmo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">🎭 Custom Instructions para o Script Engine</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Template de Custom Instructions para o Script Engine: "Você é um ghostwriter especializado no estilo de [seu nome]. Analise TODOS os exemplos de conteúdo carregados e identifique: tom de voz (formal/informal/coloquial), expressões recorrentes, estrutura de argumentação, ritmo de frases, tipos de gancho usados. Ao criar roteiros: mantenha o tom identificado, use frases curtas quando há urgência, use o nome da audiência diretamente, inclua 1 bordão autêntico por roteiro. NUNCA use 'mergulhar', 'jornada', 'vamos lá!', 'absolutamente'. Formato: Hook (15s) → Contexto (30s) → Conteúdo (90s) → CTA (15s)."</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">As Custom Instructions do Script Engine fazem o trabalho pesado de análise de estilo funcionar automaticamente em cada conversa. Sem elas, você precisaria descrever seu estilo em cada prompt — processo lento e inconsistente. Com instruções bem calibradas, o notebook já chega na conversa sabendo que você não usa clichês, que seu tom é direto e que seus hooks são baseados em provocação, não em promessa. O campo de palavras proibidas ("nunca use X") é o detalhe que mais elimina o "sotaque de IA" nos roteiros.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎭</div>
+          <div class="text-sm font-semibold">Ghostwriter Role</div>
+          <div class="text-xs text-neutral-400">Persona definida</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🚫</div>
+          <div class="text-sm font-semibold">Palavras Proibidas</div>
+          <div class="text-xs text-neutral-400">Elimina clichês de IA</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⏱️</div>
+          <div class="text-sm font-semibold">Formato Temporal</div>
+          <div class="text-xs text-neutral-400">Hook/Contexto/CTA</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🗣️</div>
+          <div class="text-sm font-semibold">Bordão por Roteiro</div>
+          <div class="text-xs text-neutral-400">1 expressão autêntica</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📝</div>
+          <div class="text-sm font-semibold">10.000 Chars</div>
+          <div class="text-xs text-neutral-400">Espaço para detalhar</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔍</div>
+          <div class="text-sm font-semibold">Análise de Padrão</div>
+          <div class="text-xs text-neutral-400">Baseado nas fontes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">⚡ Master Prompt para roteiros de 60 segundos</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O Master Prompt 60s é o prompt padronizado para gerar roteiros de Reels, Shorts e TikTok. Estrutura: "Tema: [assunto]. Audiência: [quem vai ver]. Objetivo: [informar / provocar / converter]. Ângulo: [perspectiva incomum ou polêmica]. Resultado desejado: roteiro de 60 segundos com Hook de 3 segundos, 2-3 pontos principais com frase de impacto, e CTA com ação específica. Tom: igual aos exemplos carregados. Escreva o roteiro já com indicações de pausa e ênfase." Esse prompt, preenchido em 2 minutos, gera um roteiro pronto para gravar.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Short-form é o formato de maior alcance orgânico em 2025. Um roteiro ruim desperdiça todo o esforço de gravação, edição e publicação. O Master Prompt 60s resolve o problema do "bloco criativo" — você nunca mais fica olhando para a tela em branco sem saber como começar. Com o template salvo, a geração de roteiros vira um processo de produção: você preenche, revisa e grava. Criadores que usam o sistema produzem 5-10 roteiros por semana com consistência de qualidade.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⚡</div>
+          <div class="text-sm font-semibold">Hook 3s</div>
+          <div class="text-xs text-neutral-400">Gancho de abertura</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎯</div>
+          <div class="text-sm font-semibold">Ângulo Único</div>
+          <div class="text-xs text-neutral-400">Perspectiva incomum</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📢</div>
+          <div class="text-sm font-semibold">CTA Específico</div>
+          <div class="text-xs text-neutral-400">Ação clara no final</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⏸️</div>
+          <div class="text-sm font-semibold">Pausas e Ênfase</div>
+          <div class="text-xs text-neutral-400">Indicações no roteiro</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📋</div>
+          <div class="text-sm font-semibold">Template Salvo</div>
+          <div class="text-xs text-neutral-400">Reutilizar sempre</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔁</div>
+          <div class="text-sm font-semibold">5-10/Semana</div>
+          <div class="text-xs text-neutral-400">Volume com qualidade</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">✅ Checklist viral: o que todo roteiro precisa ter</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Antes de gravar, verifique 7 elementos no roteiro: (1) Hook nos primeiros 3 segundos — a primeira frase já fisgou? (2) Loop de curiosidade — criou uma pergunta que só é respondida no final? (3) Dado concreto — tem um número ou fato verificável? (4) Conflito ou tensão — há um "mas" ou "porém" que gera suspense? (5) Frase de saída — tem uma linha memorável que a pessoa vai repetir? (6) CTA natural — o pedido de ação flui ou parece forçado? (7) Tom consistente — está no mesmo tom dos seus melhores conteúdos? Use o Script Engine para verificar esses elementos: "Este roteiro tem os 7 elementos do checklist viral? Liste o que falta."</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">Um roteiro pode estar bem escrito e ainda assim não viralizar se faltar o loop de curiosidade ou se o CTA parecer forçado. O checklist é a diferença entre postar e torcer, e postar com consciência. Com o Script Engine verificando os 7 elementos automaticamente, você transforma a revisão — que levava 15 minutos de releitura — em 30 segundos de prompt. Criadores que usam checklists têm taxa de retenção 40% maior nos primeiros 15 segundos do que quem grava sem revisão estruturada.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⚡</div>
+          <div class="text-sm font-semibold">Hook 3s</div>
+          <div class="text-xs text-neutral-400">Primeiro gatilho</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔄</div>
+          <div class="text-sm font-semibold">Loop de Curiosidade</div>
+          <div class="text-xs text-neutral-400">Pergunta sem resposta</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🔢</div>
+          <div class="text-sm font-semibold">Dado Concreto</div>
+          <div class="text-xs text-neutral-400">Número ou fato real</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⚔️</div>
+          <div class="text-sm font-semibold">Conflito/Tensão</div>
+          <div class="text-xs text-neutral-400">O "mas" que engaja</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">💬</div>
+          <div class="text-sm font-semibold">Frase de Saída</div>
+          <div class="text-xs text-neutral-400">Linha memorável</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📢</div>
+          <div class="text-sm font-semibold">CTA Natural</div>
+          <div class="text-xs text-neutral-400">Flui, não força</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">📐 Estrutura Hook-Conteúdo-CTA na prática</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">A estrutura Hook-Conteúdo-CTA tem variações por formato: (Reels/Shorts/TikTok 60s) Hook 3-5s + Conteúdo 45-50s + CTA 5-10s. (YouTube Longo) Hook 30s + Apresentação 60s + Conteúdo principal + Recapitulação + CTA 60s. O Hook tem 3 variações eficazes: (A) Provocação — "A maioria das pessoas faz errado", (B) Dado chocante — "Só 3% de criadores fazem isso", (C) Promessa direta — "Em 60 segundos você vai saber X". O Script Engine consegue gerar os 3 tipos de hook para o mesmo tema e você escolhe o que mais combina com sua audiência.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
+      <p class="text-neutral-300 leading-relaxed">A mesma mensagem pode converter 5% ou 35% da audiência dependendo do hook. Criar 3 variações e testar é o que separa criadores amadores de criadores profissionais. O Script Engine acelera esse processo: gera as 3 variações em 30 segundos, você grava a que sentir mais natural, posta, e usa o desempenho para calibrar as próximas. Com o tempo, você descobre qual tipo de hook funciona melhor para sua audiência e passa a criar diretamente nesse estilo — o engine aprende junto com você.</p>
+    </div>
+
+    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">⚡</div>
+          <div class="text-sm font-semibold">Hook Provocação</div>
+          <div class="text-xs text-neutral-400">"A maioria erra..."</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📊</div>
+          <div class="text-sm font-semibold">Hook Dado</div>
+          <div class="text-xs text-neutral-400">"Só X% fazem isso"</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">🎯</div>
+          <div class="text-sm font-semibold">Hook Promessa</div>
+          <div class="text-xs text-neutral-400">"Em 60s você saberá"</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📱</div>
+          <div class="text-sm font-semibold">3 Variações</div>
+          <div class="text-xs text-neutral-400">Teste A/B de hooks</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📐</div>
+          <div class="text-sm font-semibold">Formato por Canal</div>
+          <div class="text-xs text-neutral-400">Reels vs YouTube</div>
+        </div>
+        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
+          <div class="text-lg mb-1">📈</div>
+          <div class="text-sm font-semibold">Calibrar com Dados</div>
+          <div class="text-xs text-neutral-400">Aprendizado contínuo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMO -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Checklist do Módulo 3.3</h2>
+      <p class="text-neutral-400 mb-6">Verifique o que você já domina antes de avançar para o Prompt Engineering Engine:</p>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Criei o notebook "INEMA — Script Engine" separado do Research</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Adicionei pelo menos 5 exemplos dos meus melhores conteúdos</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Configurei Custom Instructions com palavras proibidas e formato</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Tenho o Master Prompt 60s salvo e pronto para reutilizar</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Sei usar o checklist viral dos 7 elementos antes de gravar</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Gero 3 variações de hook para testar qual converte mais</span></li>
+      </ul>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-purple-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">3.4 — Prompt Engineering Engine: Sintaxe Oficial</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-3-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 3.2</a>
+        <a href="modulo-3-4.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Módulo 3.4: Prompt Engine →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
 </body>
 </html>
