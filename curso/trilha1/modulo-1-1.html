@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.1 Introdução e Contexto | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📓</span>
+            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Aplicação</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Módulo 1.1</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.1</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🌐 Introdução e Contexto</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">O que é o NotebookLM, como surgiu, como funciona a tecnologia RAG por dentro, como se compara aos concorrentes e como dar os primeiros passos.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">30</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Básico</div>
+          <div class="text-xs text-neutral-400">Nível</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TÓPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🤖 O que é o NotebookLM</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM é um <strong class="text-emerald-400">assistente virtual de pesquisa</strong> desenvolvido pelo Google Labs que usa o modelo de IA Gemini para ajudar você a interagir com seus próprios documentos. Diferente de qualquer outro chatbot de IA, ele é fundamentalmente <strong class="text-white">source-grounded</strong>: responde apenas com base no que você carregou.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">💡</span> Conceito Central</h3>
+        <p class="text-neutral-300 mb-4">O NotebookLM NÃO usa o conhecimento geral do Gemini para responder. Ele cria um "assistente personalizado" baseado exclusivamente nos documentos que você carrega — chamados de <strong class="text-emerald-400">fontes</strong>.</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Você carrega documentos</strong> → O NotebookLM os processa e indexa</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Você faz perguntas</strong> → Ele busca nas suas fontes e responde</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Cada resposta</strong> → Vem com citação clicável do trecho original</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Sem invenções</strong> → Se não está nas fontes, ele diz que não sabe</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📊</span> Números que Importam</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong class="text-white">13%</strong> de taxa de alucinação vs <strong class="text-red-400">40%</strong> do ChatGPT (estudo 2025)</li>
+          <li><strong class="text-white">80+</strong> idiomas suportados, incluindo Português BR nativo</li>
+          <li><strong class="text-white">100</strong> notebooks no plano gratuito</li>
+          <li><strong class="text-white">50</strong> fontes por notebook (até 500.000 palavras cada)</li>
+          <li><strong class="text-white">Dezenas de milhares</strong> de instituições educacionais adotaram a ferramenta</li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3>
+        <p class="text-neutral-300">Use o NotebookLM quando precisar analisar <strong>seus próprios documentos</strong> com precisão — contratos, artigos científicos, livros, transcrições de reuniões. Para pesquisa na web em tempo real, prefira o Perplexity. Para criação criativa geral, use ChatGPT ou Claude.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📅 História e Evolução</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM nasceu de uma ideia simples: e se você pudesse ter uma IA que conhecesse <strong class="text-emerald-400">apenas os seus documentos</strong>? Em 6 semanas, 4-5 engenheiros do Google Labs construíram o primeiro protótipo. O que veio depois foi uma jornada de crescimento rápido.</p>
+
+      <div class="space-y-4 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold text-sm">2023</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">🚀 Nascimento como Project Tailwind</h4>
+            <p class="text-sm text-neutral-400">Maio: anunciado no Google I/O. Julho: lançamento experimental como NotebookLM. Dezembro: integração com Gemini Pro, fim da lista de espera.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold text-sm">2024</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">🌍 Chegada ao Brasil + Audio Overview Viral</h4>
+            <p class="text-sm text-neutral-400">Junho: lançamento no Brasil com suporte nativo ao português. Setembro: Audio Overviews vira febre global — considerado o recurso de IA mais inovador de 2024. Dezembro: NotebookLM Plus e Enterprise.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold text-sm">2025</span></div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">📱 App Mobile + Explosão de Recursos</h4>
+            <p class="text-sm text-neutral-400">Maio: app Android e iOS. Setembro: maior mês de atualizações — Deep Research, Mind Maps, 50+ idiomas. Novembro: Slide Decks, Infographics, Word, flashcards. Dezembro: Gemini 3, Data Tables.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">⚙️ A Tecnologia RAG por Dentro</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Para entender por que o NotebookLM é tão preciso, você precisa entender o <strong class="text-emerald-400">RAG (Retrieval Augmented Generation)</strong> — a tecnologia que o diferencia de todos os outros LLMs.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🔧</span> Como o RAG Funciona</h3>
+        <div class="space-y-4 text-neutral-300">
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">R</span>
+            <div><strong class="text-white">Retrieval (Recuperação):</strong> Quando você faz uma pergunta, o sistema busca os trechos mais relevantes dos seus documentos.</div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">A</span>
+            <div><strong class="text-white">Augmented (Aumentado):</strong> Esses trechos são incluídos como contexto no prompt enviado ao Gemini.</div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">G</span>
+            <div><strong class="text-white">Generation (Geração):</strong> O Gemini gera a resposta baseado APENAS nesses trechos, não em seu conhecimento geral.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Quando o RAG funciona BEM</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Documentos bem escritos e formatados</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Perguntas específicas sobre o conteúdo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Fontes complementares e relacionadas</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Documentos focados em um tema</span></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Quando o RAG tem DIFICULDADE</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>PDFs com imagens sem texto alternativo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Documentos muito grandes e dispersos</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Perguntas sobre eventos após os documentos</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Informações que não estão nas fontes</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">⚖️ NotebookLM vs Concorrentes</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Não existe "a melhor ferramenta de IA" — existe a <strong class="text-emerald-400">ferramenta certa para cada tarefa</strong>. Entender onde o NotebookLM brilha e onde outros ganham é fundamental para construir um fluxo de trabalho eficiente.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📊</span> Comparação Rápida</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-neutral-300">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left py-2 pr-4 text-neutral-400">Ferramenta</th>
+                <th class="text-left py-2 pr-4 text-neutral-400">Melhor para</th>
+                <th class="text-left py-2 text-neutral-400">Alucinação</th>
+              </tr>
+            </thead>
+            <tbody class="space-y-2">
+              <tr class="border-b border-dark-700/50">
+                <td class="py-2 pr-4"><strong class="text-emerald-400">NotebookLM</strong></td>
+                <td class="py-2 pr-4">Seus documentos</td>
+                <td class="py-2 text-emerald-400">13% (baixa)</td>
+              </tr>
+              <tr class="border-b border-dark-700/50">
+                <td class="py-2 pr-4"><strong class="text-white">ChatGPT / Claude</strong></td>
+                <td class="py-2 pr-4">Criação geral de conteúdo</td>
+                <td class="py-2 text-red-400">40% (alta)</td>
+              </tr>
+              <tr class="border-b border-dark-700/50">
+                <td class="py-2 pr-4"><strong class="text-white">Perplexity</strong></td>
+                <td class="py-2 pr-4">Pesquisa web em tempo real</td>
+                <td class="py-2 text-yellow-400">Média</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4"><strong class="text-white">Notion AI</strong></td>
+                <td class="py-2 pr-4">Gestão de projetos e notas</td>
+                <td class="py-2 text-yellow-400">Média</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Regra de Ouro</h3>
+        <p class="text-neutral-300">Use <strong class="text-emerald-400">NotebookLM</strong> quando a pergunta pode ser respondida pelos seus documentos. Use <strong class="text-white">ChatGPT/Claude</strong> quando precisar de criatividade ou conhecimento amplo. Use <strong class="text-white">Perplexity</strong> quando precisar de informações atuais da web.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">💳 Planos: Gratuito, Plus e Ultra</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM oferece três planos. Para a <strong class="text-emerald-400">grande maioria dos usuários</strong>, o plano gratuito é mais do que suficiente. Entenda os limites antes de decidir sobre um upgrade.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📋</span> Comparação de Planos</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-neutral-300">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left py-2 pr-4 text-neutral-400">Recurso</th>
+                <th class="text-center py-2 pr-4 text-emerald-400">Gratuito</th>
+                <th class="text-center py-2 pr-4 text-blue-400">Plus</th>
+                <th class="text-center py-2 text-purple-400">Ultra</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-dark-700/50">
+                <td class="py-2 pr-4">Notebooks</td>
+                <td class="py-2 pr-4 text-center">100</td>
+                <td class="py-2 pr-4 text-center">500</td>
+                <td class="py-2 text-center">Ilimitado</td>
+              </tr>
+              <tr class="border-b border-dark-700/50">
+                <td class="py-2 pr-4">Fontes/notebook</td>
+                <td class="py-2 pr-4 text-center">50</td>
+                <td class="py-2 pr-4 text-center">300</td>
+                <td class="py-2 text-center">600</td>
+              </tr>
+              <tr class="border-b border-dark-700/50">
+                <td class="py-2 pr-4">Áudio/dia</td>
+                <td class="py-2 pr-4 text-center">3</td>
+                <td class="py-2 pr-4 text-center">20</td>
+                <td class="py-2 text-center">Máximo</td>
+              </tr>
+              <tr class="border-b border-dark-700/50">
+                <td class="py-2 pr-4">Chat/dia</td>
+                <td class="py-2 pr-4 text-center">50</td>
+                <td class="py-2 pr-4 text-center">500</td>
+                <td class="py-2 text-center">Máximo</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">Preço</td>
+                <td class="py-2 pr-4 text-center text-emerald-400">Grátis</td>
+                <td class="py-2 pr-4 text-center text-blue-400">USD 19,99/mês</td>
+                <td class="py-2 text-center text-purple-400">Empresarial</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Quando fazer o Upgrade?</h3>
+        <p class="text-neutral-300">Migre para o Plus quando: você gerar áudio mais de 3x por dia regularmente; seus projetos exigirem mais de 50 fontes; ou você precisar compartilhar notebooks com equipes e ver analytics de uso.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🚀 Primeiros Passos</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Começar é simples: basta uma conta Google. O NotebookLM funciona direto no navegador em <strong class="text-emerald-400">notebooklm.google.com</strong>. Veja o fluxo completo do primeiro acesso ao primeiro resultado.</p>
+
+      <div class="space-y-4 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">Acesse notebooklm.google.com</h4>
+            <p class="text-sm text-neutral-400">Entre com sua conta Google. Sem instalação, sem lista de espera. Funciona em qualquer navegador moderno.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">Crie um novo Notebook</h4>
+            <p class="text-sm text-neutral-400">Clique em "Novo Notebook", dê um nome descritivo. Cada notebook é um projeto separado com suas próprias fontes.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">Adicione suas Fontes</h4>
+            <p class="text-sm text-neutral-400">No painel esquerdo, adicione PDFs, Google Docs, URLs ou vídeos do YouTube. O NotebookLM processa automaticamente em segundos a minutos.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">4</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">Faça sua primeira pergunta</h4>
+            <p class="text-sm text-neutral-400">No chat central, pergunte algo específico sobre o conteúdo. Clique nas citações numeradas para ver o trecho exato da fonte.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">5</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+            <h4 class="font-semibold text-white mb-1">Explore o Studio</h4>
+            <p class="text-sm text-neutral-400">No painel direito, gere um Audio Overview, crie um Study Guide ou explore o Mind Map para ter uma visão geral visual do seu conteúdo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atenção Importante</h3>
+        <p class="text-neutral-300">Seus notebooks <strong>NÃO ficam no Google Drive</strong> — eles ficam apenas em notebooklm.google.com. Você não os encontrará na busca do Drive. Para exportar respostas, é necessário copiar e colar manualmente (ainda não há exportação automática).</p>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 1.1</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">NotebookLM é source-grounded</strong><span class="text-neutral-400"> — responde apenas com base nos seus documentos, nunca inventa</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Taxa de alucinação de 13%</strong><span class="text-neutral-400"> — vs 40% do ChatGPT, graças à tecnologia RAG</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Tecnologia RAG</strong><span class="text-neutral-400"> — Retrieval + Augmented + Generation explica a precisão superior</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Ferramenta certa para o contexto certo</strong><span class="text-neutral-400"> — seus docs: NotebookLM; pesquisa web: Perplexity; criação geral: ChatGPT</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Plano gratuito é robusto</strong><span class="text-neutral-400"> — 100 notebooks, 50 fontes, 3 áudios/dia é suficiente para a maioria</span></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div><strong class="text-white">Notebooks NÃO estão no Drive</strong><span class="text-neutral-400"> — acesse sempre via notebooklm.google.com</span></div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Próximo Módulo:</h3>
+          <p class="text-neutral-300">1.2 — Fontes: O Coração do NotebookLM. Aprenda a carregar, organizar e otimizar suas fontes para extrair o máximo da ferramenta.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para Trilha 1</a>
+          <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Módulo 1.2: Fontes →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

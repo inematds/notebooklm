@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 1: Fundamentos | NotebookLM Completo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">📓</span>
+            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Aplicação</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">TRILHA 1</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔧 Fundamentos e Ferramentas</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Entenda o que é o NotebookLM, como funciona a tecnologia por dentro e domine todas as ferramentas essenciais: fontes, chat inteligente, Studio completo e Audio Overview.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">4</div>
+          <div class="text-xs text-neutral-400">Módulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">25</div>
+          <div class="text-xs text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">~4h</div>
+          <div class="text-xs text-neutral-400">Duração</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Básico</div>
+          <div class="text-xs text-neutral-400">Nível</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- NAVEGAÇÃO RÁPIDA -->
+    <h2 class="text-lg font-semibold text-neutral-400 mb-4">Navegação Rápida</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <a href="modulo-1-1.html" class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/50 p-5 transition-all">
+        <div class="text-emerald-400 font-bold text-sm mb-1">1.1</div>
+        <div class="font-semibold group-hover:text-emerald-400 transition-colors">Introdução e Contexto</div>
+        <div class="text-xs text-neutral-500 mt-1">~30 min</div>
+      </a>
+      <a href="modulo-1-2.html" class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/50 p-5 transition-all">
+        <div class="text-emerald-400 font-bold text-sm mb-1">1.2</div>
+        <div class="font-semibold group-hover:text-emerald-400 transition-colors">Fontes</div>
+        <div class="text-xs text-neutral-500 mt-1">~45 min</div>
+      </a>
+      <a href="modulo-1-3.html" class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/50 p-5 transition-all">
+        <div class="text-emerald-400 font-bold text-sm mb-1">1.3</div>
+        <div class="font-semibold group-hover:text-emerald-400 transition-colors">Chat com Documentos</div>
+        <div class="text-xs text-neutral-500 mt-1">~40 min</div>
+      </a>
+      <a href="modulo-1-4.html" class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/50 p-5 transition-all">
+        <div class="text-emerald-400 font-bold text-sm mb-1">1.4</div>
+        <div class="font-semibold group-hover:text-emerald-400 transition-colors">Studio</div>
+        <div class="text-xs text-neutral-500 mt-1">~60 min</div>
+      </a>
+    </div>
+
+    <div class="border-t border-dark-600 mb-10"></div>
+    <h2 class="text-lg font-semibold text-neutral-400 mb-6">Conteúdo Detalhado</h2>
+
+    <!-- MÓDULO 1.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.1</span>
+          <span class="text-xs text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🌐 Introdução e Contexto</h3>
+        <p class="text-neutral-400 text-sm">O que é o NotebookLM, como surgiu, como funciona a tecnologia por dentro e como começar.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🤖</span>
+            <div><span class="font-medium">O que é o NotebookLM</span><span class="text-neutral-500 text-sm ml-2">- Definição e propósito</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Assistente virtual de pesquisa do Google Labs que usa IA (Gemini) para analisar e responder com base nos documentos que você carrega — e apenas eles.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">É a única ferramenta de IA que garante respostas ancoradas nas suas fontes, com taxa de alucinação de apenas 13%, vs 40% do ChatGPT.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Source-grounded AI • Citações clicáveis • Não usa conhecimento geral • Responde só com base nos seus documentos</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📅</span>
+            <div><span class="font-medium">História e Evolução</span><span class="text-neutral-500 text-sm ml-2">- De Project Tailwind ao hoje</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">A história do NotebookLM, anunciado como Project Tailwind no Google I/O em maio 2023, lançado no Brasil em 2024, e constantemente evoluindo com Audio Overview, Mind Maps, Deep Research e Gemini 3.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Entender a evolução ajuda a contextualizar cada recurso e se preparar para as novidades que continuam sendo adicionadas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Project Tailwind (2023) → Audio Overview viral (set/2024) → Plus e Enterprise (dez/2024) → App mobile (mai/2025) → Deep Research + Mind Maps (set/2025) → Gemini 3 (dez/2025)</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">⚙️</span>
+            <div><span class="font-medium">A Tecnologia RAG por dentro</span><span class="text-neutral-500 text-sm ml-2">- Como funciona realmente</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">RAG (Retrieval Augmented Generation): o modelo recupera trechos relevantes dos seus documentos e os usa como contexto para gerar respostas. Isso elimina a necessidade de treinar o modelo nos seus dados.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Entender o RAG explica por que o NotebookLM alucina menos, por que sempre cita fontes e por que a qualidade das fontes impacta diretamente a qualidade das respostas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">RAG = Retrieval + Augmented + Generation • Documentos = contexto • Gemini processa • Resposta sempre linkada à fonte original</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">⚖️</span>
+            <div><span class="font-medium">NotebookLM vs Concorrentes</span><span class="text-neutral-500 text-sm ml-2">- Quando usar cada ferramenta</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Comparação entre NotebookLM, ChatGPT/Claude, Perplexity e Notion AI: cada um tem pontos fortes distintos. NotebookLM vence em análise de documentos próprios; Perplexity em pesquisa web em tempo real; ChatGPT em criação geral.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Escolher a ferramenta certa para cada tarefa economiza tempo e melhora drasticamente os resultados. Usar NotebookLM para pesquisa web é ineficiente; usar ChatGPT para analisar seus contratos é arriscado.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">NotebookLM → seus documentos • ChatGPT → criação geral • Perplexity → web atual • Notion AI → gestão de projetos</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">💳</span>
+            <div><span class="font-medium">Planos: Gratuito, Plus e Ultra</span><span class="text-neutral-500 text-sm ml-2">- Vale a pena pagar?</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Gratuito: 100 notebooks, 50 fontes/notebook, 3 audios/dia. Plus (USD 19,99/mês via Google One AI Premium): 500 notebooks, 300 fontes, 20 audios/dia. Ultra: limites máximos para empresas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Para a maioria dos usuários, o plano gratuito é suficiente. Saber os limites exatos evita surpresas e ajuda a decidir quando o upgrade faz sentido.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">50 fontes × 500.000 palavras/fonte (grátis) • 300 fontes (Plus) • Audio 3x/dia (grátis) • 20x/dia (Plus) • Compartilhamento avançado apenas no Plus</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🚀</span>
+            <div><span class="font-medium">Primeiros Passos</span><span class="text-neutral-500 text-sm ml-2">- Conta e primeiro notebook</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Passo a passo para acessar notebooklm.google.com, criar seu primeiro notebook, adicionar uma fonte e fazer sua primeira pergunta. Sem lista de espera, funciona com qualquer conta Google.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A interface é intuitiva mas tem nuances importantes: o painel de fontes, o chat central e o Studio à direita têm funções complementares que precisam ser entendidas desde o início.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Painel esquerdo = Fontes • Centro = Chat • Painel direito = Studio • Notebooks ficam em notebooklm.google.com (NÃO no Google Drive)</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-1')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-1.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 1.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.2</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📂 Fontes: O Coração do NotebookLM</h3>
+        <p class="text-neutral-400 text-sm">Aprenda a carregar, organizar e otimizar suas fontes para extrair o máximo do NotebookLM.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">💡</span>
+            <div><span class="font-medium">O que são fontes e por que importam</span><span class="text-neutral-500 text-sm ml-2">- A base de tudo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Fontes são os documentos que você carrega no notebook e que formam a base de conhecimento do NotebookLM. Tudo que ele responde vem exclusivamente dessas fontes.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A qualidade das fontes determina diretamente a qualidade das respostas. Fontes mal preparadas = respostas pobres. Fontes bem organizadas = insights poderosos.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Até 50 fontes/notebook (grátis) • 500.000 palavras/fonte • Estrelar fontes favoritas • Checkboxes para selecionar fontes específicas na consulta</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📄</span>
+            <div><span class="font-medium">Tipos de arquivo suportados</span><span class="text-neutral-500 text-sm ml-2">- PDF, YouTube, Drive e mais</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">PDF, Google Docs/Slides/Sheets, Microsoft Word (.docx), arquivos de texto (.txt, Markdown), URLs de páginas web, vídeos do YouTube (transcrição), imagens e arquivos de áudio (MP3, WAV).</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Muitos usuários só usam PDFs e perdem a possibilidade de analisar vídeos do YouTube, páginas web e áudios de entrevistas — o que multiplica as possibilidades de uso.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">YouTube carrega apenas a transcrição (não o vídeo) • Vídeos devem ser públicos e ter menos de 72h • Sub-abas de Google Docs NÃO são importadas</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">📤</span>
+            <div><span class="font-medium">Carregando fontes corretamente</span><span class="text-neutral-500 text-sm ml-2">- Evitando erros comuns</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">O processo de adicionar fontes via upload, URL, Google Drive ou YouTube. Cada método tem particularidades e limites diferentes.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Carregar da forma errada pode resultar em fontes incompletas, dados desatualizados ou PDFs que o modelo não consegue processar bem.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Upload direto (até 200MB) • URL de PDF público • Link do Google Drive • URL do YouTube • Limite de 500.000 palavras por fonte</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">✂️</span>
+            <div><span class="font-medium">"Cirurgia nos documentos"</span><span class="text-neutral-500 text-sm ml-2">- Preparando fontes para melhores resultados</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">A prática de preparar e limpar documentos antes de carregá-los: remover páginas irrelevantes, consolidar documentos relacionados, quebrar PDFs gigantes em partes menores e focadas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Documentos menores e focados produzem resultados dramaticamente melhores. PDFs gigantes com conteúdo irrelevante diluem a precisão das respostas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Foco > Volume • Remova partes irrelevantes • Consolide docs relacionados num Google Doc único • Qualidade das fontes = qualidade das respostas</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">☑️</span>
+            <div><span class="font-medium">Selecionando fontes específicas</span><span class="text-neutral-500 text-sm ml-2">- Usando checkboxes no chat</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">No painel de fontes, você pode marcar ou desmarcar fontes específicas para cada consulta. O chat consultará apenas as fontes selecionadas, ignorando as demais.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Útil para comparar apenas dois documentos específicos, ou para isolar análises sem que fontes não relacionadas interfiram nas respostas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Checkbox ao lado de cada fonte • Todos marcados por padrão • Desmarque para excluir da consulta • Estrele fontes críticas para acesso rápido</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Integração com Google Drive</span><span class="text-neutral-500 text-sm ml-2">- Sincronização automática</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Importação direta de Google Docs, Slides e Sheets do seu Drive. Quando o documento original é atualizado, aparece o botão "Sync" na fonte para sincronizar as mudanças.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Manter documentos de trabalho no Google Docs e sincronizá-los com o NotebookLM cria um fluxo de trabalho poderoso: edite no Docs e a IA sempre tem a versão mais atual.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Sincronização manual (não automática) • Botão Sync aparece após edição do doc original • Notebooks NÃO aparecem no Google Drive — ficam só em notebooklm.google.com</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span>
+            <span class="text-lg">⚠️</span>
+            <div><span class="font-medium">Limites e Restrições</span><span class="text-neutral-500 text-sm ml-2">- O que você precisa saber</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Os limites técnicos das fontes: 500.000 palavras ou 200MB por fonte, 50 fontes por notebook (grátis), YouTube só com legendas disponíveis, sub-abas de Docs não importadas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Conhecer os limites antes evita frustrações. Você pode planejar sua estratégia de organização de notebooks e fontes para contornar restrições de forma inteligente.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">500K palavras/fonte • 200MB/arquivo • 50 fontes (grátis) • YouTube: transcrição apenas • Sub-abas Docs: não importadas • Sem modo offline</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-2')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-2.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 1.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.3</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">💬 Chat com Documentos</h3>
+        <p class="text-neutral-400 text-sm">Como fazer as perguntas certas e usar prompts poderosos para extrair o máximo dos seus documentos.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🔗</span>
+            <div><span class="font-medium">Interface de chat e citações</span><span class="text-neutral-500 text-sm ml-2">- Entendendo as respostas</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">O painel central de Q&A. Cada resposta inclui citações numeradas clicáveis que abrem o trecho exato da fonte original onde a informação foi encontrada.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">As citações são o diferencial do NotebookLM — permitem verificar cada afirmação instantaneamente, eliminando o risco de confiar em informações incorretas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Citações clicáveis → abrem o trecho na fonte • Sugestões automáticas de perguntas de acompanhamento • Histórico NÃO é salvo entre sessões</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">❓</span>
+            <div><span class="font-medium">Tipos de pergunta que funcionam</span><span class="text-neutral-500 text-sm ml-2">- Estrutura eficaz</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Perguntas específicas, contextualizadas e com formato de saída definido funcionam muito melhor do que perguntas genéricas. "Resuma" é fraco; "Liste os 5 pontos principais sobre X no formato de bullet points" é poderoso.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A diferença entre uma pergunta genérica e uma específica pode resultar em respostas 10x mais úteis — o modelo tem a capacidade, mas precisa de direção clara.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Seja específico • Defina o formato de saída • Mencione o público-alvo • Use "compare", "identifique", "extraia" em vez de "explique" ou "fale sobre"</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">📝</span>
+            <div><span class="font-medium">Prompts básicos</span><span class="text-neutral-500 text-sm ml-2">- Resumo, explicação e comparação</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Os prompts mais utilizados no dia a dia: "Resuma os pontos principais", "Explique [conceito] para um leigo", "Compare as abordagens de [documento A] e [documento B]".</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dominar os prompts básicos cobre 80% das necessidades diárias. São rápidos de formular e produzem resultados imediatos e confiáveis.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Resumo • Explicação (leigo / especialista) • Comparação • Definição • Lista de itens • "Crie um plano de estudo baseado neste material"</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🔍</span>
+            <div><span class="font-medium">Prompts intermediários</span><span class="text-neutral-500 text-sm ml-2">- Análise crítica e contradições</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Prompts que vão além do resumo: "Identifique as principais contradições entre os documentos", "Quais são os pontos fracos metodológicos?", "Gere 5 perguntas que alguém precisa responder para entender este tema".</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">São os prompts que revelam insights que você não encontraria manualmente — contradições entre fontes, lacunas de conhecimento e ângulos não explorados.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Análise de contradições • Pontos fracos metodológicos • Questões essenciais do campo • Insights não óbvios • Conexões entre conceitos</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">Super Prompts avançados</span><span class="text-neutral-500 text-sm ml-2">- Nível power user</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Prompts complexos e estruturados da comunidade avançada: "Crie um plano de aprendizagem de 30 dias com objetivos diários mensuráveis", "Gere um relatório executivo de 1 página que qualquer leigo entenda", "Identifique as 5 questões mais importantes que alguém precisa responder para compreender este tema".</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Super Prompts transformam o NotebookLM de uma ferramenta de busca em um assistente de pesquisa de nível profissional — capaz de produzir entregáveis prontos para uso.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Plano de 30 dias • Relatório executivo • 5 questões essenciais • Análise metodológica • Prompt para Audio Overview personalizado</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🚫</span>
+            <div><span class="font-medium">O que o chat NÃO consegue</span><span class="text-neutral-500 text-sm ml-2">- Limitações importantes</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Histórico de chat não é salvo entre sessões; sem exportação nativa (copiar e colar manual); notebooks não cruzam referências entre si; sem busca na web; precisão cai próximo ao limite de fontes.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Conhecer os limites evita frustrações e ajuda a usar o NotebookLM no contexto certo — em vez de culpá-lo por problemas que são limitações inerentes da ferramenta.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Sem histórico entre sessões • Sem exportação nativa • Notebooks isolados (sem cruzamento) • Sem internet • Precisão ↓ com muitas fontes</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-3')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-3.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
+    </div>
+
+    <!-- MÓDULO 1.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.4</span>
+          <span class="text-xs text-neutral-500">~60 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🎛️ Studio: Todas as Ferramentas de Saída</h3>
+        <p class="text-neutral-400 text-sm">Domine o painel Studio: Audio Overview, Mind Maps, Slide Decks, Infographics, Data Tables e Deep Research.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">Notebook Guide</span><span class="text-neutral-500 text-sm ml-2">- Study Guide, Briefing, FAQ e Glossário</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">O painel Studio oferece formatos de saída estruturados: Study Guide (guia de estudo com quiz e glossário), Briefing Document (resumo executivo), FAQ e Table of Contents gerados automaticamente.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Em vez de criar manualmente guias de estudo ou briefings, o NotebookLM gera versões de alta qualidade em segundos, baseadas exatamente no seu conteúdo.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Study Guide (quiz + gabarito + glossário) • Briefing Document (pontos principais) • FAQ automático • Table of Contents • "Create Your Own Report" com prompt personalizado</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🎙️</span>
+            <div><span class="font-medium">Audio Overview</span><span class="text-neutral-500 text-sm ml-2">- O podcast de IA que virou viral</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Com um clique, dois hosts de IA geram um podcast "deep dive" baseado nas suas fontes. Síntese de voz extremamente realista, disponível em 80+ idiomas, com download para escuta offline.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">É o recurso de IA mais inovador de 2024. Transforma qualquer documento em conteúdo auditivo — perfeito para estudo em trânsito, revisão de conteúdo extenso e criação de podcasts.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">2 hosts de IA • Personalização via prompt antes de gerar • Versão Brief (2-3 min, 1 host) • Download offline • 3 gerações/dia (grátis) • 80+ idiomas incluindo PT-BR</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🗣️</span>
+            <div><span class="font-medium">Audio Overview Interativo</span><span class="text-neutral-500 text-sm ml-2">- Entre na conversa com a IA</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">O recurso "Join" permite que você entre na conversa do Audio Overview por voz, fazendo perguntas e recebendo respostas dos hosts de IA em tempo real, como um podcast ao vivo interativo.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Eleva o Audio Overview de conteúdo passivo para experiência ativa de aprendizagem — você pode aprofundar pontos específicos enquanto o podcast acontece.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Botão "Join" durante a reprodução • Perguntas por voz • Hosts respondem em tempo real • Baseado nas fontes do notebook • Retoma o podcast após a interação</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🗺️</span>
+            <div><span class="font-medium">Mind Maps</span><span class="text-neutral-500 text-sm ml-2">- Mapeamento visual interativo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Gera diagramas visuais interativos que resumem as fontes carregadas. Clique em qualquer nó para fazer perguntas no chat sobre aquele tópico específico. Exportável via extensão XMind.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Perfeito para identificar conexões entre conceitos aparentemente não relacionados e para ter uma visão geral do conteúdo antes de aprofundar em áreas específicas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Diagrama ramificado interativo • Clique no nó → pergunta no chat • Zoom in/out • Expandir/colapsar ramos • Exportável para XMind • Ideal para navegação visual</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">📊</span>
+            <div><span class="font-medium">Slide Decks e Infographics</span><span class="text-neutral-500 text-sm ml-2">- Apresentações automáticas</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Slide Decks em dois estilos: slides detalhados (ricos em texto, para distribuição) e slides de apresentação (bullet points concisos, para uso ao vivo). Infographics transformam pesquisa em visualizações prontas para compartilhar.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Elimina horas de trabalho criando apresentações do zero. Em minutos você tem uma estrutura visual profissional baseada no seu conteúdo real.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Slides detalhados (leitura) vs Slides apresentação (ao vivo) • Alimentados por Gemini 3 • Infographics prontos para exportar • Especifique público-alvo antes de gerar</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🔬</span>
+            <div><span class="font-medium">Data Tables e Deep Research</span><span class="text-neutral-500 text-sm ml-2">- Para pesquisas sérias</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Data Tables organiza informações das fontes em tabelas exportáveis para Google Sheets. Deep Research produz relatórios abrangentes em dois modos: Fast (rápido) e Deep (3-5 min, 30+ fontes, relatório completo com citações).</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Deep Research transforma o NotebookLM em uma ferramenta de análise de pesquisa profissional. Data Tables elimina a tarefa manual de organizar informações de múltiplas fontes em planilhas.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Data Tables → exporta para Google Sheets • Deep Research Fast vs Deep • Relatório com 30+ fontes • 3-5 minutos de processamento • Citações completas no relatório</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-4')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-4.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo →</a>
+      </div>
+    </div>
+
+    <!-- NAVEGAÇÃO -->
+    <div class="flex flex-col sm:flex-row gap-4 mt-10">
+      <a href="../../index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar ao Início</a>
+      <a href="../trilha2/index.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Trilha 2: Aplicação →</a>
+    </div>
+
+  </main>
+
+  <!-- MODAIS COM IFRAME -->
+  <div id="modal-1-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.1</span><span class="font-semibold">Introdução e Contexto</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-1-1.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-1-2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.2</span><span class="font-semibold">Fontes: O Coração do NotebookLM</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-1-2.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-1-3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.3</span><span class="font-semibold">Chat com Documentos</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-1-3.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-1-4" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.4</span><span class="font-semibold">Studio: Todas as Ferramentas</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-1-4.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) exp.classList.remove('active');
+      });
+      explanation.classList.toggle('active');
+    }
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    }
+
+    function closeModal() {
+      document.querySelectorAll('.modal').forEach(modal => modal.classList.add('hidden'));
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light') {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
