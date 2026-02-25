@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo 3.5 — Custom Instructions Avançadas | INEMA.CLUB</title>
+  <title>3.5 Custom Instructions Avançadas | NotebookLM Completo</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
     .dark body { background-color: #111827; }
@@ -22,377 +26,392 @@
     html:not(.dark) .text-neutral-500 { color: #9ca3af; }
     html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
     html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    pre { white-space: pre-wrap; word-break: break-word; }
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-14">
-        <div class="flex items-center space-x-4">
-          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
-            <span class="text-2xl">📓</span>
-            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
-          </a>
-          <span class="text-neutral-600">|</span>
-          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+          <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-purple-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
+      <span>/</span>
+      <span class="text-purple-400">Módulo 3.5</span>
+    </div>
+    <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.5</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">🧠 Custom Instructions Avançadas — 10.000 Caracteres</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">Explore o espaço completo das Custom Instructions expandido em dezembro de 2025. Aprenda a arquitetar instruções que definem persona, comportamento, formato e múltiplos cenários de uso em um único bloco de configuração.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">5</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">45</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Pr</div>
+        <div class="text-xs text-neutral-400">Prático</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">🚀 A expansão de dezembro de 2025: de 2k para 10k</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Em dezembro de 2025, o Google expandiu o limite de Custom Instructions do NotebookLM de aproximadamente 2.000 para <strong class="text-purple-400">10.000 caracteres</strong>. Essa mudança transformou o que era uma configuração básica em uma ferramenta de programação de comportamento sofisticada. Com 10k caracteres, você pode cobrir múltiplos cenários de uso, definir personas complexas e criar regras condicionais — tudo no mesmo bloco de configuração.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">📊 O que mudou na prática</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide mb-3">Antes (limite 2.000 chars)</p>
+          <div class="space-y-2 text-sm text-neutral-300">
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-dark-600">
+              <span class="text-red-400">✗</span><span>Persona básica — 1 ou 2 linhas</span>
+            </div>
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-dark-600">
+              <span class="text-red-400">✗</span><span>Formato fixo simples sem variações</span>
+            </div>
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-dark-600">
+              <span class="text-red-400">✗</span><span>Sem espaço para regras de comportamento</span>
+            </div>
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-dark-600">
+              <span class="text-red-400">✗</span><span>Impossível cobrir múltiplos cenários</span>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center space-x-1 sm:space-x-2">
-          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
-            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
-          </a>
-          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
-            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
-          </a>
-          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
-            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
-          </a>
-          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
-            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-          </button>
+        <div>
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide mb-3">Agora (limite 10.000 chars)</p>
+          <div class="space-y-2 text-sm text-neutral-300">
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-emerald-500/20">
+              <span class="text-emerald-400">✓</span><span>Persona detalhada com histórico e contexto</span>
+            </div>
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-emerald-500/20">
+              <span class="text-emerald-400">✓</span><span>Múltiplos formatos de saída por tipo de pedido</span>
+            </div>
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-emerald-500/20">
+              <span class="text-emerald-400">✓</span><span>Regras condicionais: "Se X, então faça Y"</span>
+            </div>
+            <div class="flex items-start space-x-2 p-2 bg-dark-800/60 rounded border border-emerald-500/20">
+              <span class="text-emerald-400">✓</span><span>Cobertura de 5 a 8 cenários diferentes</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </nav>
 
-  <!-- HEADER -->
-  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
-        <a href="../../index.html" class="hover:text-purple-400 transition-colors">Início</a>
-        <span>/</span>
-        <a href="index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
-        <span>/</span>
-        <span class="text-purple-400">Módulo 3.5</span>
-      </div>
-      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.5</span>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🎛️ Custom Instructions Avançadas — 10.000 Caracteres</h1>
-      <p class="text-lg text-neutral-400 max-w-3xl">Domine a nova arquitetura de Custom Instructions com 10k caracteres para criar notebooks altamente configurados.</p>
-      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">5</div>
-          <div class="text-xs text-neutral-400">Tópicos</div>
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Quanto espaço você realmente precisa?</h3>
+      <div class="grid grid-cols-4 gap-4 text-center text-sm">
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <div class="font-bold text-neutral-300">~1.500</div>
+          <div class="text-xs text-neutral-500 mt-1">Mínimo funcional</div>
+          <div class="text-xs text-neutral-400 mt-1">Persona + 1 formato</div>
         </div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">40</div>
-          <div class="text-xs text-neutral-400">Minutos</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <div class="font-bold text-neutral-300">~3.000</div>
+          <div class="text-xs text-neutral-500 mt-1">Bom</div>
+          <div class="text-xs text-neutral-400 mt-1">Persona + 2-3 formatos</div>
         </div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">Av.</div>
-          <div class="text-xs text-neutral-400">Nível</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-purple-500/20">
+          <div class="font-bold text-purple-400">~5.000</div>
+          <div class="text-xs text-neutral-500 mt-1">Ideal</div>
+          <div class="text-xs text-neutral-400 mt-1">Persona + 5 cenários</div>
         </div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">🛠️</div>
-          <div class="text-xs text-neutral-400">Prático</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <div class="font-bold text-neutral-300">10.000</div>
+          <div class="text-xs text-neutral-500 mt-1">Máximo</div>
+          <div class="text-xs text-neutral-400 mt-1">Sistemas complexos</div>
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- MAIN CONTENT -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">🏗️ Arquitetura das Custom Instructions</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Custom Instructions eficientes seguem uma arquitetura em camadas: <strong class="text-purple-400">identidade → contexto do usuário → regras de comportamento → formatos de saída → restrições absolutas</strong>. Cada camada resolve um problema diferente. Misturar tudo em um bloco sem estrutura resulta em instruções que o notebook ignora parcialmente ou aplica de forma inconsistente.</p>
 
-    <!-- Tópico 1 -->
-    <section id="topico-1" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
-        <h2 class="text-2xl font-bold">🔢 O que mudou em dezembro de 2025</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Em dezembro de 2025, o Google expandiu o limite de Custom Instructions do NotebookLM de 2.000 para 10.000 caracteres. Isso permite instruções muito mais detalhadas, com múltiplas regras, formatos e personas dentro de um único campo.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Com 10k caracteres, você pode criar instruções tão completas que o notebook praticamente se auto-configura para qualquer tarefa. É a mudança mais impactante para power users desde o lançamento do recurso.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔢</div>
-            <div class="text-sm font-semibold">10.000 chars</div>
-            <div class="text-xs text-neutral-400">Novo limite (dez/2025)</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📉</div>
-            <div class="text-sm font-semibold">Antes: 2.000</div>
-            <div class="text-xs text-neutral-400">Limite anterior</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🎭</div>
-            <div class="text-sm font-semibold">Mais personas</div>
-            <div class="text-xs text-neutral-400">Por instrução</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📋</div>
-            <div class="text-sm font-semibold">Formatos múltiplos</div>
-            <div class="text-xs text-neutral-400">No mesmo campo</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⚙️</div>
-            <div class="text-sm font-semibold">Regras complexas</div>
-            <div class="text-xs text-neutral-400">Detalhamento avançado</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🚀</div>
-            <div class="text-sm font-semibold">Power users</div>
-            <div class="text-xs text-neutral-400">Auto-configuração</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tópico 2 -->
-    <section id="topico-2" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
-        <h2 class="text-2xl font-bold">6️⃣ Arquitetura das Custom Instructions</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Estrutura recomendada para Custom Instructions de alto desempenho: (1) Persona/Papel — quem você é, (2) Missão — o que você faz, (3) Restrições — o que você NÃO faz, (4) Formato de resposta — como estruturar, (5) Exemplos — como deve ser a saída, (6) Regras especiais — casos de borda.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Instruções mal estruturadas geram respostas inconsistentes. A arquitetura em 6 seções garante que o notebook entende papel, missão, restrições e formato de uma vez, sem precisar repetir no prompt.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">6️⃣</div>
-            <div class="text-sm font-semibold">6 seções</div>
-            <div class="text-xs text-neutral-400">Estrutura completa</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🎭</div>
-            <div class="text-sm font-semibold">Persona definida</div>
-            <div class="text-xs text-neutral-400">Quem você é</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🎯</div>
-            <div class="text-sm font-semibold">Missão clara</div>
-            <div class="text-xs text-neutral-400">O que você faz</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🚫</div>
-            <div class="text-sm font-semibold">Restrições</div>
-            <div class="text-xs text-neutral-400">O que NÃO faz</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📐</div>
-            <div class="text-sm font-semibold">Formato obrigatório</div>
-            <div class="text-xs text-neutral-400">Como estruturar</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⚠️</div>
-            <div class="text-sm font-semibold">Regras de borda</div>
-            <div class="text-xs text-neutral-400">Casos especiais</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tópico 3 -->
-    <section id="topico-3" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
-        <h2 class="text-2xl font-bold">🧠 Técnicas avançadas de instrução</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">5 técnicas avançadas: (1) Chain-of-thought forçado ("pense passo a passo antes de responder"), (2) Formato markdown obrigatório, (3) Verificação de fontes ("cite de qual fonte veio cada afirmação"), (4) Idioma fixo ("responda sempre em português brasileiro"), (5) Nível de detalhe ("seja conciso: máximo 3 parágrafos por seção").</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Técnicas avançadas transformam o notebook de "assistente genérico" em "especialista configurado". Cada técnica resolve um problema específico e composto é o que diferencia resultados medianos de resultados profissionais.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🧠</div>
-            <div class="text-sm font-semibold">Chain-of-thought</div>
-            <div class="text-xs text-neutral-400">Raciocínio passo a passo</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📝</div>
-            <div class="text-sm font-semibold">Markdown obrigatório</div>
-            <div class="text-xs text-neutral-400">Formato fixado</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📌</div>
-            <div class="text-sm font-semibold">Citação de fontes</div>
-            <div class="text-xs text-neutral-400">Rastreabilidade</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🇧🇷</div>
-            <div class="text-sm font-semibold">PT-BR fixado</div>
-            <div class="text-xs text-neutral-400">Idioma obrigatório</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📏</div>
-            <div class="text-sm font-semibold">Limite de tamanho</div>
-            <div class="text-xs text-neutral-400">Controle de verbosidade</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔗</div>
-            <div class="text-sm font-semibold">Composição</div>
-            <div class="text-xs text-neutral-400">Técnicas combinadas</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tópico 4 -->
-    <section id="topico-4" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
-        <h2 class="text-2xl font-bold">🎭 Combinando múltiplas personas em uma instrução</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Com 10k caracteres, você pode combinar múltiplas personalidades condicionalmente: "Se eu perguntar sobre ferramenta → aja como consultor. Se eu perguntar sobre roteiro → aja como roteirista. Se eu perguntar sobre prompt → aja como engenheiro de prompt." Um notebook, múltiplos modos.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Em vez de trocar entre 3 notebooks, você pode ter um notebook multi-modo para tarefas do dia a dia. Não substitui os engines especializados para tarefas complexas, mas é eficiente para consultas rápidas.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🎭</div>
-            <div class="text-sm font-semibold">Personas condicionais</div>
-            <div class="text-xs text-neutral-400">Por contexto</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">↔️</div>
-            <div class="text-sm font-semibold">If/then natural</div>
-            <div class="text-xs text-neutral-400">Lógica em texto</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔀</div>
-            <div class="text-sm font-semibold">Multi-modo</div>
-            <div class="text-xs text-neutral-400">Um notebook, vários papéis</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⚡</div>
-            <div class="text-sm font-semibold">Switching automático</div>
-            <div class="text-xs text-neutral-400">Por pergunta</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔒</div>
-            <div class="text-sm font-semibold">Não substitui engines</div>
-            <div class="text-xs text-neutral-400">Para consultas rápidas</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">💬</div>
-            <div class="text-sm font-semibold">Quick queries</div>
-            <div class="text-xs text-neutral-400">Eficiência no dia a dia</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tópico 5 -->
-    <section id="topico-5" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
-        <h2 class="text-2xl font-bold">🔄 Testando e otimizando suas instruções</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Metodologia de teste: (1) Faça 3 perguntas de referência antes de mudar as instruções, (2) Modifique uma variável por vez, (3) Teste novamente com as mesmas 3 perguntas, (4) Compare os resultados, (5) Mantenha um log das versões. Itere até atingir a consistência desejada.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Sem metodologia de teste, você muda as instruções aleatoriamente e não sabe o que causou uma melhora ou piora. O método de teste garante evolução mensurável e reproduzível.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">3️⃣</div>
-            <div class="text-sm font-semibold">3 perguntas</div>
-            <div class="text-xs text-neutral-400">De referência fixas</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">1️⃣</div>
-            <div class="text-sm font-semibold">Uma variável</div>
-            <div class="text-xs text-neutral-400">Por iteração</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📒</div>
-            <div class="text-sm font-semibold">Log de versões</div>
-            <div class="text-xs text-neutral-400">Histórico de mudanças</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⚖️</div>
-            <div class="text-sm font-semibold">A/B manual</div>
-            <div class="text-xs text-neutral-400">Comparação sistemática</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📊</div>
-            <div class="text-sm font-semibold">Métricas de qualidade</div>
-            <div class="text-xs text-neutral-400">Evolução mensurável</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔄</div>
-            <div class="text-sm font-semibold">Iteração sistemática</div>
-            <div class="text-xs text-neutral-400">Melhora contínua</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESUMO FINAL -->
-    <div class="mt-4 p-6 bg-dark-800 rounded-2xl border border-purple-500/30">
-      <h2 class="text-2xl font-bold mb-4 text-purple-400">✅ O que você aprendeu neste módulo</h2>
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-5">📐 As 5 Camadas das Custom Instructions</h3>
       <div class="space-y-3">
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
-          <p class="text-neutral-300 text-sm">O que mudou em dezembro de 2025 com a expansão para 10.000 caracteres e por que isso é a mudança mais impactante para power users</p>
+        <div class="flex items-start space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">1</div>
+          <div>
+            <h4 class="font-semibold text-white mb-1">Identidade — Quem você é</h4>
+            <p class="text-neutral-400 text-sm">Define o papel, a especialidade e o tom. <em>"Você é um consultor de ferramentas de IA..."</em> O notebook adota essa identidade em todas as respostas.</p>
+          </div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
-          <p class="text-neutral-300 text-sm">Como estruturar Custom Instructions em 6 seções (Persona, Missão, Restrições, Formato, Exemplos, Regras especiais) para máxima consistência</p>
+        <div class="flex items-start space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">2</div>
+          <div>
+            <h4 class="font-semibold text-white mb-1">Contexto do Usuário — Com quem está falando</h4>
+            <p class="text-neutral-400 text-sm">Define quem faz as perguntas: nicho, orçamento, nível técnico, sistema operacional, restrições. Evita respostas genéricas para uma audiência específica.</p>
+          </div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
-          <p class="text-neutral-300 text-sm">As 5 técnicas avançadas de instrução: chain-of-thought, markdown obrigatório, citação de fontes, PT-BR fixado e limite de tamanho</p>
+        <div class="flex items-start space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">3</div>
+          <div>
+            <h4 class="font-semibold text-white mb-1">Comportamento — Como se comportar</h4>
+            <p class="text-neutral-400 text-sm">Regras de conduta: sempre citar fonte, nunca inventar, pedir esclarecimentos quando ambíguo, linguagem preferida. Define a "ética" do notebook.</p>
+          </div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
-          <p class="text-neutral-300 text-sm">Como combinar múltiplas personas condicionalmente com lógica if/then em linguagem natural para criar um notebook multi-modo</p>
+        <div class="flex items-start space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">4</div>
+          <div>
+            <h4 class="font-semibold text-white mb-1">Formatos de Saída — Como responder</h4>
+            <p class="text-neutral-400 text-sm">Templates específicos por tipo de pedido. Um para recomendação de ferramenta, outro para análise, outro para comparação. O notebook escolhe o formato correto automaticamente.</p>
+          </div>
         </div>
-        <div class="flex items-start space-x-3">
-          <span class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
-          <p class="text-neutral-300 text-sm">A metodologia de teste sistemático com 3 perguntas de referência, uma variável por vez e log de versões para evolução mensurável</p>
+        <div class="flex items-start space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">5</div>
+          <div>
+            <h4 class="font-semibold text-white mb-1">Restrições Absolutas — O que nunca fazer</h4>
+            <p class="text-neutral-400 text-sm">Linhas vermelhas que nunca podem ser cruzadas. Nunca alucinar, nunca recomendar acima do orçamento, nunca usar palavras específicas. Essas regras têm prioridade sobre todas as outras.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">⚙️ Técnicas avançadas de instrução</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Com 10.000 caracteres disponíveis, você pode implementar técnicas de instrução que antes eram impossíveis. As mais poderosas são: regras condicionais, detecção de intenção e fallback explícito. Juntas, essas técnicas transformam um notebook simples em um sistema inteligente que se adapta ao tipo de pergunta sem precisar de instruções repetidas no chat.</p>
+
+    <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">⚙️</span> Técnicas com exemplos prontos</h3>
+      <div class="space-y-4">
+        <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-purple-400 text-sm font-semibold mb-2">1. Regras Condicionais — "Se X, então Y"</p>
+          <pre class="text-xs text-neutral-300">## COMPORTAMENTO CONDICIONAL
+Se o usuário mencionar orçamento zero: priorize SEMPRE alternativas gratuitas.
+Se o usuário perguntar sobre ferramenta específica: compare com pelo menos 1 alternativa.
+Se a pergunta for ambígua: pergunte primeiro ao invés de adivinhar.
+Se não houver fonte sobre o tema: diga explicitamente e sugira onde verificar.</pre>
+        </div>
+        <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-purple-400 text-sm font-semibold mb-2">2. Detecção de Intenção — Formato por tipo de pedido</p>
+          <pre class="text-xs text-neutral-300">## FORMATOS POR INTENÇÃO
+Se o pedido contém "recomend*" ou "qual ferramenta": use FORMATO-RECOMENDAÇÃO
+Se o pedido contém "compar*" ou "diferença": use FORMATO-COMPARAÇÃO
+Se o pedido contém "como" ou "tutorial": use FORMATO-PASSO-A-PASSO
+Se o pedido contém "melhor para mim": use FORMATO-PERSONALIZADO</pre>
+        </div>
+        <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-purple-400 text-sm font-semibold mb-2">3. Fallback Explícito — O que fazer quando não sabe</p>
+          <pre class="text-xs text-neutral-300">## QUANDO NÃO ENCONTRAR NAS FONTES
+Resposta padrão: "Não encontrei essa informação nas fontes carregadas.
+Para verificar: [sugira o site oficial]. Posso ajudar com [área relacionada
+que está nas fontes]?"
+Nunca tente adivinhar ou completar com conhecimento geral.</pre>
         </div>
       </div>
     </div>
 
-    <!-- NAVEGAÇÃO -->
-    <div class="flex justify-between mt-12">
-      <a href="modulo-3-4.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 font-semibold rounded-xl transition-colors">← Módulo Anterior</a>
-      <a href="modulo-3-6.html" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-colors">Próximo Módulo →</a>
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Use headers com ## para organizar</h3>
+      <p class="text-neutral-300 text-sm">O NotebookLM interpreta markdown nas Custom Instructions. Use <code class="bg-dark-800 px-1.5 py-0.5 rounded text-purple-400 text-xs">## SEÇÃO</code> para separar as camadas e <code class="bg-dark-800 px-1.5 py-0.5 rounded text-purple-400 text-xs">**negrito**</code> para destacar regras críticas. Instruções organizadas são seguidas com mais consistência do que um bloco de texto corrido sem estrutura.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">🎭 Múltiplas personas no mesmo notebook</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Uma técnica avançada poderosa é configurar um único notebook para alternar entre múltiplas personas dependendo de um gatilho no prompt. Em vez de criar 3 notebooks para 3 perfis de cliente, você cria um com instruções condicionais que ativa o modo correto. Isso é especialmente útil para quem atende clientes com perfis diferentes — freelancer, PME, grande empresa — e precisa de abordagens distintas.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">🎭 Como configurar múltiplas personas</h3>
+      <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-600 mb-4">
+        <pre class="text-sm text-neutral-300">## MODOS DE OPERAÇÃO
+Este notebook tem 3 modos. O usuário ativa com a tag no início do prompt:
+
+[INICIANTE]: Explique tudo do zero. Evite jargões técnicos.
+Use analogias simples. Sugira ferramentas mais fáceis de usar.
+Máximo de 3 recomendações para não sobrecarregar.
+
+[INTERMEDIÁRIO]: Assumir conhecimento básico de ferramentas de IA.
+Pode mencionar integrações e APIs. Comparações mais técnicas são ok.
+Até 5 opções com análise de custo-benefício.
+
+[AVANÇADO]: Usuário sabe o que quer. Seja direto e técnico.
+Mencione parâmetros, limitações de API, uso de tokens, etc.
+Forneça análise competitiva detalhada quando solicitado.
+
+Se nenhuma tag for usada, assuma [INTERMEDIÁRIO] como padrão.</pre>
+      </div>
+      <p class="text-neutral-400 text-sm">Para ativar: o usuário escreve <code class="bg-dark-800 px-1.5 py-0.5 rounded text-purple-400 text-xs">[INICIANTE] Qual ferramenta usar para fazer podcast?</code> e o notebook automaticamente muda o nível de resposta.</p>
     </div>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-dark-600 py-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
-      <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-3">✓ Casos de uso ideais</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Agências que atendem clientes em diferentes estágios</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Consultores que alternam entre análise técnica e comunicação executiva</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Criadores que produzem para audiências diferentes no mesmo nicho</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-3">✗ Quando NÃO usar múltiplas personas</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Quando as personas têm fontes completamente diferentes (crie notebooks separados)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Quando as personas têm objetivos conflitantes entre si</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Quando você raramente alterna — overhead desnecessário</span></li>
+        </ul>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-    const html = document.documentElement;
-    if (localStorage.getItem('theme') === 'light') {
-      themeToggleDarkIcon.classList.remove('hidden');
-      html.classList.remove('dark');
-    } else {
-      themeToggleLightIcon.classList.remove('hidden');
-    }
-    themeToggle.addEventListener('click', () => {
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
-  </script>
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">🔬 Testando e otimizando suas Custom Instructions</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Custom Instructions não são write-once-forget. Elas precisam ser testadas sistematicamente e ajustadas com base no comportamento real do notebook. O processo de otimização é iterativo: você escreve, testa com casos específicos, identifica onde o notebook desvia do esperado, corrige e testa novamente. Geralmente, após 2 a 3 rodadas de ajuste, o comportamento fica estável e consistente.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-5">🔬 Protocolo de Teste — 5 prompts diagnóstico</h3>
+      <div class="space-y-3">
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide mb-2">Teste 1 — Persona</p>
+          <p class="text-neutral-300 text-sm italic">"Quem você é e o que você faz?"</p>
+          <p class="text-neutral-500 text-xs mt-2">✓ Esperado: descreve a persona das CIs. ✗ Falha: resposta genérica de IA sem mencionar o papel</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide mb-2">Teste 2 — Formato de saída</p>
+          <p class="text-neutral-300 text-sm italic">"Qual ferramenta de edição de vídeo eu deveria usar?"</p>
+          <p class="text-neutral-500 text-xs mt-2">✓ Esperado: formato definido nas CIs com seções corretas. ✗ Falha: resposta em parágrafo corrido sem estrutura</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide mb-2">Teste 3 — Restrição de fontes</p>
+          <p class="text-neutral-300 text-sm italic">"Qual é a melhor IA lançada essa semana?"</p>
+          <p class="text-neutral-500 text-xs mt-2">✓ Esperado: "Não encontrei nas fontes carregadas". ✗ Falha: inventa resposta com conhecimento geral</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide mb-2">Teste 4 — Restrição de orçamento</p>
+          <p class="text-neutral-300 text-sm italic">"Recomende ferramentas para meu workflow de criação"</p>
+          <p class="text-neutral-500 text-xs mt-2">✓ Esperado: só recomenda dentro do orçamento definido nas CIs. ✗ Falha: recomenda ferramentas caras sem avisar</p>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide mb-2">Teste 5 — Consistência em sessões diferentes</p>
+          <p class="text-neutral-300 text-sm italic">Faça a mesma pergunta em uma nova sessão de chat</p>
+          <p class="text-neutral-500 text-xs mt-2">✓ Esperado: resposta com mesma estrutura e tom. ✗ Falha: resposta completamente diferente — CIs não estão sendo aplicadas</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Ajuste cirúrgico, não reescreva tudo</h3>
+      <p class="text-neutral-300 text-sm">Quando identificar um problema, ajuste só a seção relevante. Se o formato está errado, edite apenas a seção de formato. Se o notebook inventa informações, reforce só a seção de restrições. Reescrever tudo toda vez introduz novos problemas onde não existiam — e você perde o histórico de o que funcionava antes.</p>
+    </div>
+  </section>
+
+  <!-- RESUMO -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Checklist do Módulo 3.5</h2>
+      <p class="text-neutral-400 mb-6">Confirme o que você domina antes do módulo final:</p>
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Entendo a expansão para 10.000 caracteres e o que ela possibilita</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Conheço as 5 camadas da arquitetura e o que cada uma resolve</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Sei implementar regras condicionais, detecção de intenção e fallback explícito</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Entendo quando vale usar múltiplas personas e quando separar em notebooks distintos</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Tenho o protocolo de 5 testes para validar qualquer CI que eu configurar</span></li>
+      </ul>
+      <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+        <h3 class="font-semibold text-purple-400 mb-2">Próximo Módulo:</h3>
+        <p class="text-neutral-300">3.6 — Workflow Completo: Do Zero ao Post em 45 Minutos</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-3-4.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 3.4: Prompt Engine</a>
+        <a href="modulo-3-6.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Módulo 3.6: Workflow Completo →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
 </body>
 </html>

@@ -26,6 +26,7 @@
     html:not(.dark) .text-neutral-500 { color: #9ca3af; }
     html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
     html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    pre { white-space: pre-wrap; word-break: break-word; }
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
@@ -72,7 +73,7 @@
     </div>
     <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.2</span>
     <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔍 Research Engine — Pesquisa Sem Hype</h1>
-    <p class="text-lg text-neutral-400 max-w-3xl">Monte um notebook que recomenda ferramentas somente com base em fontes confiáveis. Zero achismo, zero recomendação patrocinada, 100% baseado em dados reais.</p>
+    <p class="text-lg text-neutral-400 max-w-3xl">Monte um notebook que recomenda ferramentas somente com base em fontes confiáveis. Zero achismo, zero recomendação patrocinada, 100% baseado em dados verificados do seu nicho.</p>
     <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
       <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
         <div class="text-xl font-bold text-purple-400">6</div>
@@ -94,7 +95,7 @@
   </div>
 </header>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
   <!-- Tópico 1 -->
@@ -103,47 +104,42 @@
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
       <h2 class="text-2xl font-bold">➕ Criando o notebook Research Engine</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Passo a passo para criar o notebook dedicado a pesquisa de ferramentas: nome padronizado "INEMA — Research Engine", primeiras fontes de qualidade (diretórios de IA, documentação oficial), e configuração inicial de Custom Instructions que definem a persona de consultor. A criação correta leva cerca de 30-45 minutos e define todo o comportamento futuro do engine.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O Research Engine é um notebook dedicado exclusivamente a recomendar ferramentas. Ele não cria conteúdo, não escreve roteiros — ele pesquisa, compara e justifica com base em fontes verificadas. A configuração leva 30 a 45 minutos e define tudo: desde a persona até o formato exato de cada resposta. Feito uma vez, funciona por meses com manutenção mínima.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">A criação correta define o sucesso do engine. Erros na fase de setup resultam em recomendações imprecisas ou respostas que ignoram as restrições do usuário. Um notebook mal nomeado, com fontes genéricas e sem Custom Instructions vai frustrar desde o início. O setup certo cria um consultor confiável que você vai usar todos os dias.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">➕</div>
-          <div class="text-sm font-semibold">Create New</div>
-          <div class="text-xs text-neutral-400">Notebook do zero</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🏷️</div>
-          <div class="text-sm font-semibold">Nome Padrão</div>
-          <div class="text-xs text-neutral-400">INEMA — Research Engine</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📚</div>
-          <div class="text-sm font-semibold">10-30 Fontes</div>
-          <div class="text-xs text-neutral-400">Quantidade ideal</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🏆</div>
-          <div class="text-sm font-semibold">Fontes Oficiais</div>
-          <div class="text-xs text-neutral-400">Prioritárias sempre</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">⚙️</div>
-          <div class="text-sm font-semibold">Custom Instructions</div>
-          <div class="text-xs text-neutral-400">Persona de consultor</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">💾</div>
-          <div class="text-sm font-semibold">Salvar Template</div>
-          <div class="text-xs text-neutral-400">Reutilizar configuração</div>
+    <div class="space-y-4 mb-6">
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">1</div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Crie o notebook</h4>
+          <p class="text-neutral-300 text-sm">Acesse <strong class="text-purple-400">notebooklm.google.com</strong> → clique em <strong>"Novo notebook"</strong> → nomeie como <code class="bg-dark-700 px-1.5 py-0.5 rounded text-purple-400 text-xs">INEMA — Research Engine</code>. Use esse nome exato.</p>
         </div>
       </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">2</div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Adicione as primeiras fontes</h4>
+          <p class="text-neutral-300 text-sm">Mínimo de 10 fontes, ideal 15 a 25. Comece pelas páginas de pricing e documentação das 5 ferramentas que você já usa. Depois adicione os diretórios e newsletters (veja Tópico 2).</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">3</div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Configure as Custom Instructions</h4>
+          <p class="text-neutral-300 text-sm">Clique no ícone de engrenagem → <strong>"Customize notebook"</strong> → cole o template do Tópico 3. Essa etapa define a persona de consultor que vai guiar todas as respostas.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-bold text-purple-400">4</div>
+        <div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+          <h4 class="font-semibold text-white mb-1">Teste com o prompt template</h4>
+          <p class="text-neutral-300 text-sm">Use o template do Tópico 4 preenchido com seus dados reais. Avalie: a resposta cita fontes? Considera orçamento? Sugere alternativa gratuita? Se sim, o engine está pronto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> O Erro Mais Comum no Setup</h3>
+      <p class="text-neutral-300">Criar o notebook sem Custom Instructions e depois reclamar que as respostas são genéricas. Sem CI, o notebook não tem persona, não tem formato fixo, não sabe suas restrições de orçamento. É como contratar um consultor sem dar o briefing — ele vai dar respostas vagas. Configure as CIs antes de fazer a primeira consulta.</p>
     </div>
   </section>
 
@@ -153,46 +149,73 @@
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
       <h2 class="text-2xl font-bold">📂 Fontes certas para cada nicho</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">As melhores fontes para o Research Engine são: diretórios de ferramentas de IA (There's An AI For That, Futurepedia), newsletters técnicas, páginas oficiais de ferramentas (docs, pricing), comparadores de modelos (LMSYS Chatbot Arena), blogs respeitados (Simon Willison, The Rundown AI). Para cada nicho existe um conjunto diferente de fontes primárias que maximiza a precisão das recomendações.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">A curadoria de fontes é a habilidade mais importante deste módulo. Fontes especializadas no seu nicho geram recomendações precisas e acionáveis. Um Research Engine para criadores de vídeo precisa de fontes completamente diferentes de um para desenvolvedores ou para profissionais de marketing. Regra: <strong class="text-purple-400">qualidade sempre supera quantidade</strong> — 15 fontes excelentes valem mais do que 40 mediocres.</p>
 
     <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Fontes genéricas geram recomendações genéricas. Fontes especializadas no seu nicho (criadores, marketing, educação) geram recomendações precisas e acionáveis. Um Research Engine para criadores de vídeo precisa de fontes diferentes de um Research Engine para desenvolvedores. A curadoria de fontes é a habilidade mais importante deste módulo.</p>
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">📋 Fontes por Categoria</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-3">
+          <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+            <div class="font-semibold text-purple-400 text-sm mb-2">🗂️ Diretórios de IA</div>
+            <ul class="text-neutral-300 text-sm space-y-1">
+              <li>• There's An AI For That (theresanaiforthat.com)</li>
+              <li>• Futurepedia (futurepedia.io)</li>
+              <li>• AI Tools Directory (aitoolsdirectory.com)</li>
+              <li>• Product Hunt — seção IA</li>
+            </ul>
+          </div>
+          <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+            <div class="font-semibold text-purple-400 text-sm mb-2">📊 Benchmarks e Comparadores</div>
+            <ul class="text-neutral-300 text-sm space-y-1">
+              <li>• LMSYS Chatbot Arena (lmarena.ai)</li>
+              <li>• Artificial Analysis (artificialanalysis.ai)</li>
+              <li>• Scale AI Leaderboard</li>
+            </ul>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+            <div class="font-semibold text-purple-400 text-sm mb-2">📧 Newsletters Técnicas</div>
+            <ul class="text-neutral-300 text-sm space-y-1">
+              <li>• The Rundown AI (therundown.ai)</li>
+              <li>• TLDR AI (tldr.tech/ai)</li>
+              <li>• Ben's Bites (bensbites.com)</li>
+              <li>• Import AI (Jack Clark)</li>
+            </ul>
+          </div>
+          <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+            <div class="font-semibold text-purple-400 text-sm mb-2">📄 Documentação Oficial</div>
+            <ul class="text-neutral-300 text-sm space-y-1">
+              <li>• Página de pricing de cada ferramenta</li>
+              <li>• Release notes e changelogs</li>
+              <li>• Docs técnicos de APIs</li>
+              <li>• Blog oficial de updates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📂</div>
-          <div class="text-sm font-semibold">Diretórios Curados</div>
-          <div class="text-xs text-neutral-400">There's An AI, Futurepedia</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📄</div>
-          <div class="text-sm font-semibold">Doc. Oficial</div>
-          <div class="text-xs text-neutral-400">Pricing e features reais</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🏆</div>
-          <div class="text-sm font-semibold">Leaderboards</div>
-          <div class="text-xs text-neutral-400">LMSYS Chatbot Arena</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📧</div>
-          <div class="text-sm font-semibold">Newsletters</div>
-          <div class="text-xs text-neutral-400">The Rundown, TLDR AI</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎯</div>
-          <div class="text-sm font-semibold">10-30 Fontes</div>
-          <div class="text-xs text-neutral-400">Qualidade sobre quantidade</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🚫</div>
-          <div class="text-sm font-semibold">Sem Opinião</div>
-          <div class="text-xs text-neutral-400">Evitar blogs sem dados</div>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ Fontes que funcionam</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Documentação oficial com features e limitações</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Página de pricing atualizada (com data)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Comparações com metodologia clara</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Reviews com casos de uso reais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Dados de benchmarks com critérios objetivos</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ Fontes que prejudicam</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Posts de influencers sem embasamento técnico</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Artigos patrocinados ou afiliados não declarados</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Fontes com mais de 6 meses (mundo de IA muda rápido)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tutoriais sem mencionar limitações ou custos</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Mais de 50 fontes — foque nas melhores</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -203,47 +226,59 @@
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
       <h2 class="text-2xl font-bold">📝 Custom Instructions: template completo</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Template de Custom Instructions para o Research Engine: "Você é um consultor de ferramentas de IA para criadores no Brasil. Use SOMENTE as fontes carregadas. Formato obrigatório: 1) Recomendações por etapa 2) Por que serve para minhas restrições 3) Prós e contras 4) Alternativa gratuita 5) Checklist." Essas instruções definem como o notebook se comporta em todas as conversas, sem precisar repetir as regras toda vez.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">As Custom Instructions são a "personalidade permanente" do notebook. Sem elas, o notebook começa do zero em cada conversa. Com elas, o consultor já sabe seu papel, seu formato de resposta e suas restrições desde o primeiro prompt. Você tem até <strong class="text-purple-400">10.000 caracteres</strong> disponíveis — use pelo menos metade. Cole o template abaixo em <strong>Notebook Settings → Customize notebook</strong> e adapte as partes entre colchetes.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Custom Instructions são a "personalidade" permanente do notebook. Sem elas, cada conversa começa do zero. Com elas, o notebook já sabe seu papel, seu formato e suas restrições desde o primeiro prompt. Os 10.000 caracteres disponíveis permitem instruções detalhadas que cobrem todos os cenários de uso do engine.</p>
+    <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-purple-400 flex items-center"><span class="mr-2">📋</span> Template de Custom Instructions — Research Engine</h3>
+        <span class="text-xs text-neutral-500 bg-dark-700 px-2 py-1 rounded">Copie e adapte</span>
+      </div>
+      <pre class="text-sm text-neutral-300 bg-dark-900/60 rounded-lg p-4 border border-dark-600 leading-relaxed">## IDENTIDADE
+Você é um consultor especializado em ferramentas de IA para criadores
+de conteúdo no Brasil. Sua função é recomendar ferramentas com base
+EXCLUSIVAMENTE nas fontes carregadas neste notebook. Nunca invente
+informações. Se não encontrar a resposta nas fontes, diga exatamente:
+"Não encontrei essa informação nas fontes carregadas."
+
+## RESTRIÇÕES DO USUÁRIO
+- Nicho: [ex: criação de vídeos para Instagram e YouTube]
+- Orçamento: [ex: R$0 a R$100/mês]
+- Sistema operacional: [ex: Windows 11, 16GB RAM, sem GPU dedicada]
+- Nível técnico: [ex: intermediário — sabe usar ferramentas, não sabe código]
+- Idioma preferido das ferramentas: Português quando disponível
+
+## FORMATO OBRIGATÓRIO DE RESPOSTA
+Sempre que recomendar ferramentas, use EXATAMENTE este formato:
+
+**Recomendação Principal:** [Nome da ferramenta]
+- Por que serve para minhas restrições: [justificativa direta]
+- Plano gratuito: [sim/não + o que inclui]
+- Plano pago: [preço em USD + equivalente aproximado em BRL]
+- Principal limitação: [seja honesto]
+- Fonte: [cite a fonte do notebook que embasou]
+
+**Alternativa Gratuita:** [Nome]
+- Diferença principal: [em 1 linha]
+
+**Não recomendo:** [ferramentas que parecem óbvias mas não servem]
+- Motivo: [seja direto]
+
+## COMPORTAMENTO
+- Priorize sempre opções gratuitas ou de baixo custo para o mercado BR
+- Considere conversão de dólar (1 USD ≈ 5,8 BRL) ao citar preços
+- Se a fonte estiver desatualizada, avise: "Verificar pricing atual"
+- Nunca recomende ferramentas sem evidência nas fontes
+- Respostas em português do Brasil, tom profissional e direto</pre>
     </div>
 
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📝</div>
-          <div class="text-sm font-semibold">10.000 Chars</div>
-          <div class="text-xs text-neutral-400">Espaço disponível</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎭</div>
-          <div class="text-sm font-semibold">Persona Definida</div>
-          <div class="text-xs text-neutral-400">Consultor brasileiro</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📋</div>
-          <div class="text-sm font-semibold">Formato Fixo</div>
-          <div class="text-xs text-neutral-400">5 seções obrigatórias</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🇧🇷</div>
-          <div class="text-sm font-semibold">Restrições BR</div>
-          <div class="text-xs text-neutral-400">Mercado local em mente</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">💰</div>
-          <div class="text-sm font-semibold">Orçamento</div>
-          <div class="text-xs text-neutral-400">Considerado sempre</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🚫</div>
-          <div class="text-sm font-semibold">Nunca Alucinar</div>
-          <div class="text-xs text-neutral-400">Somente fontes carregadas</div>
-        </div>
-      </div>
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> O que personalizar no template</h3>
+      <ul class="space-y-2 text-neutral-300 text-sm">
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span><strong>Nicho:</strong> Seja específico — "vídeos curtos para Instagram Reels sobre finanças pessoais" é melhor que "criação de conteúdo"</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span><strong>Orçamento:</strong> Defina faixas reais — R$0, R$50/mês, R$200/mês. O notebook vai filtrar automaticamente</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span><strong>Hardware:</strong> Ferramentas de IA de vídeo variam muito dependendo de GPU. Informar o hardware evita recomendações impossíveis</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span><strong>Nível técnico:</strong> Define quão complexa pode ser a solução recomendada</span></li>
+      </ul>
     </div>
   </section>
 
@@ -251,49 +286,37 @@
   <section id="topico-4" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
-      <h2 class="text-2xl font-bold">📋 Prompt template para pesquisa de ferramentas</h2>
+      <h2 class="text-2xl font-bold">📋 Prompt template para consultar ferramentas</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Template de prompt padronizado com campos: Objetivo do canal/negócio, Nicho, Público, Orçamento (R$0 / R$100/mês / R$300/mês), Nível (iniciante/intermediário/avançado), Hardware (Windows/Mac, RAM, GPU), Prioridade (velocidade/qualidade/custo), Entregas desejadas. Sempre encerrar com "Responda somente com base nas fontes do notebook." Esse template garante contexto completo em cada consulta.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O prompt template padronizado garante que o notebook receba todas as informações necessárias para uma resposta precisa. Sem contexto suficiente, até um notebook bem configurado entrega respostas vagas. Este template é reutilizável — você preenche os campos variáveis e cola direto no chat. Em 2 minutos você tem uma análise completa que levaria horas de pesquisa manual.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Um prompt padronizado garante respostas comparáveis ao longo do tempo e elimina o problema de "prompt vazio" que gera respostas genéricas. É reutilizável para cada novo projeto ou cliente. Com o template, você preenche os campos em 2 minutos e recebe uma análise completa de ferramentas — sem precisar reinventar o prompt toda vez.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📋</div>
-          <div class="text-sm font-semibold">Template Fixo</div>
-          <div class="text-xs text-neutral-400">Reutilizável por projeto</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">✅</div>
-          <div class="text-sm font-semibold">Campos Obrigatórios</div>
-          <div class="text-xs text-neutral-400">Orçamento, nível, hardware</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🔒</div>
-          <div class="text-sm font-semibold">Restrição Explícita</div>
-          <div class="text-xs text-neutral-400">Somente fontes do NB</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🗂️</div>
-          <div class="text-sm font-semibold">Contexto Completo</div>
-          <div class="text-xs text-neutral-400">Tudo que o NB precisa</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📊</div>
-          <div class="text-sm font-semibold">Saída Estruturada</div>
-          <div class="text-xs text-neutral-400">Formato consistente</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎯</div>
-          <div class="text-sm font-semibold">Zero Ambiguidade</div>
-          <div class="text-xs text-neutral-400">Resposta sempre precisa</div>
-        </div>
+    <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-purple-400 flex items-center"><span class="mr-2">📋</span> Template de Prompt — Pesquisa de Ferramentas</h3>
+        <span class="text-xs text-neutral-500 bg-dark-700 px-2 py-1 rounded">Copie, preencha e cole</span>
       </div>
+      <pre class="text-sm text-neutral-300 bg-dark-900/60 rounded-lg p-4 border border-dark-600 leading-relaxed">Preciso de ajuda para escolher ferramentas. Meu contexto:
+
+**Objetivo:** [o que você quer fazer — ex: editar vídeos Reels de 60s]
+**Nicho/área:** [ex: finanças pessoais para jovens adultos]
+**Público:** [ex: 25-35 anos, Instagram, consome conteúdo no celular]
+**Orçamento:** [ex: R$0 — quero opções completamente gratuitas]
+**Nível técnico:** [ex: intermediário, já usei CapCut e Canva]
+**Hardware:** [ex: Windows 11, i5, 8GB RAM, sem GPU dedicada]
+**Prioridade:** [velocidade / qualidade / custo / facilidade de uso]
+**Entrega desejada:** [ex: 3 Reels por semana, 60 segundos cada]
+
+Restrições específicas:
+- [ex: Precisa ter interface em português]
+- [ex: Não posso usar ferramentas que coloquem watermark]
+- [ex: Prefiro ferramentas que rodem no browser, não instalação]
+
+Responda somente com base nas fontes carregadas neste notebook.</pre>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica: Salve o Template Preenchido</h3>
+      <p class="text-neutral-300 text-sm">Crie uma versão do template já preenchida com seus dados fixos (nicho, hardware, nível técnico) e salve em um bloco de notas. Quando precisar consultar, só muda o "Objetivo" e "Entrega desejada". Isso reduz o tempo de consulta de 10 minutos para menos de 2 minutos.</p>
     </div>
   </section>
 
@@ -301,49 +324,52 @@
   <section id="topico-5" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
-      <h2 class="text-2xl font-bold">🔄 Atualizando fontes semanalmente</h2>
+      <h2 class="text-2xl font-bold">🔄 Rotina de atualização semanal</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Rotina de manutenção semanal do Research Engine: adicionar links de novidades da semana (2-3 links de newsletters ou lançamentos importantes), remover fontes desatualizadas (ferramentas que encerraram ou mudaram muito), verificar se pricing de ferramentas mudou. O NotebookLM é estático — ele só sabe o que você colocou. Sem manutenção, o engine envelhece e suas recomendações ficam desatualizadas.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O NotebookLM não se atualiza sozinho. No mundo de IA, onde ferramentas mudam de preço, adicionam features ou encerram em questão de semanas, um notebook sem manutenção vira fonte de informação incorreta. A rotina de 10 minutos por semana é o que mantém o Research Engine relevante e confiável ao longo do tempo.</p>
 
     <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">O mundo de IA muda rápido. Um Research Engine desatualizado recomenda ferramentas obsoletas ou com preços errados. A manutenção semanal de 10 minutos é o que mantém o engine relevante e confiável. Criadores que negligenciam a manutenção acabam recebendo recomendações de ferramentas que mudaram de preço ou foram descontinuadas.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">➕</div>
-          <div class="text-sm font-semibold">2-3 Links/Semana</div>
-          <div class="text-xs text-neutral-400">Novidades adicionadas</div>
+      <h3 class="text-lg font-semibold text-purple-400 mb-5 flex items-center"><span class="mr-2">📅</span> Checklist Semanal — Segunda-feira, 10 minutos</h3>
+      <div class="space-y-3">
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 mt-0.5">1.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Leia as newsletters da semana (The Rundown, TLDR AI)</p>
+            <p class="text-neutral-500 text-xs mt-1">Separe 2-3 links de novidades relevantes para o seu nicho</p>
+          </div>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🗑️</div>
-          <div class="text-sm font-semibold">Remoção de Velhos</div>
-          <div class="text-xs text-neutral-400">Fontes desatualizadas</div>
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 mt-0.5">2.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Adicione os links selecionados como novas fontes</p>
+            <p class="text-neutral-500 text-xs mt-1">Clique em "+ Adicionar fonte" → cole a URL → aguarde o processamento</p>
+          </div>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">💰</div>
-          <div class="text-sm font-semibold">Verificar Pricing</div>
-          <div class="text-xs text-neutral-400">Preços mudam rápido</div>
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 mt-0.5">3.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Verifique se alguma ferramenta das suas fontes mudou de pricing</p>
+            <p class="text-neutral-500 text-xs mt-1">Se mudou: atualize a fonte com a nova página ou adicione uma nota</p>
+          </div>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📧</div>
-          <div class="text-sm font-semibold">Newsletters</div>
-          <div class="text-xs text-neutral-400">Fonte semanal ideal</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">⏱️</div>
-          <div class="text-sm font-semibold">10 min/Semana</div>
-          <div class="text-xs text-neutral-400">Manutenção rápida</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📅</div>
-          <div class="text-sm font-semibold">Calendário</div>
-          <div class="text-xs text-neutral-400">Toda segunda-feira</div>
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 mt-0.5">4.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Remova fontes de ferramentas descontinuadas</p>
+            <p class="text-neutral-500 text-xs mt-1">Fontes mortas poluem o contexto e podem causar recomendações incorretas</p>
+          </div>
         </div>
       </div>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Regra das 50 Fontes</h3>
+      <p class="text-neutral-300 text-sm mb-3">O NotebookLM aceita até 50 fontes por notebook. Quando você se aproximar desse limite, faça uma curadoria antes de adicionar novas:</p>
+      <ul class="space-y-2 text-neutral-300 text-sm">
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Remova fontes com mais de 6 meses que não foram atualizadas</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Remova fontes de ferramentas que você parou de usar ou que encerraram</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Consolide várias páginas do mesmo site em uma única fonte mais completa</span></li>
+      </ul>
     </div>
   </section>
 
@@ -353,47 +379,55 @@
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
       <h2 class="text-2xl font-bold">🚫 Erros comuns e como corrigir</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Os 3 erros mais comuns: (1) "O NotebookLM inventou coisa" → solução: reforce "use somente fontes carregadas" nas Custom Instructions e adicione "se não souber, diga que não encontrou nas fontes". (2) "Recomendou ferramenta cara" → solução: especifique orçamento explicitamente no prompt (ex.: "orçamento máximo: R$0"). (3) "Resposta genérica sem detalhes" → solução: suas fontes são genéricas, troque por documentação oficial e pricing pages.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">A maioria dos problemas com o Research Engine tem causa conhecida e solução direta. Antes de concluir que "o NotebookLM não presta", identifique em qual das categorias abaixo o problema se enquadra. Em 90% dos casos, a correção é simples e não exige reconfiguração do zero.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Erros no Research Engine geram más decisões de investimento em ferramentas — você pode assinar um serviço caro que não serve para o seu caso. Saber identificar e corrigir rapidamente economiza tempo e dinheiro. A maioria dos erros tem origem conhecida e solução direta, sem precisar reconfigurar tudo do zero.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🚫</div>
-          <div class="text-sm font-semibold">Zero Achismo</div>
-          <div class="text-xs text-neutral-400">Somente fontes carregadas</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🔍</div>
-          <div class="text-sm font-semibold">Fontes Específicas</div>
-          <div class="text-xs text-neutral-400">Docs oficiais sempre</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">💰</div>
-          <div class="text-sm font-semibold">Orçamento no Prompt</div>
-          <div class="text-xs text-neutral-400">Explícito e claro</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📎</div>
-          <div class="text-sm font-semibold">Citar Fonte</div>
-          <div class="text-xs text-neutral-400">Pedir referência sempre</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📓</div>
-          <div class="text-sm font-semibold">Log de Erros</div>
-          <div class="text-xs text-neutral-400">Registrar para melhorar</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🔁</div>
-          <div class="text-sm font-semibold">Iteração Rápida</div>
-          <div class="text-xs text-neutral-400">Corrigir e testar logo</div>
+    <div class="space-y-4 mb-6">
+      <div class="bg-dark-800 rounded-xl border border-red-500/20 p-5">
+        <div class="flex items-start space-x-3">
+          <span class="text-red-400 text-xl flex-shrink-0">🔴</span>
+          <div>
+            <h4 class="font-semibold text-white mb-2">"O notebook inventou informações que não existem nas fontes"</h4>
+            <p class="text-neutral-400 text-sm mb-3">Causa: Fontes insuficientes sobre aquele tópico específico.</p>
+            <div class="bg-emerald-900/20 rounded-lg p-3 border border-emerald-500/20">
+              <p class="text-emerald-400 text-sm font-semibold mb-1">✓ Solução:</p>
+              <p class="text-neutral-300 text-sm">Adicione a instrução nas Custom Instructions: <em>"Se não encontrar a informação nas fontes, responda: 'Não encontrei essa informação nas fontes carregadas. Recomendo verificar diretamente em [site oficial].'"</em> E adicione a fonte específica que faltava.</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="bg-dark-800 rounded-xl border border-red-500/20 p-5">
+        <div class="flex items-start space-x-3">
+          <span class="text-red-400 text-xl flex-shrink-0">🔴</span>
+          <div>
+            <h4 class="font-semibold text-white mb-2">"Recomendou ferramenta cara demais para meu orçamento"</h4>
+            <p class="text-neutral-400 text-sm mb-3">Causa: Orçamento não está explícito nas Custom Instructions ou no prompt.</p>
+            <div class="bg-emerald-900/20 rounded-lg p-3 border border-emerald-500/20">
+              <p class="text-emerald-400 text-sm font-semibold mb-1">✓ Solução:</p>
+              <p class="text-neutral-300 text-sm">Coloque o orçamento de forma explícita nas CIs: <em>"Orçamento máximo do usuário: R$0 (gratuito) ou R$50/mês. NUNCA recomende ferramentas acima desse valor como opção principal."</em> E inclua no prompt: <em>"Orçamento: R$0, somente gratuito."</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-dark-800 rounded-xl border border-red-500/20 p-5">
+        <div class="flex items-start space-x-3">
+          <span class="text-red-400 text-xl flex-shrink-0">🔴</span>
+          <div>
+            <h4 class="font-semibold text-white mb-2">"Resposta genérica, sem detalhes específicos"</h4>
+            <p class="text-neutral-400 text-sm mb-3">Causa: Fontes são genéricas (blogs de opinião) em vez de específicas (docs oficiais, pricing pages).</p>
+            <div class="bg-emerald-900/20 rounded-lg p-3 border border-emerald-500/20">
+              <p class="text-emerald-400 text-sm font-semibold mb-1">✓ Solução:</p>
+              <p class="text-neutral-300 text-sm">Substitua fontes genéricas por páginas oficiais das ferramentas. A página de pricing do Canva tem mais valor do que 10 artigos sobre o Canva. Adicione também a documentação de features e o changelog recente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Regra de Diagnóstico Rápido</h3>
+      <p class="text-neutral-300 text-sm">Sempre que o notebook errar, faça esta pergunta: <strong>"A fonte com a resposta correta está carregada no notebook?"</strong> Se não está — o problema é de curadoria de fontes. Se está — o problema é nas Custom Instructions ou no prompt. São as únicas duas causas raiz de 95% dos problemas.</p>
     </div>
   </section>
 
@@ -403,19 +437,19 @@
       <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Checklist do Módulo 3.2</h2>
       <p class="text-neutral-400 mb-6">Verifique o que você já domina antes de avançar para o Script Engine:</p>
       <ul class="space-y-3 mb-8">
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Criei o notebook "INEMA — Research Engine"</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Adicionei pelo menos 10 fontes de qualidade</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Configurei Custom Instructions com persona e formato</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Tenho o prompt template salvo para reutilizar</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Defini uma rotina semanal de atualização de fontes</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Sei corrigir os 3 erros mais comuns do Research Engine</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Criei o notebook com o nome exato "INEMA — Research Engine"</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Adicionei pelo menos 10 fontes de qualidade — docs oficiais, diretórios, newsletters</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Configurei Custom Instructions com persona, restrições de orçamento e formato fixo</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Tenho o prompt template salvo e preenchido com meus dados fixos</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Estabeleci uma rotina semanal de 10 minutos para atualização das fontes</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Sei diagnosticar e corrigir os 3 erros mais comuns do Research Engine</span></li>
       </ul>
       <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
         <h3 class="font-semibold text-purple-400 mb-2">Próximo Módulo:</h3>
         <p class="text-neutral-300">3.3 — Script Engine: Roteiros com Sua Identidade</p>
       </div>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="modulo-3-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Trilha 3</a>
+        <a href="modulo-3-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 3.1: Método I3NM</a>
         <a href="modulo-3-3.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Módulo 3.3: Script Engine →</a>
       </div>
     </div>

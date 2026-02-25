@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulo 3.6 — Workflow Completo — Do Zero ao Post em 10 Minutos | INEMA.CLUB</title>
+  <title>3.6 Workflow Completo: Do Zero ao Post | NotebookLM Completo</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
     .dark body { background-color: #111827; }
@@ -22,421 +26,486 @@
     html:not(.dark) .text-neutral-500 { color: #9ca3af; }
     html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
     html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    pre { white-space: pre-wrap; word-break: break-word; }
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
 
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-14">
-        <div class="flex items-center space-x-4">
-          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
-            <span class="text-2xl">📓</span>
-            <span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
-          </a>
-          <span class="text-neutral-600">|</span>
-          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-14">
+      <div class="flex items-center space-x-4">
+        <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+          <span class="text-2xl">📓</span><span class="font-bold text-lg hidden sm:inline">NotebookLM Completo</span>
+        </a>
+        <span class="text-neutral-600">|</span>
+        <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+      </div>
+      <div class="flex items-center space-x-1 sm:space-x-2">
+        <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+          <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
+        </a>
+        <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+          <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
+        </a>
+        <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
+          <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
+        </a>
+        <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
+      <a href="../../index.html" class="hover:text-purple-400 transition-colors">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
+      <span>/</span>
+      <span class="text-purple-400">Módulo 3.6</span>
+    </div>
+    <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.6 — FINAL</span>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-4">🚀 Workflow Completo — Do Zero ao Post</h1>
+    <p class="text-lg text-neutral-400 max-w-3xl">O método I3NM em ação. Veja o workflow completo que une os 3 engines em uma rotina de produção de conteúdo — da pesquisa de ferramentas ao post publicado, com tempo estimado para cada etapa.</p>
+    <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">6</div>
+        <div class="text-xs text-neutral-400">Tópicos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">60</div>
+        <div class="text-xs text-neutral-400">Minutos</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Av</div>
+        <div class="text-xs text-neutral-400">Avançado</div>
+      </div>
+      <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+        <div class="text-xl font-bold text-purple-400">Pr</div>
+        <div class="text-xs text-neutral-400">Prático</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Tópico 1 -->
+  <section id="topico-1" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
+      <h2 class="text-2xl font-bold">🗺️ Visão geral: o workflow em 45 minutos</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O workflow completo do Método I3NM transforma um tema bruto em um post pronto para publicar em menos de 45 minutos. Antes do método, o mesmo processo levava 3 a 4 horas — pesquisa manual, escrita do zero, geração de prompts visuais tentando e errando. Com os 3 engines configurados, você passa de tema para conteúdo publicável em uma única sessão de trabalho.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-5">⏱️ Workflow em 4 etapas</h3>
+      <div class="space-y-3">
+        <div class="flex items-center space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 text-center w-16">
+            <div class="text-2xl font-bold text-purple-400">5</div>
+            <div class="text-xs text-neutral-500">min</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-white mb-0.5">Decisão de tema e ângulo</div>
+            <div class="text-neutral-400 text-sm">Você decide o tema. O Research Engine valida se faz sentido para o seu nicho e sugere o ângulo mais relevante para sua audiência atual.</div>
+          </div>
+          <span class="text-2xl flex-shrink-0">🎯</span>
         </div>
-        <div class="flex items-center space-x-1 sm:space-x-2">
-          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
-            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span>
-          </a>
-          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
-            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Aplicação</span>
-          </a>
-          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10">
-            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Criadores</span>
-          </a>
-          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
-            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-          </button>
+        <div class="flex items-center space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 text-center w-16">
+            <div class="text-2xl font-bold text-purple-400">10</div>
+            <div class="text-xs text-neutral-500">min</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-white mb-0.5">Pesquisa e validação (Research Engine)</div>
+            <div class="text-neutral-400 text-sm">Consulta de ferramentas, dados, referências ou contexto necessário para o conteúdo. Saída: insumos factuais verificados.</div>
+          </div>
+          <span class="text-2xl flex-shrink-0">🔍</span>
+        </div>
+        <div class="flex items-center space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 text-center w-16">
+            <div class="text-2xl font-bold text-purple-400">15</div>
+            <div class="text-xs text-neutral-500">min</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-white mb-0.5">Criação do roteiro (Script Engine)</div>
+            <div class="text-neutral-400 text-sm">Com o contexto da pesquisa, o Script Engine gera o roteiro no seu estilo. Revisão rápida, ajuste do hook e está pronto para gravar.</div>
+          </div>
+          <span class="text-2xl flex-shrink-0">✍️</span>
+        </div>
+        <div class="flex items-center space-x-4 p-4 bg-dark-800/60 rounded-xl border border-dark-600">
+          <div class="flex-shrink-0 text-center w-16">
+            <div class="text-2xl font-bold text-purple-400">15</div>
+            <div class="text-xs text-neutral-500">min</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-white mb-0.5">Geração de visuais (Prompt Engine)</div>
+            <div class="text-neutral-400 text-sm">Prompts para thumbnail, imagem de capa ou B-roll gerado por IA. Pronto para copiar e colar na ferramenta visual escolhida.</div>
+          </div>
+          <span class="text-2xl flex-shrink-0">⚡</span>
         </div>
       </div>
     </div>
-  </nav>
 
-  <!-- HEADER -->
-  <header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center space-x-2 text-sm text-neutral-400 mb-4">
-        <a href="../../index.html" class="hover:text-purple-400 transition-colors">Início</a>
-        <span>/</span>
-        <a href="index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
-        <span>/</span>
-        <span class="text-purple-400">Módulo 3.6</span>
-      </div>
-      <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.6 · ÚLTIMO MÓDULO</span>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🚀 Workflow Completo — Do Zero ao Post em 10 Minutos</h1>
-      <p class="text-lg text-neutral-400 max-w-3xl">Execute o Método I3NM completo: Research, Script e Prompt Engine em uma rotina diária de 10 minutos para conteúdo consistente.</p>
-      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">6</div>
-          <div class="text-xs text-neutral-400">Tópicos</div>
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Antes e depois do Método I3NM</h3>
+      <div class="grid grid-cols-2 gap-6 text-sm">
+        <div>
+          <p class="text-red-400 font-semibold mb-2">❌ Sem o método</p>
+          <ul class="space-y-1 text-neutral-400">
+            <li>• Pesquisa manual: 60-90 min</li>
+            <li>• Escrita do roteiro do zero: 45-60 min</li>
+            <li>• Tentativas de prompt visual: 30-60 min</li>
+            <li>• Total: 2h30 a 4h por post</li>
+          </ul>
         </div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">10</div>
-          <div class="text-xs text-neutral-400">Min/dia</div>
-        </div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">Av.</div>
-          <div class="text-xs text-neutral-400">Nível</div>
-        </div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-          <div class="text-xl font-bold text-purple-400">🛠️</div>
-          <div class="text-xs text-neutral-400">Prático</div>
+        <div>
+          <p class="text-emerald-400 font-semibold mb-2">✓ Com o método</p>
+          <ul class="space-y-1 text-neutral-400">
+            <li>• Research Engine: 10 min</li>
+            <li>• Script Engine: 15 min</li>
+            <li>• Prompt Engine: 15 min</li>
+            <li>• Total: 40-45 min por post</li>
+          </ul>
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- MAIN CONTENT -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Tópico 2 -->
+  <section id="topico-2" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
+      <h2 class="text-2xl font-bold">🔍 Passo 1: Research Engine em ação</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O Research Engine não é só para pesquisa de ferramentas. No workflow de conteúdo, ele também valida se um tema é relevante para o seu nicho, identifica dados e estatísticas confiáveis para fortalecer o roteiro, e sugere ângulos que têm base em fontes reais. Antes de escrever qualquer roteiro, passe pelo Research Engine para ter insumos factuais.</p>
 
-    <!-- Tópico 1 -->
-    <section id="topico-1" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
-        <h2 class="text-2xl font-bold">5️⃣ Visão geral do workflow completo</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">O Método I3NM completo em 5 passos: (1) Research Engine → decide qual stack usar, (2) Script Engine → gera roteiro 60 segundos em fala natural, (3) Prompt Engineer → cria prompt de thumbnail e b-roll, (4) Produção → grava/gera o vídeo com as ferramentas escolhidas, (5) Publicação → usa checklist de Reels/TikTok.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Visualizar o fluxo completo antes de executar reduz erros e aumenta a velocidade. Quem entende o sistema consegue executar cada passo com clareza sobre onde está e para onde vai.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">5️⃣</div>
-            <div class="text-sm font-semibold">5 passos em série</div>
-            <div class="text-xs text-neutral-400">Sequência definida</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔄</div>
-            <div class="text-sm font-semibold">Research → Script</div>
-            <div class="text-xs text-neutral-400">→ Prompt → Post</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⏱️</div>
-            <div class="text-sm font-semibold">10 minutos/dia</div>
-            <div class="text-xs text-neutral-400">Setup antes de produzir</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔁</div>
-            <div class="text-sm font-semibold">Sistema reproduzível</div>
-            <div class="text-xs text-neutral-400">Diariamente</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🚫</div>
-            <div class="text-sm font-semibold">Sem improvisar</div>
-            <div class="text-xs text-neutral-400">Fluxo estruturado</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📈</div>
-            <div class="text-sm font-semibold">ROI mensurável</div>
-            <div class="text-xs text-neutral-400">Tempo investido claro</div>
-          </div>
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">🔍 Como usar o Research Engine no workflow de conteúdo</h3>
+      <div class="space-y-4">
+        <div class="p-4 bg-dark-800/60 rounded-lg border border-dark-600">
+          <p class="text-purple-400 text-sm font-semibold mb-2">Prompt de validação de tema:</p>
+          <pre class="text-xs text-neutral-300 bg-dark-900/40 rounded p-3 border border-dark-700">Tema que quero abordar: [ex: por que automação com IA não substitui criadores]
+Meu nicho: [ex: criadores de conteúdo de tecnologia no Brasil]
+Pergunta: Existe dado ou estudo nas fontes que suporte ou contradiz esse tema?
+Qual ângulo tem mais dados para embasar?</pre>
         </div>
-      </div>
-    </section>
-
-    <!-- Tópico 2 -->
-    <section id="topico-2" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
-        <h2 class="text-2xl font-bold">🔍 Passo 1: Research Engine → escolha de stack</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Abrir o notebook Research Engine, usar o prompt template preenchido com seu cenário atual (nicho, orçamento, hardware), esperar a recomendação de stack e anotar as ferramentas escolhidas. Tempo médio: 1-2 minutos.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Definir a stack antes de produzir evita o erro clássico de começar a gravar e descobrir que a ferramenta escolhida não serve para seu caso. Uma decisão de 2 minutos evita horas de retrabalho.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🥇</div>
-            <div class="text-sm font-semibold">Stack definida antes</div>
-            <div class="text-xs text-neutral-400">Primeiro passo</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📋</div>
-            <div class="text-sm font-semibold">Prompt preenchido</div>
-            <div class="text-xs text-neutral-400">Nicho + orçamento</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⏱️</div>
-            <div class="text-sm font-semibold">1-2 minutos</div>
-            <div class="text-xs text-neutral-400">Tempo total</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📝</div>
-            <div class="text-sm font-semibold">Anotar ferramentas</div>
-            <div class="text-xs text-neutral-400">Registro da decisão</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">1️⃣</div>
-            <div class="text-sm font-semibold">Uma stack por projeto</div>
-            <div class="text-xs text-neutral-400">Sem mudar no meio</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🚫</div>
-            <div class="text-sm font-semibold">Sem retrabalho</div>
-            <div class="text-xs text-neutral-400">Evita horas perdidas</div>
-          </div>
+        <div class="p-4 bg-dark-800/60 rounded-lg border border-dark-600">
+          <p class="text-purple-400 text-sm font-semibold mb-2">Prompt de pesquisa de dados:</p>
+          <pre class="text-xs text-neutral-300 bg-dark-900/40 rounded p-3 border border-dark-700">Para o tema [X], preciso de:
+1. Um dado ou estatística que surpreenda (para usar no hook)
+2. A causa raiz do problema (para o corpo do roteiro)
+3. Uma solução prática verificada nas fontes (para o CTA)
+Responda somente com base nas fontes carregadas.</pre>
         </div>
-      </div>
-    </section>
-
-    <!-- Tópico 3 -->
-    <section id="topico-3" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
-        <h2 class="text-2xl font-bold">✍️ Passo 2: Script Engine → roteiro 60 segundos</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Abrir o Script Engine, usar o Master Prompt com tema, objetivo, público e CTA preenchidos, receber o roteiro falado de 60 segundos, verificar com o checklist de qualidade (hook, 1 ideia, frases curtas, pergunta, pattern interrupt, CTA). Tempo: 3-4 minutos.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">O roteiro é o produto mais demorado de criar manualmente. Com o Script Engine treinado no seu estilo, você reduz de 30-60 minutos para 3-4 minutos sem perder autenticidade.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📝</div>
-            <div class="text-sm font-semibold">Master Prompt</div>
-            <div class="text-xs text-neutral-400">Preenchido com tema</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⏱️</div>
-            <div class="text-sm font-semibold">3-4 minutos</div>
-            <div class="text-xs text-neutral-400">Vs 30-60 manual</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">✅</div>
-            <div class="text-sm font-semibold">Checklist qualidade</div>
-            <div class="text-xs text-neutral-400">Verificação final</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🗣️</div>
-            <div class="text-sm font-semibold">Frases para fala</div>
-            <div class="text-xs text-neutral-400">Linguagem natural</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🪝</div>
-            <div class="text-sm font-semibold">Hook nos 2s</div>
-            <div class="text-xs text-neutral-400">Primeiros segundos</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📢</div>
-            <div class="text-sm font-semibold">CTA no final</div>
-            <div class="text-xs text-neutral-400">Chamada à ação</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tópico 4 -->
-    <section id="topico-4" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
-        <h2 class="text-2xl font-bold">⚡ Passo 3: Prompt Engineer → thumbnail e b-roll</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Abrir o Prompt Engineering Engine, usar o template de imagem para gerar o prompt de thumbnail, usar o template de vídeo para gerar o prompt de b-roll. Receber prompt final + 2 variações + parâmetros explicados. Tempo: 3-4 minutos.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">Thumbnail e b-roll feitos com prompts profissionais têm resultado visualmente superior. O Prompt Engine entrega prompts prontos para copiar e colar nos modelos, sem precisar aprender a sintaxe de cada ferramenta individualmente.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🖼️</div>
-            <div class="text-sm font-semibold">Template de imagem</div>
-            <div class="text-xs text-neutral-400">Para thumbnail</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🎬</div>
-            <div class="text-sm font-semibold">Template de vídeo</div>
-            <div class="text-xs text-neutral-400">Para b-roll</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">✏️</div>
-            <div class="text-sm font-semibold">Prompt + 2 variações</div>
-            <div class="text-xs text-neutral-400">Opções de teste</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⏱️</div>
-            <div class="text-sm font-semibold">3-4 minutos</div>
-            <div class="text-xs text-neutral-400">Total do passo</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📋</div>
-            <div class="text-sm font-semibold">Copiar e colar</div>
-            <div class="text-xs text-neutral-400">Pronto para usar</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">✅</div>
-            <div class="text-sm font-semibold">Sintaxe correta</div>
-            <div class="text-xs text-neutral-400">Sem estudar cada IA</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tópico 5 -->
-    <section id="topico-5" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
-        <h2 class="text-2xl font-bold">⏰ Rotina diária de 10 minutos</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Rotina diária completa: (1min) Research Engine → "o que mudou no meu nicho hoje?" → 2-3 links novos. (4min) Script Engine → roteiro 60s do dia. (4min) Prompt Engineer → thumbnail + b-roll. (restante) Gravar/gerar e postar. Total: 10 minutos de "cabeça" antes de produzir.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">A rotina diária é o que transforma o método em hábito. Sem estrutura, você usa o NotebookLM aleatoriamente. Com a rotina de 10 minutos, você mantém consistência de publicação sem burnout criativo.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⏰</div>
-            <div class="text-sm font-semibold">10 min de setup</div>
-            <div class="text-xs text-neutral-400">Antes de produzir</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔍</div>
-            <div class="text-sm font-semibold">1min Research</div>
-            <div class="text-xs text-neutral-400">Novidades do nicho</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">✍️</div>
-            <div class="text-sm font-semibold">4min Script</div>
-            <div class="text-xs text-neutral-400">Roteiro do dia</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">⚡</div>
-            <div class="text-sm font-semibold">4min Prompt</div>
-            <div class="text-xs text-neutral-400">Thumbnail + b-roll</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📅</div>
-            <div class="text-sm font-semibold">Diário</div>
-            <div class="text-xs text-neutral-400">Consistência real</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🔋</div>
-            <div class="text-sm font-semibold">Sem burnout</div>
-            <div class="text-xs text-neutral-400">Hábito sustentável</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tópico 6 -->
-    <section id="topico-6" class="mb-16">
-      <div class="flex items-center space-x-4 mb-6">
-        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
-        <h2 class="text-2xl font-bold">✅ Checklist de publicação para Reels/TikTok</h2>
-      </div>
-      <p class="text-neutral-300 mb-6 leading-relaxed">Checklist final antes de postar: ✅ Gancho forte nos 2 segundos iniciais ✅ Legendas grandes e curtas (2-4 palavras por linha) ✅ Cortes a cada 1-2 segundos ✅ Uma pergunta no final para comentários ✅ CTA em 1 frase: "Tá no inema.club" ✅ Thumbnail chamativa ✅ Primeiro comentário com palavras-chave.</p>
-      <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-        <p class="text-neutral-300 leading-relaxed">O checklist de publicação é o que separa criadores amadores de profissionais. Um vídeo bom com publicação ruim performa mal. O checklist garante que você não pula etapas no momento da pressão.</p>
-      </div>
-      <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-        <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">7️⃣</div>
-            <div class="text-sm font-semibold">7 itens</div>
-            <div class="text-xs text-neutral-400">Checklist completo</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">🪝</div>
-            <div class="text-sm font-semibold">Gancho 2s</div>
-            <div class="text-xs text-neutral-400">Primeiros segundos</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">💬</div>
-            <div class="text-sm font-semibold">Legendas curtas</div>
-            <div class="text-xs text-neutral-400">2-4 palavras por linha</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">❓</div>
-            <div class="text-sm font-semibold">Pergunta final</div>
-            <div class="text-xs text-neutral-400">Geração de comentários</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">📢</div>
-            <div class="text-sm font-semibold">CTA direto</div>
-            <div class="text-xs text-neutral-400">Em 1 frase</div>
-          </div>
-          <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-            <div class="text-lg mb-1">💡</div>
-            <div class="text-sm font-semibold">Primeiro comentário</div>
-            <div class="text-xs text-neutral-400">Com palavras-chave</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONCLUSÃO DA TRILHA 3 -->
-    <div class="mt-4 p-8 bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-2xl border border-purple-500/30">
-      <h2 class="text-2xl font-bold mb-4 text-purple-400">🎉 Trilha 3 Concluída!</h2>
-      <p class="text-neutral-300 mb-6">Você agora domina o Método I3NM completo. Você tem os 3 engines configurados e um workflow de 10 minutos para criar conteúdo consistente.</p>
-      <div class="grid grid-cols-3 gap-4 mb-8">
-        <div class="bg-dark-800/50 rounded-xl p-4 text-center border border-dark-600">
-          <div class="text-3xl font-bold text-purple-400">3</div>
-          <div class="text-sm text-neutral-400">Engines Dominados</div>
-        </div>
-        <div class="bg-dark-800/50 rounded-xl p-4 text-center border border-dark-600">
-          <div class="text-3xl font-bold text-purple-400">10</div>
-          <div class="text-sm text-neutral-400">Min por dia</div>
-        </div>
-        <div class="bg-dark-800/50 rounded-xl p-4 text-center border border-dark-600">
-          <div class="text-3xl font-bold text-purple-400">∞</div>
-          <div class="text-sm text-neutral-400">Conteúdos</div>
-        </div>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <a href="../../index.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 font-semibold rounded-xl transition-colors">← Início do Curso</a>
-        <a href="https://inema.club" target="_blank" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-colors">Acesse INEMA.CLUB →</a>
       </div>
     </div>
 
-    <!-- NAVEGAÇÃO -->
-    <div class="flex justify-start mt-12">
-      <a href="modulo-3-5.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 font-semibold rounded-xl transition-colors">← Módulo Anterior</a>
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Copie o output do Research Engine para o Script Engine</h3>
+      <p class="text-neutral-300 text-sm">Os dados e ângulos que o Research Engine retorna são o "briefing" do Script Engine. Cole-os diretamente no prompt de roteiro: <em>"Crie um roteiro sobre X usando esses dados como base: [cole o output]."</em> O roteiro fica mais preciso e embasado — não só estilizado.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 3 -->
+  <section id="topico-3" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
+      <h2 class="text-2xl font-bold">✍️ Passo 2: Script Engine em ação</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Com o briefing do Research Engine em mãos, o Script Engine transforma dados e ângulos em um roteiro pronto para gravar. A grande diferença em relação a um prompt genérico de ChatGPT: o Script Engine escreve no seu estilo, com sua voz, seus ganchos e sua estrutura — não no estilo padrão de IA. O roteiro gerado precisa de pouca edição antes da gravação.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">✍️ Prompt de roteiro com contexto do Research Engine</h3>
+      <pre class="text-sm text-neutral-300 bg-dark-900/60 rounded-lg p-4 border border-dark-600">Crie um roteiro de Reels (60s, ~150 palavras) no MEU estilo.
+
+**Tema:** automação com IA não substitui criadores — ela elimina os genéricos
+**Ângulo:** baseado no dado de que 73% dos criadores que perdem seguidores pós-IA
+são os que produziam conteúdo sem perspectiva própria (fonte: Research Engine)
+**Dados do Research Engine para usar:**
+- [cole o output relevante aqui]
+**Hook preferido:** provocador — vai contra o senso comum
+**Plataforma:** Instagram Reels
+**CTA:** pergunta sobre como a pessoa usa IA no conteúdo
+
+Entregue:
+🎬 HOOK A (provocador):
+🎬 HOOK B (com dado):
+📢 CORPO:
+🎯 CTA:</pre>
     </div>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="border-t border-dark-600 py-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
-      <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5">
+        <h4 class="font-bold text-emerald-400 mb-3">✓ Roteiro pronto para gravar</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Você lê em voz alta e flui naturalmente</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Soa como você — não como IA</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Hook prendeu nos primeiros 3 segundos</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>CTA pede uma ação específica</span></li>
+        </ul>
+      </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-5">
+        <h4 class="font-bold text-red-400 mb-3">✗ Roteiro que precisa retrabalhar</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Você trava em alguma parte ao ler em voz alta</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tem palavras que você nunca usaria</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Hook não prende — começa devagar demais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>CTA genérico: "curte e compartilha"</span></li>
+        </ul>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-    const html = document.documentElement;
-    if (localStorage.getItem('theme') === 'light') {
-      themeToggleDarkIcon.classList.remove('hidden');
-      html.classList.remove('dark');
-    } else {
-      themeToggleLightIcon.classList.remove('hidden');
-    }
-    themeToggle.addEventListener('click', () => {
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
-  </script>
+  <!-- Tópico 4 -->
+  <section id="topico-4" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
+      <h2 class="text-2xl font-bold">⚡ Passo 3: Prompt Engine gerando os visuais</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Com o roteiro aprovado, o Prompt Engine entra em ação para gerar os visuais que complementam o conteúdo: thumbnail do YouTube, imagem de capa do Reels, B-roll gerado por IA ou cenas de apoio. Você descreve o que precisa em linguagem natural, e o engine entrega o prompt com a sintaxe correta pronto para colar na ferramenta escolhida.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">⚡ Fluxo de geração visual no workflow</h3>
+      <div class="space-y-3">
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 w-8">1.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Abra o Prompt Engineering Engine</p>
+            <p class="text-neutral-500 text-xs mt-1">Comece nova sessão de chat no notebook "INEMA — Prompt Engineering Engine"</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 w-8">2.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Descreva o visual em linguagem natural</p>
+            <p class="text-neutral-500 text-xs mt-1">Fale o que o visual precisa comunicar, o estilo, o formato e a ferramenta. O engine converte para a sintaxe correta.</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 w-8">3.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Copie o prompt gerado e cole na ferramenta visual</p>
+            <p class="text-neutral-500 text-xs mt-1">Midjourney, DALL-E, Ideogram, Kling, Runway — o prompt já está formatado com os parâmetros corretos para cada uma</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3 p-3 bg-dark-800/60 rounded-lg border border-dark-600">
+          <span class="text-purple-400 font-bold text-sm flex-shrink-0 w-8">4.</span>
+          <div>
+            <p class="text-neutral-300 text-sm font-medium">Se o resultado não for o esperado: peça variação ao engine</p>
+            <p class="text-neutral-500 text-xs mt-1">"O resultado ficou muito escuro — ajuste o prompt para mais luz natural e menos contraste." O engine refina sem você precisar entender os parâmetros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tópico 5 -->
+  <section id="topico-5" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
+      <h2 class="text-2xl font-bold">⏱️ A rotina diária de 10 minutos</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O Método I3NM não é só sobre produzir conteúdo mais rápido — é sobre construir uma vantagem competitiva acumulativa. Os criadores que mais crescem são os que têm uma rotina de manutenção consistente: atualizam as fontes dos engines, documentam o que funcionou, planejam a semana e ajustam as Custom Instructions com base no que aprenderam. 10 minutos por dia, todo dia.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-5">📅 Rotina diária — 10 minutos</h3>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600 text-center">
+          <div class="text-xl mb-2">📰</div>
+          <div class="font-semibold text-purple-400 text-sm mb-1">Segunda</div>
+          <div class="text-neutral-400 text-xs">Atualizar fontes Research Engine — 2-3 links novos</div>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600 text-center">
+          <div class="text-xl mb-2">📊</div>
+          <div class="font-semibold text-purple-400 text-sm mb-1">Terça</div>
+          <div class="text-neutral-400 text-xs">Analisar métricas do post anterior — o que funcionou?</div>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600 text-center">
+          <div class="text-xl mb-2">🎯</div>
+          <div class="font-semibold text-purple-400 text-sm mb-1">Quarta</div>
+          <div class="text-neutral-400 text-xs">Workflow completo — produzir o conteúdo da semana</div>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600 text-center">
+          <div class="text-xl mb-2">🔧</div>
+          <div class="font-semibold text-purple-400 text-sm mb-1">Quinta</div>
+          <div class="text-neutral-400 text-xs">Ajustar CI baseado em aprendizados recentes</div>
+        </div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600 text-center">
+          <div class="text-xl mb-2">📋</div>
+          <div class="font-semibold text-purple-400 text-sm mb-1">Sexta</div>
+          <div class="text-neutral-400 text-xs">Planejar temas da próxima semana com o Research Engine</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> O efeito composto do método</h3>
+      <p class="text-neutral-300 text-sm">Criadores que usam o Método I3NM por 90 dias têm engines exponencialmente mais precisos do que no dia 1. As fontes estão mais ricas, as CIs estão mais afinadas, o banco de prompts vencedores cresceu. No dia 1, você economiza 2 horas por post. No dia 90, você economiza 2 horas E o resultado é 3x melhor porque os engines conhecem você de verdade.</p>
+    </div>
+  </section>
+
+  <!-- Tópico 6 -->
+  <section id="topico-6" class="mb-16">
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
+      <h2 class="text-2xl font-bold">📋 Checklist de publicação: do post ao analytics</h2>
+    </div>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Ter o conteúdo pronto não significa estar pronto para publicar. O checklist de publicação garante que você não pule etapas críticas que impactam distribuição: metadata, hashtags, horário, formato nativo de cada plataforma e configurações de distribuição. Esses detalhes podem fazer a diferença entre um post que alcança 1.000 pessoas e o mesmo post que alcança 50.000.</p>
+
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-5">📋 Checklist de Publicação — Copy e use</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-3">
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide">Antes de publicar</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Roteiro gravado e editado — sem erros visíveis</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Legenda/caption escrita com hook + CTA</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Hashtags pesquisadas (mix de nichos: amplo + específico)</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Thumbnail ou capa criada com proporção correta</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Arquivo exportado no formato nativo da plataforma</span>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <p class="text-neutral-400 text-xs font-semibold uppercase tracking-wide">Após publicar</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Publicar no horário de maior atividade da audiência</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Responder comentários nas primeiras 2 horas</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Anotar métricas após 24h (alcance, engajamento, saves)</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Documentar aprendizados no Script Engine (o que funcionou)</span>
+            </div>
+            <div class="flex items-center space-x-3 p-2 bg-dark-800/60 rounded-lg border border-dark-600 text-neutral-300">
+              <span class="w-4 h-4 rounded border border-purple-500/50 flex-shrink-0 bg-purple-500/10 inline-block"></span>
+              <span>Planejar próximo post baseado no que o público respondeu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMO FINAL DA TRILHA -->
+  <section class="mb-12">
+    <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-2 flex items-center"><span class="mr-3">🏆</span> Trilha 3 Concluída</h2>
+      <p class="text-neutral-400 mb-8">Você completou o Método I3NM. Revise o que domina antes de colocar em prática:</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="bg-dark-800/60 rounded-xl p-5 border border-purple-500/20">
+          <div class="text-2xl mb-2">🔍</div>
+          <h4 class="font-bold text-purple-400 mb-3">Research Engine</h4>
+          <ul class="space-y-1 text-neutral-400 text-xs">
+            <li>✓ Notebook criado e configurado</li>
+            <li>✓ 10-25 fontes de qualidade</li>
+            <li>✓ CI com persona e formato</li>
+            <li>✓ Prompt template salvo</li>
+            <li>✓ Rotina semanal de atualização</li>
+          </ul>
+        </div>
+        <div class="bg-dark-800/60 rounded-xl p-5 border border-purple-500/20">
+          <div class="text-2xl mb-2">✍️</div>
+          <h4 class="font-bold text-purple-400 mb-3">Script Engine</h4>
+          <ul class="space-y-1 text-neutral-400 text-xs">
+            <li>✓ Notebook com fontes pessoais</li>
+            <li>✓ CI com estilo, tom e restrições</li>
+            <li>✓ Master Prompt de 60s salvo</li>
+            <li>✓ Checklist de revisão em uso</li>
+            <li>✓ Feedbacks de performance documentados</li>
+          </ul>
+        </div>
+        <div class="bg-dark-800/60 rounded-xl p-5 border border-purple-500/20">
+          <div class="text-2xl mb-2">⚡</div>
+          <h4 class="font-bold text-purple-400 mb-3">Prompt Engine</h4>
+          <ul class="space-y-1 text-neutral-400 text-xs">
+            <li>✓ Documentação oficial carregada</li>
+            <li>✓ CI técnica com formatos por tipo</li>
+            <li>✓ Templates de imagem e vídeo</li>
+            <li>✓ Biblioteca de prompts vencedores</li>
+            <li>✓ Comparativo de ferramentas claro</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Executo o workflow completo (Research → Script → Prompt) em menos de 45 minutos</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Tenho uma rotina diária de 10 minutos para manter os engines atualizados</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Uso o checklist de publicação para garantir qualidade e distribuição em toda postagem</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Documento aprendizados de performance para evoluir os engines continuamente</span></li>
+      </ul>
+
+      <div class="bg-dark-800/50 rounded-lg p-6 mb-8 border border-purple-500/20">
+        <h3 class="font-bold text-purple-400 mb-3 text-lg">🎯 Seu próximo passo</h3>
+        <p class="text-neutral-300 text-sm leading-relaxed">Configure os 3 engines em uma única sessão de trabalho de 2 horas. Não pule etapas. No fim das 2 horas, você terá uma máquina de criação de conteúdo personalizada e pronta para operar. A partir daí, o método trabalha por você — cada post fica mais rápido, cada engine fica mais preciso, cada semana fica mais eficiente.</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="modulo-3-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 3.5: Custom Instructions</a>
+        <a href="index.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Voltar ao Índice da Trilha 3 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-dark-600 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+    <p>📓 NotebookLM Completo · <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a> · 2026</p>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  const html = document.documentElement;
+  if (localStorage.getItem('theme') === 'light') {
+    themeToggleDarkIcon.classList.remove('hidden');
+    html.classList.remove('dark');
+  } else {
+    themeToggleLightIcon.classList.remove('hidden');
+  }
+  themeToggle.addEventListener('click', () => {
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+</script>
 </body>
 </html>

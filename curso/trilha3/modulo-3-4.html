@@ -26,6 +26,7 @@
     html:not(.dark) .text-neutral-500 { color: #9ca3af; }
     html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
     html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    pre { white-space: pre-wrap; word-break: break-word; }
   </style>
 </head>
 <body class="bg-dark-900 text-neutral-100 min-h-screen">
@@ -72,14 +73,14 @@
     </div>
     <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.4</span>
     <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ Prompt Engineering Engine — Sintaxe Oficial</h1>
-    <p class="text-lg text-neutral-400 max-w-3xl">Configure o terceiro engine do Método I3NM para gerar prompts com sintaxe e parâmetros exatos de cada modelo de IA — imagem e vídeo.</p>
+    <p class="text-lg text-neutral-400 max-w-3xl">Monte um notebook especialista em gerar prompts com a sintaxe correta para cada ferramenta de IA visual. Nunca mais esqueça parâmetros do Midjourney, Sora, Kling ou Runway — o engine entrega pronto para copiar e colar.</p>
     <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
       <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
         <div class="text-xl font-bold text-purple-400">6</div>
         <div class="text-xs text-neutral-400">Tópicos</div>
       </div>
       <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
-        <div class="text-xl font-bold text-purple-400">55</div>
+        <div class="text-xl font-bold text-purple-400">50</div>
         <div class="text-xs text-neutral-400">Minutos</div>
       </div>
       <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
@@ -94,56 +95,58 @@
   </div>
 </header>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
   <!-- Tópico 1 -->
   <section id="topico-1" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span>
-      <h2 class="text-2xl font-bold">📝 Criando o notebook Prompt Engineering Engine</h2>
+      <h2 class="text-2xl font-bold">⚡ O problema que o Prompt Engine resolve</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Passo a passo para criar o terceiro notebook do Método I3NM. Nome padronizado "INEMA — Prompt Engineering Engine". Foco: gerar prompts com sintaxe e parâmetros exatos de cada modelo de IA (imagem e vídeo). A criação correta define o sucesso do engine — um notebook bem configurado elimina prompts com parâmetros inventados e garante resultados consistentes.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Cada ferramenta de IA visual tem sua própria sintaxe, seus próprios parâmetros e sua própria lógica de prompt. O que funciona no Midjourney não funciona no DALL-E. O que performa no Sora não funciona no Kling. Decorar a sintaxe de 5 ferramentas diferentes é inviável — e a documentação muda com frequência. O <strong class="text-purple-400">Prompt Engineering Engine</strong> centraliza todo esse conhecimento em um único notebook que você consulta em segundos.</p>
 
     <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Prompts genéricos desperdiçam créditos e geram resultados medíocres. Com documentação oficial carregada, você gera prompts que o modelo entende de verdade, economizando dinheiro e tempo. Sem o Prompt Engine configurado corretamente, você vai inventar parâmetros que simplesmente não existem — e perder horas gerando imagens e vídeos que não correspondem ao que você pediu.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">🛠️ Ferramentas cobertas pelo engine</h3>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📝</div>
-          <div class="text-sm font-semibold">Sintaxe oficial</div>
-          <div class="text-xs text-neutral-400">Parâmetros reais</div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <div class="font-semibold text-purple-400 text-sm mb-1">🖼️ Imagem</div>
+          <ul class="text-neutral-400 text-xs space-y-1">
+            <li>• Midjourney v6+</li>
+            <li>• DALL-E 3</li>
+            <li>• Ideogram v2</li>
+            <li>• Stable Diffusion XL</li>
+          </ul>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">⚙️</div>
-          <div class="text-sm font-semibold">Parâmetros corretos</div>
-          <div class="text-xs text-neutral-400">Da documentação</div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <div class="font-semibold text-purple-400 text-sm mb-1">🎬 Vídeo</div>
+          <ul class="text-neutral-400 text-xs space-y-1">
+            <li>• Sora (OpenAI)</li>
+            <li>• Kling AI</li>
+            <li>• Runway Gen-3</li>
+            <li>• Luma Dream Machine</li>
+          </ul>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📚</div>
-          <div class="text-sm font-semibold">Documentação carregada</div>
-          <div class="text-xs text-neutral-400">PDFs por modelo</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🚫</div>
-          <div class="text-sm font-semibold">Sem inventar</div>
-          <div class="text-xs text-neutral-400">Zero parâmetros falsos</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎯</div>
-          <div class="text-sm font-semibold">Modelo específico</div>
-          <div class="text-xs text-neutral-400">Midjourney, Runway...</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">✏️</div>
-          <div class="text-sm font-semibold">3 variações por prompt</div>
-          <div class="text-xs text-neutral-400">Base + Realista + Cinema</div>
+        <div class="bg-dark-800/60 rounded-lg p-4 border border-dark-600">
+          <div class="font-semibold text-purple-400 text-sm mb-1">🎵 Audio/Outros</div>
+          <ul class="text-neutral-400 text-xs space-y-1">
+            <li>• ElevenLabs (voz)</li>
+            <li>• Suno / Udio (música)</li>
+            <li>• Heygen (avatar)</li>
+            <li>• Pika Labs</li>
+          </ul>
         </div>
       </div>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Por que sintaxe importa</h3>
+      <p class="text-neutral-300 text-sm mb-3">Um prompt de Midjourney sem os parâmetros corretos gera resultado medíocre. Com <code class="bg-dark-800 px-1.5 py-0.5 rounded text-purple-400 text-xs">--ar 9:16 --v 6.1 --style raw --q 2</code> no lugar certo, o resultado salta de "ok" para "profissional". A diferença entre saber e não saber a sintaxe é a diferença entre gerar uma imagem utilizável e precisar de 20 tentativas frustradas.</p>
+      <ul class="space-y-2 text-neutral-300 text-sm">
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Midjourney tem mais de 40 parâmetros documentados — você precisa de 5-8 por prompt</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>Sora e Kling têm formatos completamente diferentes de descrição de cena e câmera</span></li>
+        <li class="flex items-start space-x-2"><span class="text-blue-400">•</span><span>A documentação oficial é atualizada a cada versão — manter na memória é impossível</span></li>
+      </ul>
     </div>
   </section>
 
@@ -151,49 +154,36 @@
   <section id="topico-2" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span>
-      <h2 class="text-2xl font-bold">📄 Coletando documentação oficial em PDF</h2>
+      <h2 class="text-2xl font-bold">📚 Quais documentos carregar como fonte</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Para cada modelo (Midjourney, Runway, Kling AI, Stable Diffusion, DALL-E, Sora), buscar a documentação oficial, salvar em PDF (Ctrl+P → Salvar como PDF) e fazer upload no NotebookLM. PDF "congela" a referência mesmo quando o site muda — é a única forma de garantir que o Prompt Engine sempre terá acesso à sintaxe correta que você testou.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">O Prompt Engineering Engine é alimentado por documentação técnica oficial — não por tutoriais de YouTube ou artigos de blog. A documentação oficial tem os parâmetros corretos, os valores aceitos e os exemplos funcionais. Tutoriais ficam desatualizados rapidamente quando a ferramenta lança nova versão.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Links quebram. Documentação online muda. PDF garante que o notebook sempre terá acesso à sintaxe correta que você testou. É a única forma de garantir que o Prompt Engine não invente parâmetros. Quando a documentação de um modelo é atualizada, você salva o novo PDF, remove o antigo, e o engine continua preciso.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📄</div>
-          <div class="text-sm font-semibold">PDF como fonte primária</div>
-          <div class="text-xs text-neutral-400">Congela a referência</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🖨️</div>
-          <div class="text-sm font-semibold">Ctrl+P para salvar</div>
-          <div class="text-xs text-neutral-400">Salvar como PDF</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">⬆️</div>
-          <div class="text-sm font-semibold">Upload no NotebookLM</div>
-          <div class="text-xs text-neutral-400">Por modelo de IA</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🔄</div>
-          <div class="text-sm font-semibold">Atualizar quando muda</div>
-          <div class="text-xs text-neutral-400">Substituir PDF antigo</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎨</div>
-          <div class="text-sm font-semibold">Midjourney</div>
-          <div class="text-xs text-neutral-400">Imagem estilo artístico</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎬</div>
-          <div class="text-sm font-semibold">Runway / Kling AI</div>
-          <div class="text-xs text-neutral-400">Geração de vídeo</div>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+        <h4 class="font-bold text-emerald-400 mb-4">✓ Fontes que alimentam bem</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Documentação oficial de cada ferramenta (docs.midjourney.com, etc.)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Release notes das versões mais recentes</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Guia de parâmetros com exemplos funcionais</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Seus próprios prompts que geraram ótimos resultados</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Prompts de referência de criadores avançados com fonte verificada</span></li>
+        </ul>
       </div>
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h4 class="font-bold text-red-400 mb-4">✗ Fontes que prejudicam</h4>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Tutoriais do YouTube sem data (sintaxe muda por versão)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Artigos com prompts copiados sem verificação</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Documentação de versões antigas (ex: Midjourney v4 para usar v6)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Prompts sem contexto de qual ferramenta foi usada</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Listas genéricas de "melhores prompts" sem parâmetros</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Organize por ferramenta — não por categoria</h3>
+      <p class="text-neutral-300 text-sm">Crie um documento de texto para cada ferramenta com: nome, versão atual, parâmetros principais, exemplos de prompts que funcionaram, e notas sobre limitações. Cole esses documentos como fontes. É mais fácil manter 6 documentos organizados do que 20 fontes soltas sem estrutura.</p>
     </div>
   </section>
 
@@ -201,49 +191,61 @@
   <section id="topico-3" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span>
-      <h2 class="text-2xl font-bold">🔒 Custom Instructions: template do engenheiro de prompts</h2>
+      <h2 class="text-2xl font-bold">📝 Custom Instructions: o especialista em sintaxe</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Template de Custom Instructions: "Aja como engenheiro sênior de prompt. Conhecimento estritamente limitado às documentações carregadas. Use apenas parâmetros que existirem nas fontes. Se não encontrar, diga 'não encontrado na documentação'. Formato: 1) Prompt final 2) Variação realista 3) Variação cinematográfica 4) Parâmetros usados + por quê 5) Checklist de uso."</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">As Custom Instructions do Prompt Engine definem um especialista técnico que domina a sintaxe de cada ferramenta. Ao contrário do Script Engine (que imita sua voz), este engine precisa ser preciso e técnico. O formato de saída é padronizado: prompt pronto para copiar e colar, com parâmetros corretos para a ferramenta especificada.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Sem essa instrução, o NotebookLM pode misturar parâmetros de modelos diferentes ou inventar sintaxe. Com ela, você tem um especialista que só fala o que conhece com certeza. A limitação explícita ("se não encontrar, diga que não encontrou") é o que transforma o engine em uma ferramenta confiável — ele admite quando não sabe, em vez de inventar.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🔒</div>
-          <div class="text-sm font-semibold">Limitação explícita</div>
-          <div class="text-xs text-neutral-400">Só fontes carregadas</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📋</div>
-          <div class="text-sm font-semibold">Formato estruturado</div>
-          <div class="text-xs text-neutral-400">5 seções obrigatórias</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">3️⃣</div>
-          <div class="text-sm font-semibold">3 variações obrigatórias</div>
-          <div class="text-xs text-neutral-400">Base, realista, cinema</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🧪</div>
-          <div class="text-sm font-semibold">Parâmetros justificados</div>
-          <div class="text-xs text-neutral-400">Explica o porquê</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">✅</div>
-          <div class="text-sm font-semibold">Checklist de uso</div>
-          <div class="text-xs text-neutral-400">Antes de executar</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🚫</div>
-          <div class="text-sm font-semibold">Não inventa</div>
-          <div class="text-xs text-neutral-400">Admite quando não sabe</div>
-        </div>
+    <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-purple-400 flex items-center"><span class="mr-2">📋</span> Template de Custom Instructions — Prompt Engine</h3>
+        <span class="text-xs text-neutral-500 bg-dark-700 px-2 py-1 rounded">Copie e adapte</span>
       </div>
+      <pre class="text-sm text-neutral-300 bg-dark-900/60 rounded-lg p-4 border border-dark-600 leading-relaxed">## IDENTIDADE
+Você é um engenheiro de prompts especializado em ferramentas de IA
+visual. Você domina a sintaxe oficial de: Midjourney, DALL-E, Ideogram,
+Sora, Kling, Runway, Pika e ElevenLabs. Use SOMENTE a documentação
+carregada nas fontes. Se não encontrar a sintaxe correta, diga:
+"Não encontrei essa sintaxe na documentação atual carregada."
+
+## FORMATO OBRIGATÓRIO DE SAÍDA — IMAGEM
+Quando solicitado um prompt de imagem, entregue:
+
+**Ferramenta:** [nome + versão]
+**Prompt pronto para copiar:**
+```
+[prompt completo com parâmetros corretos]
+```
+**Parâmetros explicados:**
+- `--parâmetro`: [o que faz]
+**Variações sugeridas:**
+1. [variação A — mais realista]
+2. [variação B — mais estilizado]
+**Aviso:** [qualquer limitação ou comportamento esperado]
+
+## FORMATO OBRIGATÓRIO DE SAÍDA — VÍDEO
+Quando solicitado um prompt de vídeo, entregue:
+
+**Ferramenta:** [nome + versão]
+**Cena:** [descrição da cena principal]
+**Câmera:** [movimento de câmera e enquadramento]
+**Estilo visual:** [referência de estilo]
+**Duração sugerida:** [X segundos]
+**Prompt pronto para copiar:**
+```
+[prompt completo conforme sintaxe da ferramenta]
+```
+**Configurações recomendadas:** [resolução, fps, modo]
+
+## REGRAS
+- Nunca improvise sintaxe — somente o que está nas fontes
+- Sempre especifique a versão da ferramenta usada
+- Se o usuário não especificar ferramenta, pergunte antes de gerar
+- Considere que o usuário está no mercado brasileiro (conteúdo em PT-BR)</pre>
+    </div>
+
+    <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+      <h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Por que pedir variações?</h3>
+      <p class="text-neutral-300 text-sm">O mesmo conceito visual pode ser interpretado de formas radicalmente diferentes pela IA. Pedir 2 variações (realista e estilizado) no mesmo prompt economiza rodadas de tentativa e erro. Você compara e escolhe — em vez de gerar, rejeitar, ajustar, gerar de novo.</p>
     </div>
   </section>
 
@@ -251,47 +253,57 @@
   <section id="topico-4" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span>
-      <h2 class="text-2xl font-bold">🖼️ Prompts para imagem: template completo</h2>
+      <h2 class="text-2xl font-bold">🖼️ Template para geração de imagem</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Template padronizado para geração de prompts de imagem com 11 campos: Modelo/ferramenta, Objetivo (thumbnail/capa/anúncio), Assunto principal, Estilo (realista/cinematic/anime), Ambiente, Iluminação, Câmera (ângulo/lente/enquadramento), Emoção, Texto na imagem (sim/não), Restrições, Formato (9:16/16:9/1:1). Um template padronizado elimina o "eu não sei por onde começar" e garante que você fornece ao Prompt Engine todas as variáveis necessárias para gerar um prompt profissional.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Prompts de imagem eficientes têm sempre os mesmos elementos: <strong class="text-purple-400">sujeito + ambiente + estilo visual + iluminação + técnica + parâmetros da ferramenta</strong>. Faltando qualquer um desses elementos, a IA preenche com seus próprios padrões — e o resultado raramente é o que você queria. Use o template abaixo para garantir que o engine tenha todo o contexto necessário.</p>
+
+    <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-purple-400 flex items-center"><span class="mr-2">🖼️</span> Template de Prompt — Imagem</h3>
+        <span class="text-xs text-neutral-500 bg-dark-700 px-2 py-1 rounded">Copie, preencha e cole</span>
+      </div>
+      <pre class="text-sm text-neutral-300 bg-dark-900/60 rounded-lg p-4 border border-dark-600 leading-relaxed">Gere um prompt de imagem para a ferramenta abaixo.
+
+**Ferramenta:** [Midjourney v6.1 / DALL-E 3 / Ideogram v2]
+**Sujeito principal:** [ex: mulher jovem segurando smartphone]
+**Ambiente/cenário:** [ex: café moderno, luz natural da janela]
+**Estilo visual:** [ex: fotografia documental, cores frias, grão de filme]
+**Iluminação:** [ex: luz lateral suave, hora dourada]
+**Formato/proporção:** [ex: vertical 9:16 para Stories / quadrado 1:1]
+**Referência de estilo:** [ex: fotografia editorial da Vogue Brasil]
+**O que evitar:** [ex: sem texto, sem logotipos, sem fundos brancos]
+**Uso final:** [ex: thumbnail / post de feed / capa de story]
+
+Entregue o prompt pronto para copiar, com todos os parâmetros corretos
+para a versão especificada da ferramenta.</pre>
+    </div>
 
     <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Sem o template de 11 campos, você esquece variáveis cruciais — formato, iluminação, câmera — que fazem toda a diferença no resultado visual. Com o template preenchido, o Prompt Engine recebe contexto suficiente para gerar um prompt completo em vez de um esboço vago. A diferença entre um thumbnail profissional e um resultado genérico começa no template de input.</p>
-    </div>
-
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">1️⃣</div>
-          <div class="text-sm font-semibold">11 campos do template</div>
-          <div class="text-xs text-neutral-400">Contexto completo</div>
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">🔑 Parâmetros essenciais do Midjourney v6</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <code class="text-purple-400 font-bold">--ar 9:16</code>
+          <p class="text-neutral-400 mt-1 text-xs">Proporção da imagem. 9:16 para vertical, 16:9 para horizontal, 1:1 para quadrado</p>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎯</div>
-          <div class="text-sm font-semibold">Objetivo definido</div>
-          <div class="text-xs text-neutral-400">Thumbnail, capa, anúncio</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <code class="text-purple-400 font-bold">--v 6.1</code>
+          <p class="text-neutral-400 mt-1 text-xs">Versão do modelo. Sempre especifique para resultados consistentes</p>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📷</div>
-          <div class="text-sm font-semibold">Câmera descrita</div>
-          <div class="text-xs text-neutral-400">Ângulo, lente, enquadramento</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <code class="text-purple-400 font-bold">--style raw</code>
+          <p class="text-neutral-400 mt-1 text-xs">Menos estilização automática. Melhor para fotografia realista</p>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🚫</div>
-          <div class="text-sm font-semibold">Restrições explícitas</div>
-          <div class="text-xs text-neutral-400">O que evitar</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <code class="text-purple-400 font-bold">--q 2</code>
+          <p class="text-neutral-400 mt-1 text-xs">Qualidade máxima. Usa mais GPU créditos mas gera resultado superior</p>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">📐</div>
-          <div class="text-sm font-semibold">Formato especificado</div>
-          <div class="text-xs text-neutral-400">9:16 / 16:9 / 1:1</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <code class="text-purple-400 font-bold">--no [elemento]</code>
+          <p class="text-neutral-400 mt-1 text-xs">Remove elementos indesejados. Ex: --no text, --no watermark</p>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🔁</div>
-          <div class="text-sm font-semibold">Reproduzível</div>
-          <div class="text-xs text-neutral-400">Reutilizar por projeto</div>
+        <div class="bg-dark-800/60 rounded-lg p-3 border border-dark-600">
+          <code class="text-purple-400 font-bold">--cref [url]</code>
+          <p class="text-neutral-400 mt-1 text-xs">Character reference. Mantém consistência de personagem entre imagens</p>
         </div>
       </div>
     </div>
@@ -301,48 +313,66 @@
   <section id="topico-5" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span>
-      <h2 class="text-2xl font-bold">🎥 Prompts para vídeo: template completo</h2>
+      <h2 class="text-2xl font-bold">🎬 Template para geração de vídeo</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">Template para prompts de vídeo: Modelo/ferramenta, Duração desejada, Estilo, Cena em 1 frase, Movimento de câmera, Movimento do personagem/objeto, Ambiente/luz, Qualidade desejada, Formato (9:16/16:9), Restrições. Instrução obrigatória: "Explique quais parâmetros foram usados e por quê." Vídeo gerado por IA tem parâmetros muito específicos por modelo — Runway Gen-3 é diferente de Kling AI que é diferente de Sora.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Prompts de vídeo são mais complexos que os de imagem — além do visual, você precisa descrever movimento de câmera, duração, transições e ritmo da cena. Ferramentas como Sora, Kling e Runway têm comportamentos muito diferentes: o Sora é melhor para cenas realistas contínuas, o Kling para movimento de câmera dramático, o Runway para estilização e efeitos. O engine guia você pela sintaxe certa de cada uma.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">O template garante que você especifica tudo que o modelo precisa para gerar exatamente o que você quer — movimento de câmera, duração, qualidade. Sem o template de vídeo, você gera resultados aleatórios. Com ele, você tem controle sobre cada elemento visual, o que reduz drasticamente o número de tentativas necessárias para conseguir o b-roll ou cena ideal.</p>
+    <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-purple-400 flex items-center"><span class="mr-2">🎬</span> Template de Prompt — Vídeo</h3>
+        <span class="text-xs text-neutral-500 bg-dark-700 px-2 py-1 rounded">Copie, preencha e cole</span>
+      </div>
+      <pre class="text-sm text-neutral-300 bg-dark-900/60 rounded-lg p-4 border border-dark-600 leading-relaxed">Gere um prompt de vídeo para a ferramenta abaixo.
+
+**Ferramenta:** [Sora / Kling v1.6 / Runway Gen-3 / Luma Dream Machine]
+**Cena principal:** [ex: mulher caminhando por rua de São Paulo ao entardecer]
+**Movimento de câmera:** [ex: plano sequência, câmera seguindo o sujeito]
+**Enquadramento:** [ex: plano médio, altura dos olhos]
+**Estilo visual:** [ex: cinematográfico, cores quentes, sem filtro excessivo]
+**Duração:** [ex: 5 segundos / 10 segundos]
+**Velocidade:** [ex: ritmo normal / câmera lenta 50%]
+**Áudio/música:** [ex: sem áudio / som ambiente de cidade]
+**Formato:** [ex: 9:16 vertical para Reels / 16:9 horizontal]
+**Referência cinematográfica:** [ex: estilo Walter Salles, "Cidade de Deus"]
+
+Entregue o prompt completo com as configurações recomendadas
+para a ferramenta especificada, incluindo resolução e fps ideais.</pre>
     </div>
 
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎥</div>
-          <div class="text-sm font-semibold">Movimento de câmera</div>
-          <div class="text-xs text-neutral-400">Pan, tilt, zoom, drone</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🏃</div>
-          <div class="text-sm font-semibold">Movimento de objeto</div>
-          <div class="text-xs text-neutral-400">Lento, rápido, suave</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">⏱️</div>
-          <div class="text-sm font-semibold">Duração</div>
-          <div class="text-xs text-neutral-400">4s, 8s, 16s por modelo</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">💎</div>
-          <div class="text-sm font-semibold">Qualidade</div>
-          <div class="text-xs text-neutral-400">HD, 4K, cinemático</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🤖</div>
-          <div class="text-sm font-semibold">Por modelo</div>
-          <div class="text-xs text-neutral-400">Sintaxe diferente</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">❓</div>
-          <div class="text-sm font-semibold">Explique os parâmetros</div>
-          <div class="text-xs text-neutral-400">Transparência total</div>
-        </div>
+    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">🎬 Comparativo das ferramentas de vídeo</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-dark-600">
+              <th class="text-left py-2 pr-4 text-neutral-400 font-semibold">Ferramenta</th>
+              <th class="text-left py-2 pr-4 text-purple-400 font-semibold">Melhor para</th>
+              <th class="text-left py-2 text-purple-400 font-semibold">Limitação principal</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-dark-700">
+            <tr>
+              <td class="py-3 pr-4 text-neutral-300 font-medium">Sora</td>
+              <td class="py-3 pr-4 text-neutral-400">Cenas realistas longas, física consistente</td>
+              <td class="py-3 text-neutral-400">Acesso limitado, sem controle fino de câmera</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 text-neutral-300 font-medium">Kling v1.6</td>
+              <td class="py-3 pr-4 text-neutral-400">Movimento dramático, cenas com pessoas</td>
+              <td class="py-3 text-neutral-400">Mãos e rostos podem distorcer em movimentos rápidos</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 text-neutral-300 font-medium">Runway Gen-3</td>
+              <td class="py-3 pr-4 text-neutral-400">Efeitos visuais, estilização, transições</td>
+              <td class="py-3 text-neutral-400">Menos realismo fotográfico que Sora/Kling</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 text-neutral-300 font-medium">Luma Dream Machine</td>
+              <td class="py-3 pr-4 text-neutral-400">Vídeos a partir de imagem estática (img-to-video)</td>
+              <td class="py-3 text-neutral-400">Duração limitada, textura às vezes inconsistente</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -351,70 +381,62 @@
   <section id="topico-6" class="mb-16">
     <div class="flex items-center space-x-4 mb-6">
       <span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span>
-      <h2 class="text-2xl font-bold">🔍 Exemplos prontos: thumbnail e b-roll</h2>
+      <h2 class="text-2xl font-bold">📋 Exemplos prontos e como adaptar</h2>
     </div>
-    <p class="text-neutral-300 mb-6 leading-relaxed">3 exemplos prontos de uso do Prompt Engine: (1) Thumbnail cinematográfica "cérebro de IA futurista, contraste forte, fundo minimalista, 16:9", (2) B-roll "câmera drone descendo sobre cidade futurista, noite, neon, 9:16, 8 segundos", (3) Avatar "pessoa falando, fundo clean, iluminação de estúdio, 9:16". Cada exemplo com o prompt final e as variações. Ver exemplos reais remove o bloqueio criativo e demonstra como o template se transforma em um prompt profissional pronto para usar nos modelos de IA.</p>
+    <p class="text-neutral-300 mb-6 leading-relaxed">Os melhores prompts de imagem e vídeo têm uma estrutura que pode ser descontruída e reutilizada. Ao adicionar seus próprios prompts de sucesso ao notebook como fonte, você cria uma biblioteca pessoal que o engine consulta para gerar variações. A lógica é sempre a mesma: <strong class="text-purple-400">descreva o que está na cena → como está sendo filmado → como parece visualmente → parâmetros técnicos</strong>.</p>
 
-    <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">💡</span> Por que aprender</h3>
-      <p class="text-neutral-300 leading-relaxed">Ver exemplos reais remove o bloqueio criativo e demonstra como o template se transforma em um prompt profissional. Os 3 exemplos cobrem os casos de uso mais comuns para criadores de vídeo — thumbnail, b-roll e avatar. Depois de ver os exemplos, você entende o padrão e consegue criar os seus próprios em minutos, sem precisar reinventar a estrutura toda vez.</p>
-    </div>
+    <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+      <h3 class="text-lg font-semibold text-purple-400 mb-4">✅ Exemplos de prompts funcionais</h3>
 
-    <div class="bg-purple-900/20 border border-purple-500/30 rounded-xl p-6 mb-6">
-      <h3 class="text-lg font-semibold text-purple-400 mb-4 flex items-center"><span class="mr-2">🔑</span> Conceitos-chave</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🖼️</div>
-          <div class="text-sm font-semibold">Thumbnail</div>
-          <div class="text-xs text-neutral-400">Cinematic, contraste forte</div>
+      <div class="space-y-4">
+        <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-600">
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded">Midjourney v6.1 — Imagem</span>
+          </div>
+          <code class="text-sm text-neutral-300">Brazilian young woman holding a smartphone, modern coffee shop with natural light from large windows, editorial photography style, warm tones, film grain, shot on 35mm, --ar 9:16 --v 6.1 --style raw --q 2 --no text, no watermark</code>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🎬</div>
-          <div class="text-sm font-semibold">B-roll</div>
-          <div class="text-xs text-neutral-400">Drone, cidade futurista</div>
+
+        <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-600">
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded">Kling v1.6 — Vídeo</span>
+          </div>
+          <code class="text-sm text-neutral-300">A woman walking through a busy São Paulo street at golden hour, camera follows her at medium shot height, slow-motion 50%, cinematic style with warm orange tones, handheld camera slight shake, 9:16 vertical, 5 seconds, no text overlay</code>
         </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🧑</div>
-          <div class="text-sm font-semibold">Avatar</div>
-          <div class="text-xs text-neutral-400">Pessoa falando, estúdio</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">✍️</div>
-          <div class="text-sm font-semibold">Prompt final</div>
-          <div class="text-xs text-neutral-400">Pronto para copiar</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">2️⃣</div>
-          <div class="text-sm font-semibold">2 variações</div>
-          <div class="text-xs text-neutral-400">Por exemplo pronto</div>
-        </div>
-        <div class="bg-dark-800/50 p-3 rounded-lg text-center border border-dark-600">
-          <div class="text-lg mb-1">🔍</div>
-          <div class="text-sm font-semibold">Parâmetros explicados</div>
-          <div class="text-xs text-neutral-400">Entenda o porquê</div>
+
+        <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-600">
+          <div class="flex items-center space-x-2 mb-2">
+            <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded">DALL-E 3 — Imagem</span>
+          </div>
+          <code class="text-sm text-neutral-300">Professional photo of a young Brazilian entrepreneur at a coworking space, using a laptop, warm natural lighting, shallow depth of field, shot from slightly above eye level, clean background with plants visible, editorial magazine style. No text in image.</code>
         </div>
       </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+      <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Construa sua biblioteca de prompts vencedores</h3>
+      <p class="text-neutral-300 text-sm">Quando um prompt gerar um resultado excelente, documente-o: ferramenta, versão, prompt completo, parâmetros usados e o resultado (print ou link). Adicione ao notebook como fonte. Com o tempo, o engine consulta sua própria biblioteca de sucessos para gerar variações mais precisas do que qualquer template genérico.</p>
     </div>
   </section>
 
   <!-- RESUMO -->
   <section class="mb-12">
     <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
-      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do Módulo 3.4</h2>
+      <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Checklist do Módulo 3.4</h2>
+      <p class="text-neutral-400 mb-6">Confirme o que você domina antes de avançar para as Custom Instructions Avançadas:</p>
       <ul class="space-y-3 mb-8">
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como criar e nomear o notebook Prompt Engineering Engine dentro do Método I3NM</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como coletar e salvar documentação oficial em PDF para cada modelo de IA (Midjourney, Runway, Kling AI e outros)</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como configurar as Custom Instructions para limitar o engine à documentação carregada e evitar parâmetros inventados</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como usar o template de 11 campos para gerar prompts de imagem profissionais com objetivo, câmera e formato definidos</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como usar o template de vídeo com movimento de câmera, duração e qualidade especificados por modelo</span></li>
-        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Como aplicar os 3 exemplos prontos (thumbnail, b-roll e avatar) para eliminar o bloqueio criativo</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Criei o "INEMA — Prompt Engineering Engine" com documentação oficial das ferramentas que uso</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Configurei Custom Instructions com persona técnica e formatos separados para imagem e vídeo</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Tenho os templates de prompt para imagem e vídeo salvos para reutilizar</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Entendo os parâmetros essenciais do Midjourney e quando usar cada um</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Sei escolher a ferramenta de vídeo certa (Sora vs Kling vs Runway vs Luma)</span></li>
+        <li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><span class="text-neutral-300">Tenho o hábito de documentar prompts vencedores e adicioná-los ao notebook</span></li>
       </ul>
       <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
         <h3 class="font-semibold text-purple-400 mb-2">Próximo Módulo:</h3>
-        <p class="text-neutral-300">3.5 — Custom Instructions Avançadas: 10.000 Caracteres</p>
+        <p class="text-neutral-300">3.5 — Custom Instructions Avançadas: explorando os 10.000 caracteres</p>
       </div>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="modulo-3-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 3.3</a>
+        <a href="modulo-3-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo 3.3: Script Engine</a>
         <a href="modulo-3-5.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Módulo 3.5: Custom Instructions →</a>
       </div>
     </div>
